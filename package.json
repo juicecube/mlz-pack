@@ -36,5 +36,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "hooks": {
+    "commit-msg": "commitlint -e $GIT_PARAMS"
   }
 }
