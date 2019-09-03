@@ -8,16 +8,11 @@
   },
   "scripts": {
     "commit": "git-cz",
-    "commitmsg": "validate-commit-msg",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juicecube/mlz-pack.git"
-  },
-  "configs": {
-    "compatibleVersion": ">=0.0.25"
   },
   "keywords": [
     "webpack"
@@ -29,9 +24,17 @@
   },
   "homepage": "https://github.com/juicecube/mlz-pack#readme",
   "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
     "commitizen": "^4.0.3",
-    "conventional-changelog-cli": "^2.0.23",
+    "cz-conventional-changelog": "^3.0.2",
     "husky": "^3.0.5",
+    "standard-version": "^7.0.0",
     "validate-commit-msg": "^2.14.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
