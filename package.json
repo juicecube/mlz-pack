@@ -1,0 +1,37 @@
+{
+  "name": "mlz-pack",
+  "version": "1.0.0",
+  "description": "mlz-pack",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "commit": "git-cz",
+    "commitmsg": "validate-commit-msg",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juicecube/mlz-pack.git"
+  },
+  "configs": {
+    "compatibleVersion": ">=0.0.25"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "DogJun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juicecube/mlz-pack/issues"
+  },
+  "homepage": "https://github.com/juicecube/mlz-pack#readme",
+  "devDependencies": {
+    "commitizen": "^4.0.3",
+    "conventional-changelog-cli": "^2.0.23",
+    "husky": "^3.0.5",
+    "validate-commit-msg": "^2.14.0"
+  }
+}
