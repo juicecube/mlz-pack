@@ -1,6 +1,6 @@
 {
   "name": "mlz-pack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "mlz-pack",
   "main": "index.js",
   "directories": {
