@@ -6,7 +6,7 @@ class Config {
   static jsConfigName = 'mlz-pack.js';
   static getPath(filename:string) : string {
     let currDir:string = process.cwd();
-
+    console.log('是否存在', filename, fs.existsSync(path.join(currDir, filename)));
     while (!fs.existsSync(path.join(currDir, filename))) {
       currDir = path.join(currDir, '../');
 
@@ -15,14 +15,14 @@ class Config {
         return '';
       }
     }
-
+    console.log('currDir', currDir);
     return currDir;
   }
 
   /**
-     * @function getBuildConfig
-     * @desc     Find builder type in feflow.json
-     */
+   * @function getBuildConfig
+   * @desc     Find builder type in mlz-pack.json
+   */
   static getBuildConfig() {
     let builderOptions;
 
