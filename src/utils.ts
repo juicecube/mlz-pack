@@ -1,9 +1,13 @@
 import { DeepCopyData } from './types';
-export const deepCopy = (source:DeepCopyData) : DeepCopyData => {
-  const ret = {};
 
-  for (const k in source) {
-      ret[k] = typeof source[k] === 'object' ? deepCopy(source[k]) : source[k];
+export const deepCopy = (target:DeepCopyData) : DeepCopyData => {
+  if (typeof target === 'object') {
+    const cloneTarget = Array.isArray(target) ? [] : {};
+    for (const key in target) {
+      cloneTarget[key] = deepCopy(target[key]);
+    }
+    return cloneTarget;
+  } else {
+    return target;
   }
-  return ret;
 };

@@ -15,6 +15,7 @@
 - 目录清理
 - 命令行信息显示优化
 - 错误捕获和处理
+- 多进程打包
 - ...
 #### 开发配置 
 - 代码热更新
@@ -30,14 +31,25 @@
 - scoped Hoisting
 - 速度优化：基础包cdn
 - 体积优化：代码分割
+- 打包分析
+- 多进程压缩
 - ...
 ### 4⃣️ 自定义配置
-读取项目下的mlz-pack.json或者mlz-pack.js，定制化配置
-```json
+读取项目根目录下的mlz-pack.json或者mlz-pack.js，定制化配置
+```js
 {
-  "inlineCSS": true,
+  // 是否开启px转化rem
   "usePx2rem": false,
-  "port": 9000,
+  // 是否开启打包分析
+  "Analysis": false,
+  // 是否是多页应用，默认为单页应用
+  "multipage": false,
+  // 开发服务端口号 
+  "port": 9000, 
+  // 静态资源cdn地址
+  "cdnPath": "https://static-k12edu.codemao.cn/mlz_teacher/build/",
+  // 打包输出目录
+  "outputDir": "./dist"
   ...
 }
 ```
@@ -47,7 +59,7 @@
 npm i mlz-pack --save-dev
 ```
 package.json
-```json
+```js
 {
   "scripts": {
     "dev": "mlz-pack dev",
