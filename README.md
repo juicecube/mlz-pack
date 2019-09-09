@@ -6,6 +6,7 @@
 #### 基本配置 
 - 资源解析
   - 解析es6
+  - 解析ts
   - 解析react
   - 解析css
   - 解析sass
@@ -25,6 +26,7 @@
 - ...
 #### 生产配置 
 - 代码压缩
+- 图片压缩
 - css inline
 - 文件指纹
 - tree-shaking
@@ -35,21 +37,24 @@
 - 多进程压缩
 - ...
 ### 4⃣️ 自定义配置
-读取项目根目录下的mlz-pack.json或者mlz-pack.js，定制化配置
+读取项目根目录下的mlz-pack.json或者mlz-pack.js，定制化配置  
+可以通过 mlz-pack --init 初始化配置文件
 ```js
 {
+  // 开发服务端口号 
+  "port": 9000,
   // 是否开启px转化rem
   "usePx2rem": false,
-  // 是否开启打包分析
-  "Analysis": false,
   // 是否是多页应用，默认为单页应用
   "multipage": false,
-  // 开发服务端口号 
-  "port": 9000, 
   // 静态资源cdn地址
   "cdnPath": "https://static-k12edu.codemao.cn/mlz_teacher/build/",
   // 打包输出目录
-  "outputDir": "./dist"
+  "outputDir": "./dist",
+  // 速度分析
+  "speed-analysis": false,
+  // 体积分析
+  "volume-analysis": false
   ...
 }
 ```

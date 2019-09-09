@@ -8,7 +8,10 @@ import cloneDeep from 'lodash/cloneDeep';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
-
+import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ProgressBarPlugin from 'progress-bar-webpack-plugin';
+const smp = new SpeedMeasurePlugin();
 class Builder {
   // 当前运行的时候的根目录
   static projectRoot:string = Config.getPath(Config.jsonConfigName) || Config.getPath(Config.jsConfigName);
@@ -128,7 +131,7 @@ class Builder {
             ],
           },
           {
-            test: /\.(jpg|gif|ico|png)$/i,
+            test: /\.(jpe?g|gif|ico|png)$/i,
             use: [
               {
                 loader: 'url-loader',
@@ -136,6 +139,30 @@ class Builder {
                   limit: 8192,
                   name: 'images/[name].[hash:5].[ext]',
                   publicPath: isProd ? options.cdnPath : '',
+                },
+              },
+              {
+                loader: 'image-webpack-loader',
+                options: {
+                  mozjpeg: {
+                    progressive: true,
+                    quality: 65,
+                  },
+                  // optipng.enabled: false will disable optipng
+                  optipng: {
+                    enabled: false,
+                  },
+                  pngquant: {
+                    quality: [0.65, 0.90],
+                    speed: 4,
+                  },
+                  gifsicle: {
+                    interlaced: false,
+                  },
+                  // the webp option will enable WEBP
+                  webp: {
+                    quality: 75,
+                  },
                 },
               },
             ],
@@ -156,6 +183,7 @@ class Builder {
         ],
       },
       plugins: [
+        new ProgressBarPlugin(),
         new FriendlyErrorsWebpackPlugin(),
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
@@ -173,7 +201,7 @@ class Builder {
    * @param options 自定义配置项
    */
   static createDevConfig(baseConfig:BaseConfig, options:BaseConfig) : BaseConfig {
-    const devConfig = cloneDeep(baseConfig);
+    let devConfig = cloneDeep(baseConfig);
     devConfig.mode = 'development';
     // 设置打包规则
     // TODO：完善开发环境打包规则
@@ -184,11 +212,17 @@ class Builder {
     // TODO：完善开发环境打包插件
     const devPlugins:any[] = [];
     devPlugins.push(new webpack.HotModuleReplacementPlugin());
+    if (options['volume-analysis']) {
+      devPlugins.push(new BundleAnalyzerPlugin());
+    }
     devPlugins.push(this.setSinglePage());
     devConfig.plugins = [...devConfig.plugins, ...devPlugins];
 
     // 开发阶段增加sourcemap.
     devConfig.devtool = 'inline-source-map';
+    if (options['speed-analysis']) {
+      devConfig = smp.wrap(devConfig);
+    }
     return devConfig;
   }
   /**
@@ -197,7 +231,7 @@ class Builder {
    */
   static createProdConfig(baseConfig:BaseConfig, options:BaseConfig) : BaseConfig {
     // const prodConfig = deepCopy(this.baseConfig);
-    const prodConfig = cloneDeep(baseConfig);
+    let prodConfig = cloneDeep(baseConfig);
     prodConfig.mode = 'production';
     // 设置打包规则
     // TODO：完善生产环境打包规则
@@ -208,8 +242,11 @@ class Builder {
     // TODO：完善生产环境打包插件
     const prodPlugins:any[] = [];
     // 清除默认输出目录
-    prodConfig.push(new CleanWebpackPlugin());
+    prodPlugins.push(new CleanWebpackPlugin());
     prodPlugins.push(this.setSinglePage());
+    if (options['volume-analysis']) {
+      prodPlugins.push(new BundleAnalyzerPlugin());
+    }
     prodConfig.plugins = [...prodConfig.plugins, ...prodPlugins];
 
     // 设置optimization
@@ -222,6 +259,9 @@ class Builder {
       ],
     };
     console.log('prodConfig', prodConfig);
+    if (options['speed-analysis']) {
+      prodConfig = smp.wrap(prodConfig);
+    }
     return prodConfig;
   }
   /**

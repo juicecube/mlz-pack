@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-
 class Config {
   static jsonConfigName = 'mlz-pack.json';
   static jsConfigName = 'mlz-pack.js';
@@ -10,7 +9,7 @@ class Config {
     while (!fs.existsSync(path.join(currDir, filename))) {
       currDir = path.join(currDir, '../');
 
-      // unix跟目录为/， win32系统根目录为 C:\\格式的
+      // unix根目录为/， win32系统根目录为 C:\\格式的
       if (currDir === '/' || /^[a-zA-Z]:\\$/.test(currDir)) {
         return '';
       }
