@@ -1,5 +1,3 @@
 {
-  "builderOptions": {
-    "px2rem": false
-  }
+  "px2rem": false
 }

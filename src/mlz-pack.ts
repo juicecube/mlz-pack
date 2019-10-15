@@ -1,8 +1,7 @@
 import program from 'commander';
 import Init from './index';
 import figlet from 'figlet';
-// import chalk from 'chalk';
-import Printer from '@darkobits/lolcatjs';
+import chalk from 'chalk';
 const pkg = require('../package.json');
 
 function printBanner () {
@@ -16,9 +15,9 @@ function printBanner () {
       console.dir(err);
       return;
     }
-    console.log(Printer.fromString(data));
-    console.log(Printer.fromString(` mlz-pack 当前版本 ${pkg.version}`));
-    console.log(Printer.fromString(' Run mlz-pack to see usage.'));
+    console.log(chalk.blue(data));
+    console.log(chalk.blue(` mlz-pack 当前版本 ${pkg.version}`));
+    console.log(chalk.blue(' Run mlz-pack to see usage.'));
   });
 }
 program
