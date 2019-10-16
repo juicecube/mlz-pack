@@ -1,19 +1,19 @@
-const merge = require('webpack-merge');
 const webpack = require('webpack');
-const path = require('path');
 import TerserPlugin from 'terser-webpack-plugin';
 const CompressionPlugin = require("compression-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const config = require('./config');
-const libraries = config.libs;
+import { config as configs } from './config';
+
 export const prodCfg = () =>{
+  const config = configs.get();
+  const libraries = config.libs;
   return {
     mode: 'production',
     output: {
-      publicPath: config.CDN_PATH, // local: '/'
+      publicPath: config.publicPath, // local: '/'
       filename: 'js/[name].[chunkhash].js',
       chunkFilename: 'js/[name].[chunkhash].js'
     },
@@ -67,7 +67,7 @@ export const prodCfg = () =>{
               options: {
                 limit: 3 * 1024,
                 name: 'images/[name]_[hash:5].[ext]',
-                publicPath: config.CDN_PATH,
+                publicPath: config.publicPath,
               }
             },
             {
@@ -83,7 +83,7 @@ export const prodCfg = () =>{
               loader: 'file-loader',
               options: {
                 name: 'assets/[name]_[hash:5].[ext]',
-                publicPath: config.CDN_PATH,
+                publicPath: config.publicPath,
               }
             }
           ],
@@ -101,8 +101,7 @@ export const prodCfg = () =>{
       }),
       new HtmlWebpackPlugin({
         filename: 'index.html',
-        template: path.resolve(config.SRC_PATH, 'index.ejs'),
-        favicon: path.resolve(config.ROOT_PATH, 'favicon.ico'),
+        // template: config.htmlPath,
         minify: {
           removeAttributeQuotes: true,
           collapseWhitespace: true,
@@ -112,10 +111,10 @@ export const prodCfg = () =>{
           removeEmptyAttributes: true,
         },
       }),
-      new InlineManifestWebpackPlugin(),
+      // new InlineManifestWebpackPlugin(),
       new webpack.SourceMapDevToolPlugin({
         // this is the url of our local sourcemap server
-        publicPath: config.SOURCEMAP,
+        // publicPath: config.SOURCEMAP,
         filename: '[file].map',
       })
     ]

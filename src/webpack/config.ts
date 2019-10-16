@@ -11,7 +11,6 @@ export type WebpackConfig = {
   analyze:boolean,
   cssScopeName:string,
   libs: {[key:string]: string[]},
-  libraries:string[],
 };
 
 class Config {
@@ -28,7 +27,6 @@ class Config {
     libs: {
       vender: [],
     },
-    libraries: [],
   };
 
   public init(param?:Partial<WebpackConfig>) {

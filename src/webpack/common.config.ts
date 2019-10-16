@@ -22,11 +22,11 @@ export const commonCfg = () => {
     },
     resolve: {
       modules: [
-        // config.rootPath,
+        config.rootPath,
         'node_modules'
       ],
       alias: {
-      "root": config.rootPath,
+        "root": config.rootPath,
       },
       extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
       symlinks: false,

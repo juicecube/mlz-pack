@@ -21,9 +21,11 @@ export function start(env:Env, baseCfg?:Partial<WebpackConfig>) {
   const smp = new SpeedMeasurePlugin();
   
   if (env !== 'dev') {
+    console.log('common', webpackConfig)
     webpackConfig = merge.smartStrategy({
       entry: 'prepend',
-    })(webpackConfig, prodCfg);
+    })(webpackConfig, prodCfg());
+    console.log('prod', webpackConfig);
     // TODO 是否加载打包速度分析工具
     webpackConfig = smp.wrap(webpackConfig);
     webpack(webpackConfig, (err, stats) => {
