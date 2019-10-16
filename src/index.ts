@@ -1,6 +1,6 @@
 import { BaseConfig, Env } from './types';
 import { config } from './config';
-import { Builder } from './builder';
+import { mlzBuilder } from './builder';
 
 class Init {
   // TODO option传参是mlz-pack.json或mlz-pack.js的地址
@@ -11,7 +11,7 @@ class Init {
     // 初始化编译配置文件的config
     config.init(option);
     
-    Builder.run(env);
+    mlzBuilder.run(env);
 
     // oldVersion
     // const builderOptions:BaseConfig = config.getConfig();

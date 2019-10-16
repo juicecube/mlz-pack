@@ -1,23 +1,19 @@
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
-import path from 'path';
-import fs from 'fs';
-
-console.log('aaaa');
 
 import { Env } from '../types';
 import { commonCfg } from './common.config';
 import { devCfg } from './dev.config';
 import { prodCfg } from './product.config';
 import { dllCfg } from './webpack.dll.config';
-import { config } from './config';
+import { config, WebpackConfig } from './config';
 import Server from './devServer';
 
-export function start(env:Env) {
+export function start(env:Env, baseCfg?:Partial<WebpackConfig>) {
   // FIXME 通过用户配置更新webpack的基本config的值
   console.log('env--------', env);
-  config.init();
+  config.init(baseCfg);
   let webpackConfig = commonCfg();
   // 打包速度分析工具
   const smp = new SpeedMeasurePlugin();
