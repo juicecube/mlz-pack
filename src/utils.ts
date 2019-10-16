@@ -26,6 +26,5 @@ export const getPath = (filename:string) : string => {
       return '';
     }
   }
-  console.log('currDir', currDir);
-  return currDir;
+  return path.join(currDir, filename);
 }

@@ -5,7 +5,6 @@ import { mlzBuilder } from './builder';
 class Init {
   // TODO option传参是mlz-pack.json或mlz-pack.js的地址
   static run (env:Env, option?:any) {
-    console.log(env);
     // 通过env执行不同的build 功能集成在builder.ts (方便管理依赖)
 
     // 初始化编译配置文件的config

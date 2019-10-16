@@ -1,61 +1,42 @@
 const path = require('path');
 
 export type WebpackConfig = {
-  IS_DEV:boolean,
-  ROOT_PATH:string,
-  SRC_PATH:string,
-  BUILD_PATH:string,
-  CDN_PATH:string,
-  RUNTIME:Object,
-  DEBUG:boolean,
-  ANALYZE:boolean,
-  CSS_SCOPED_NAME:string,
-  libs: {
-    vender:string[],
-    cmaoVender:string[],
-  },
+  isDev:boolean,
+  rootPath:string,
+  entryPath:string[],
+  htmlPath:string,
+  buildPath:string,
+  publicPath:string,
+  debug:boolean,
+  analyze:boolean,
+  cssScopeName:string,
+  libs: {[key:string]: string[]},
   libraries:string[],
 };
 
 class Config {
   private config : WebpackConfig = {
-    IS_DEV: process.env.NODE_ENV !== 'production',
-    ROOT_PATH: path.resolve(__dirname, '..'),
-    SRC_PATH: path.resolve(__dirname, '../src'),
-    BUILD_PATH: path.resolve(__dirname, '../build'),
-    CDN_PATH: '/',
-    RUNTIME: {},
-    DEBUG: false,
-    ANALYZE: false,
-    CSS_SCOPED_NAME: '[name]__[hash:5]',
+    isDev: process.env.NODE_ENV !== 'production',
+    rootPath: '',
+    entryPath: [''],
+    htmlPath: '',
+    buildPath: '',
+    publicPath: '/',
+    debug: false,
+    analyze: false,
+    cssScopeName: '[name]__[hash:5]',
     libs: {
-      vender: [
-        'react',
-        'react-dom',
-        'redux',
-        'react-redux',
-        'react-router',
-        'react-router-dom',
-      ],
-      cmaoVender: [
-        '@cmao',
-      ],
+      vender: [],
     },
-    libraries: [
-      'react',
-      'react-dom',
-      'redux',
-      'react-redux',
-      'react-router',
-      'react-router-dom',
-    ],
+    libraries: [],
   };
 
   public init(param?:Partial<WebpackConfig>) {
+    this.config.rootPath = process.cwd();
+    this.config.buildPath = path.join(this.config.rootPath, 'build');
+    this.config.cssScopeName = this.config.isDev ? '[name]__[local]' : '[name]__[hash:5]';
     if (param) {
       Object.assign(this.config, param);
-    } else {
-      this.config.CSS_SCOPED_NAME = this.config.IS_DEV ? '[name]__[local]' : '[name]__[hash:5]';
     }
   }
   

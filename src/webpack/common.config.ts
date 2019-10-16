@@ -8,35 +8,31 @@ import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 
 import { config as configs } from './config';
 
-// Configs
-
 export const commonCfg = () => {
   const config = configs.get();
+  console.log('commonConfig:', config);
   return {
     entry: {
-      index: [ path.resolve(config.SRC_PATH, './index.js') ],
+      index: config.entryPath,
     },
     output: {
       // 打包输出的文件
-      path: config.BUILD_PATH,
+      path: config.buildPath,
       publicPath: '/',
     },
     resolve: {
       modules: [
-        config.ROOT_PATH,
+        // config.rootPath,
         'node_modules'
       ],
       alias: {
-      "root": config.ROOT_PATH,
-      "src": config.SRC_PATH
+      "root": config.rootPath,
       },
       extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
       symlinks: false,
       cacheWithContext: false
     },
-    externals: {
-      'CONFIG': config.IS_DEV ? `'${JSON.stringify(config.RUNTIME)}'` : {},
-    },
+    externals: {},
     module: {
       rules: [
         {
@@ -56,20 +52,20 @@ export const commonCfg = () => {
           test: /\.s?css$/,
           exclude: /node_modules/,
           include: [
-            path.resolve(config.ROOT_PATH, 'src')
+            path.resolve(config.rootPath, 'src')
           ],
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
               options: {
-                hmr: config.IS_DEV,
+                hmr: config.isDev,
               },
             },
             {
               loader: 'css-loader',
               options: {
                 modules: {
-                  localIdentName: config.CSS_SCOPED_NAME
+                  localIdentName: config.cssScopeName
                 }
               }
             },
@@ -91,7 +87,7 @@ export const commonCfg = () => {
           use: [
             'babel-loader',
           ],
-          include: path.resolve(config.ROOT_PATH, 'src'),
+          include: path.resolve(config.rootPath, 'src'),
           exclude: /(node_modules)/,
         },
         {
@@ -111,8 +107,8 @@ export const commonCfg = () => {
       new ProgressBarPlugin(),
       new FriendlyErrorsWebpackPlugin(),
       new MiniCssExtractPlugin({
-        filename: config.IS_DEV ? '[name].css' : '[name].[contenthash].css',
-        chunkFilename: config.IS_DEV ? '[id].css' : '[id].[contenthash].css',
+        filename: config.isDev ? '[name].css' : '[name].[contenthash].css',
+        chunkFilename: config.isDev ? '[id].css' : '[id].[contenthash].css',
         ignoreOrder: false, // Enable to remove warnings about conflicting order
       }),
       new CleanWebpackPlugin({

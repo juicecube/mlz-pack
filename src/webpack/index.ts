@@ -10,6 +10,8 @@ import { dllCfg } from './webpack.dll.config';
 import { config, WebpackConfig } from './config';
 import Server from './devServer';
 
+export { WebpackConfig } from './config';
+
 export function start(env:Env, baseCfg?:Partial<WebpackConfig>) {
   // FIXME 通过用户配置更新webpack的基本config的值
   console.log('env--------', env);

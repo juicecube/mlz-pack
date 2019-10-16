@@ -1,5 +1,5 @@
 import { BaseConfig, Env } from './types';
-import { start } from './webpack'
+import { start, WebpackConfig } from './webpack'
 import { config } from './config';
 
 class Builder {
@@ -11,8 +11,14 @@ class Builder {
 
   private startWebpackBuilder(env:Env) {
     const baseConfig = config.get();
-    const baseWebpackConfig = {};
-    start(env)
+    console.log(baseConfig);
+    const baseWebpackConfig: Partial<WebpackConfig> = {
+      isDev: env !== 'prod',
+      rootPath: baseConfig.baseUrl,
+      entryPath: baseConfig.entry,
+    };
+    console.log('baseConfig', baseWebpackConfig);
+    start(env, baseWebpackConfig);
   }
 }
 

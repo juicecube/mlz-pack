@@ -10,7 +10,6 @@ import { config as configs } from './config';
 
 export const devCfg = () => {
   const config = configs.get();
-  console.log(config.SRC_PATH);
   return {
     entry: {
       index: [
@@ -46,9 +45,10 @@ export const devCfg = () => {
     },
     plugins: [
       new webpack.DefinePlugin({
-        'DEBUG': config.DEBUG,
+        'DEBUG': config.debug,
       }),
       new webpack.HotModuleReplacementPlugin(),
+      // TODO 的环境dll加速build
       // new webpack.DllReferencePlugin({
       //   context: path.join(__dirname, 'dll'),
       //   manifest: require('./dll/vender-manifest.json'),
@@ -59,9 +59,10 @@ export const devCfg = () => {
       // }]),
       new HtmlWebpackPlugin({
         filename: 'index.html',
-        template: path.resolve(config.SRC_PATH, 'index.html'),
-        // favicon: path.resolve(config.ROOT_PATH, 'favicon.ico'),
-        front_config: `<script>window.CODEMAOCONFIG = ${JSON.stringify(config.RUNTIME)}</script>`,
+        // template: config.htmlPath,
+        // favicon: path.resolve(config.rootPath, 'favicon.ico') || '',
+        // TODO front_config的dev环境模拟
+        front_config: `<script>window.CODEMAOCONFIG = ${JSON.stringify(config)}</script>`,
       }),
       // new HtmlWebpackTagsPlugin({
       //   tags: ['dll/vender.dll.js'],
