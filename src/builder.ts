@@ -1,6 +1,7 @@
 import { BaseConfig, Env } from './types';
 import { start, WebpackConfig } from './webpack'
 import { config } from './config';
+import { filter } from './utils';
 
 class Builder {
   // TODO 根据不同的配置选择打包工具
@@ -9,16 +10,27 @@ class Builder {
     this.startWebpackBuilder(env);
   }
 
+  // webpack打包
   private startWebpackBuilder(env:Env) {
     const baseConfig = config.get();
-    console.log(baseConfig);
     const baseWebpackConfig: Partial<WebpackConfig> = {
       isDev: env !== 'prod',
       rootPath: baseConfig.baseUrl,
       entryPath: baseConfig.entry,
+      htmlPlugin: baseConfig.html,
+      alias: baseConfig.alias,
+      definePlugin: baseConfig.globalVariable,
+      pxToRemPlugin: baseConfig.pxToRem,
+      analyze: baseConfig.analyze,
+      libs: baseConfig.libs,
+      buildPath: baseConfig.buildPath,
+      devServer: baseConfig.port ? {
+        port: baseConfig.port,
+      } : undefined,
     };
-    console.log('baseConfig', baseWebpackConfig);
-    start(env, baseWebpackConfig);
+    const valueConfig = filter(baseWebpackConfig, (item) => item !== undefined);
+    // console.log('baseConfig', valueConfig);
+    start(env, valueConfig);
   }
 }
 

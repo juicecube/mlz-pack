@@ -1,27 +1,45 @@
 const path = require('path');
 
 export type WebpackConfig = {
-  isDev:boolean,
-  rootPath:string,
-  entryPath:string[],
-  htmlPath:string,
-  buildPath:string,
-  publicPath:string,
-  debug:boolean,
-  analyze:boolean,
+  isDev:boolean;
+  rootPath:string;
+  entryPath:string[];
+  buildPath:string;
+  publicPath:string;
+  devServer: {
+    port:string;
+  },
+  htmlPlugin:{
+    template?:string;
+    favicon?:string;
+    filename?:string;
+    options?:{[key:string]: any};
+  },
+  analyze:boolean;
   cssScopeName:string,
-  libs: {[key:string]: string[]},
+  libs: {[key:string]: string[]};
+  alias?:{[key:string]: string};
+  definePlugin?:{[key:string]: any};
+  pxToRemPlugin?:{
+    rootValue?:number;
+    blacklist?:string[];
+  };
 };
 
 class Config {
   private config : WebpackConfig = {
     isDev: process.env.NODE_ENV !== 'production',
+    devServer: {
+      port: '8888'
+    },
     rootPath: '',
     entryPath: [''],
-    htmlPath: '',
+    htmlPlugin: {
+      filename: 'index.html',
+      options: {},
+    },
     buildPath: '',
     publicPath: '/',
-    debug: false,
     analyze: false,
     cssScopeName: '[name]__[hash:5]',
     libs: {

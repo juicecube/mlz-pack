@@ -1,8 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
-const config = require('./config');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 
@@ -45,7 +43,8 @@ export const devCfg = () => {
     },
     plugins: [
       new webpack.DefinePlugin({
-        'DEBUG': config.debug,
+        'DEBUG': true,
+        ...config.definePlugin,
       }),
       new webpack.HotModuleReplacementPlugin(),
       // TODO 的环境dll加速build
@@ -57,13 +56,6 @@ export const devCfg = () => {
       //   from: path.resolve(__dirname, 'dll'),
       //   to: 'dll',
       // }]),
-      new HtmlWebpackPlugin({
-        filename: 'index.html',
-        // template: config.htmlPath,
-        // favicon: path.resolve(config.rootPath, 'favicon.ico') || '',
-        // TODO front_config的dev环境模拟
-        front_config: `<script>window.CODEMAOCONFIG = ${JSON.stringify(config)}</script>`,
-      }),
       // new HtmlWebpackTagsPlugin({
       //   tags: ['dll/vender.dll.js'],
       //   append: false,

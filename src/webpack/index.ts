@@ -60,6 +60,6 @@ export function start(env:Env, baseCfg?:Partial<WebpackConfig>) {
     })(webpackConfig, devCfg());
     // TODO 是否加载打包速度分析工具和设置dev-server的端口号
     // webpackConfig = smp.wrap(webpackConfig);
-    Server(webpackConfig, '5000');
+    Server(webpackConfig, config.get().devServer.port);
   }
 }

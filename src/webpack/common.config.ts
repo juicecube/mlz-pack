@@ -5,13 +5,14 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 import { config as configs } from './config';
+import { filter } from '../utils';
 
 export const commonCfg = () => {
   const config = configs.get();
-  console.log('commonConfig:', config);
-  return {
+  const webpackConfig = {
     entry: {
       index: config.entryPath,
     },
@@ -27,12 +28,12 @@ export const commonCfg = () => {
       ],
       alias: {
         "root": config.rootPath,
+        ...config.alias
       },
       extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
       symlinks: false,
       cacheWithContext: false
     },
-    externals: {},
     module: {
       rules: [
         {
@@ -115,7 +116,28 @@ export const commonCfg = () => {
         verbose: true, // Write logs to console.
         dry: false, // Use boolean 'true' to test/emulate delete. (will not remove files).
       }),
-      // config.ANALYZE && new BundleAnalyzerPlugin()
     ],
   };
+  const htmlConfig = filter({
+    inject: 'head',
+    filename: config.htmlPlugin.filename,
+    template: config.htmlPlugin.template,
+    favicon: config.htmlPlugin.favicon,
+    minify: config.isDev ? undefined : {
+      removeAttributeQuotes: true,
+      collapseWhitespace: true,
+      html5: true,
+      minifyCSS: true,
+      removeComments: false,
+      removeEmptyAttributes: true,
+    },
+    ...config.htmlPlugin.options
+  }, (item) => item !== undefined);
+  console.log(htmlConfig);
+  webpackConfig.plugins.push(new HtmlWebpackPlugin(htmlConfig));
+  if (config.analyze) {
+    webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+  }
+
+  return webpackConfig;
 }

@@ -2,8 +2,6 @@ const webpack = require('webpack');
 import TerserPlugin from 'terser-webpack-plugin';
 const CompressionPlugin = require("compression-webpack-plugin")
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 import { config as configs } from './config';
 
@@ -93,30 +91,19 @@ export const prodCfg = () =>{
     plugins: [
       new webpack.DefinePlugin({
         'DEBUG': false,
+        ...config.definePlugin,
       }),
       new CompressionPlugin({
         test: /\.js$|\.css$|\.html$/,
         threshold: 1024,
         minRatio: 0.8
       }),
-      new HtmlWebpackPlugin({
-        filename: 'index.html',
-        // template: config.htmlPath,
-        minify: {
-          removeAttributeQuotes: true,
-          collapseWhitespace: true,
-          html5: true,
-          minifyCSS: true,
-          removeComments: false,
-          removeEmptyAttributes: true,
-        },
-      }),
-      // new InlineManifestWebpackPlugin(),
       new webpack.SourceMapDevToolPlugin({
+        // TODO sourceMap的地址
         // this is the url of our local sourcemap server
         // publicPath: config.SOURCEMAP,
         filename: '[file].map',
-      })
+      }),
     ]
   };
 }
