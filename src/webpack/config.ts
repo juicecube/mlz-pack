@@ -30,7 +30,7 @@ class Config {
   private config : WebpackConfig = {
     isDev: process.env.NODE_ENV !== 'production',
     devServer: {
-      port: '8888'
+      port: '8080'
     },
     rootPath: '',
     entryPath: [''],
@@ -49,6 +49,7 @@ class Config {
 
   public init(param?:Partial<WebpackConfig>) {
     this.config.rootPath = process.cwd();
+    this.config.entryPath = path.join(this.config.rootPath, 'src/index');
     this.config.buildPath = path.join(this.config.rootPath, 'build');
     this.config.cssScopeName = this.config.isDev ? '[name]__[local]' : '[name]__[hash:5]';
     if (param) {

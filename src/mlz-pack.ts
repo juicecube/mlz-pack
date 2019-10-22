@@ -20,17 +20,36 @@ function printBanner () {
     console.log(chalk.blue(' Run mlz-pack to see usage.'));
   });
 }
+
 program
-  .option('dev', '开发环境配置')
-  .option('prod', '生产环境配置');
+  .version(`mlz-pack ${pkg.version}`)
+  .usage('<command> [options]')
+
+program
+  .command('build [env]')
+  .description('build your project in dev/prod mode')
+  .option('-e, --entry <entry>', 'entry file(.js||.ts||.tsx), default: src/index')
+  .option('-d, --dest <dest>', 'output directory (default: build)')
+  .action((env, cmd) => {
+    if (env === 'dev') {
+      Init.build('dev');
+    } else {
+      Init.build('prod');
+    }
+  });
+
+program
+  .command('serve [entry]')
+  .description('serve your project in development mode')
+  .option('-p, --port <port>', 'port used by the server (default: 8080)')
+  .action((entry, cmd) => {
+    Init.serve();
+  })
+
 
 program.parse(process.argv);
-if (program.dev) {
-  console.log('devxxx', program.dev);
-  Init.run('dev');
-} else if (program.prod) {
-  console.log('prodxxx', program.prod);
-  Init.run('prod');
-} else {
-  printBanner();
+
+if (!process.argv.slice(2).length) {
+  program.outputHelp()
 }
+

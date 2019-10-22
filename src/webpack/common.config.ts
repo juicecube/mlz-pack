@@ -8,6 +8,7 @@ import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 import { config as configs } from './config';
+import { getBabelConfig } from './babel';
 import { filter } from '../utils';
 
 export const commonCfg = () => {
@@ -86,7 +87,10 @@ export const commonCfg = () => {
         {
           test: /\.(ts|tsx)?$/,
           use: [
-            'babel-loader',
+            {
+              loader: 'babel-loader',
+              options: getBabelConfig(),
+            }
           ],
           include: path.resolve(config.rootPath, 'src'),
           exclude: /(node_modules)/,

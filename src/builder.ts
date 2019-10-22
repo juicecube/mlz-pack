@@ -1,17 +1,33 @@
-import { BaseConfig, Env } from './types';
-import { start, WebpackConfig } from './webpack'
+import { Env } from './types';
+import { build, WebpackConfig, serve } from './webpack'
 import { config } from './config';
 import { filter } from './utils';
 
 class Builder {
   // TODO 根据不同的配置选择打包工具
-  public run(env:Env) {
+  public build(env:Env) {
     console.log(env);
     this.startWebpackBuilder(env);
   }
 
+  public serve() {
+    this.startWebpackDevServer();
+  }
+
   // webpack打包
   private startWebpackBuilder(env:Env) {
+    const cfg = this.getWebpackBaseConfig(env);
+    build(cfg);
+  }
+
+  // 启动webpack-dev-server
+  private startWebpackDevServer() {
+    const cfg = this.getWebpackBaseConfig('dev');
+    console.log(cfg);
+    serve(cfg);
+  }
+
+  private getWebpackBaseConfig(env:Env) {
     const baseConfig = config.get();
     const baseWebpackConfig: Partial<WebpackConfig> = {
       isDev: env !== 'prod',
@@ -29,8 +45,8 @@ class Builder {
       } : undefined,
     };
     const valueConfig = filter(baseWebpackConfig, (item) => item !== undefined);
-    // console.log('baseConfig', valueConfig);
-    start(env, valueConfig);
+
+    return valueConfig;
   }
 }
 

@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   "baseUrl": __dirname,
-  "entry": [path.join(__dirname, './src/index.js')],
+  "entry": [path.join(__dirname, './src/index.ts')],
   html:{
     filename: 'index.html',
   },

@@ -10,7 +10,7 @@ process.chdir(path.join(__dirname, 'template-project'))
 
 rimraf('./dist', () => {
   const pack = require('../../lib').default;
-  pack.run('dev');
+  pack.serve();
   // const builderOptions = require('../../lib/config').default.getBuildConfig()
   // const prodConfig = require('../../lib/builder').default.createProdConfig(builderOptions)
   // webpack(prodConfig, (err, stats) => {
