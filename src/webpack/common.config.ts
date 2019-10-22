@@ -38,19 +38,6 @@ export const commonCfg = () => {
     module: {
       rules: [
         {
-          enforce: 'pre' as 'pre',
-          test: /\.tsx?$/,
-          use: [
-            {
-              loader: 'tslint-loader',
-              options: {
-                emitErrors: false,
-              },
-            },
-          ],
-          exclude: /node_modules/,
-        },
-        {
           test: /\.s?css$/,
           exclude: /node_modules/,
           include: [

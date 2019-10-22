@@ -61,7 +61,7 @@ export const prodCfg = () =>{
           exclude: /node_modules/,
           use: [
             {
-              loader: 'url-loader',
+              loader: require.resolve('url-loader'),
               options: {
                 limit: 3 * 1024,
                 name: 'images/[name]_[hash:5].[ext]',
@@ -69,7 +69,7 @@ export const prodCfg = () =>{
               }
             },
             {
-              loader: 'image-webpack-loader', //图片压缩
+              loader: require.resolve('image-webpack-loader'), //图片压缩
             }
           ],
         },
