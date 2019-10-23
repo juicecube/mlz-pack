@@ -51,7 +51,7 @@ export const commonCfg = () => {
               },
             },
             {
-              loader: 'css-loader',
+              loader: require.resolve('css-loader'),
               options: {
                 modules: {
                   localIdentName: config.cssScopeName
@@ -59,7 +59,7 @@ export const commonCfg = () => {
               }
             },
             {
-              loader: 'postcss-loader',
+              loader: require.resolve('postcss-loader'),
               options: {
                 plugins: function () {
                   return [
@@ -68,7 +68,7 @@ export const commonCfg = () => {
                 }
               }
             },
-            'sass-loader'
+            require.resolve('sass-loader')
           ]
         },
         {
@@ -78,10 +78,10 @@ export const commonCfg = () => {
             path.resolve(config.rootPath, "node_modules/animate.css/animate.css")
           ],
           use: [
-            'style-loader',
-            'css-loader',
+            require.resolve('style-loader'),
+            require.resolve('css-loader'),
             {
-              loader: 'postcss-loader',
+              loader: require.resolve('postcss-loader'),
               options: {
                 plugins: function () {
                   return [
@@ -96,7 +96,7 @@ export const commonCfg = () => {
           test: /\.(ts|tsx)?$/,
           use: [
             {
-              loader: 'babel-loader',
+              loader: require.resolve('babel-loader'),
               options: getBabelConfig(),
             }
           ],
@@ -106,7 +106,7 @@ export const commonCfg = () => {
         {
           test: /\.worker\.js$/,
           use: {
-            loader: 'worker-loader',
+            loader: require.resolve('worker-loader'),
             options: {
               name: '[name].js',
               inline: true,
