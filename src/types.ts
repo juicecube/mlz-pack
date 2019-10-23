@@ -1,3 +1,4 @@
+export interface CommonConfig {}
 export interface BaseConfig {
   [propName:string]:any;
 }

@@ -3,7 +3,7 @@ import historyApiFallback from 'connect-history-api-fallback';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import { BaseConfig } from './types';
+import { BaseConfig } from '../types';
 const app = express();
 export default (devConfig:BaseConfig, port:string) => {
   const compiler = webpack(devConfig);
