@@ -72,6 +72,27 @@ export const commonCfg = () => {
           ]
         },
         {
+          test: /\.css$/,
+          include: [
+            path.resolve(config.rootPath, "node_modules/perfect-scrollbar/dist/css"),
+            path.resolve(config.rootPath, "node_modules/animate.css/animate.css")
+          ],
+          use: [
+            'style-loader',
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: function () {
+                  return [
+                    autoprefixer()
+                  ];
+                }
+              }
+            },
+          ]
+        },
+        {
           test: /\.(ts|tsx)?$/,
           use: [
             {

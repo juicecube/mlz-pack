@@ -28,7 +28,6 @@ export function build(baseCfg?:Partial<WebpackConfig>) {
 
 export function serve(baseCfg?:Partial<WebpackConfig>) {
   const webpackConfig = getWebpackConfig(baseCfg);
-  console.log(webpackConfig);
   Server(webpackConfig, config.get().devServer.port);
 }
 
@@ -39,11 +38,9 @@ export function getWebpackConfig(baseCfg?:Partial<WebpackConfig>) {
   const smp = new SpeedMeasurePlugin();
   if (!baseCfg!.isDev) {
     // 正式环境
-    console.log('common', webpackConfig)
     webpackConfig = merge.smartStrategy({
       entry: 'prepend',
     })(webpackConfig, prodCfg());
-    console.log('prod', webpackConfig);
     // TODO 是否加载打包速度分析工具
     webpackConfig = smp.wrap(webpackConfig);
   } else {

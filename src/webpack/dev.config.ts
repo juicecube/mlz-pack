@@ -24,20 +24,26 @@ export const devCfg = () => {
     module: {
       rules: [
         {
-          loader: 'url-loader?limit=100000',
-          test: /\.(woff|woff2|eot|ttf)$/,
-          exclude: /(node_modules)/
+          test: /\.(woff|woff2|eot|ttf|mp3)$/,
+          exclude: /(node_modules)/,
+          use: [
+            {
+              loader: require.resolve('file-loader'),
+            }
+          ],
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/,
-          loader: 'url-loader?limit=100000&name=img/[hash].[ext]',
           exclude: /node_modules/,
-        },
-        {
-          test: /\.mp3$/,
-          include: /src/,
-          loader: 'file-loader',
-          exclude: /node_modules/,
+          use: [
+            {
+              loader: require.resolve('url-loader'),
+              options: {
+                limit: 100000,
+                name: 'img/[hash].[ext]',
+              }
+            }
+          ],
         },
       ]
     },

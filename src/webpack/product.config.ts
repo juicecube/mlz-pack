@@ -68,9 +68,9 @@ export const prodCfg = () =>{
                 publicPath: config.publicPath,
               }
             },
-            {
-              loader: require.resolve('image-webpack-loader'), //图片压缩
-            }
+            // {
+            //   loader: require.resolve('image-webpack-loader'), //图片压缩
+            // }
           ],
         },
         {
@@ -78,7 +78,7 @@ export const prodCfg = () =>{
           exclude: /node_modules/,
           use: [
             {
-              loader: 'file-loader',
+              loader: require.resolve('file-loader'),
               options: {
                 name: 'assets/[name]_[hash:5].[ext]',
                 publicPath: config.publicPath,
