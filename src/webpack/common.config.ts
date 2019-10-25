@@ -2,10 +2,9 @@ import path from 'path';
 import autoprefixer from 'autoprefixer';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 import { config as configs } from './config';
 import { getBabelConfig } from './babel';
@@ -13,6 +12,7 @@ import { filter } from '../utils';
 
 export const commonCfg = () => {
   const config = configs.get();
+  console.log(config.cssScopeName);
   const webpackConfig = {
     entry: {
       index: config.entryPath,
@@ -20,20 +20,20 @@ export const commonCfg = () => {
     output: {
       // 打包输出的文件
       path: config.buildPath,
-      publicPath: '/',
+      publicPath: config.publicPath || '/',
     },
     resolve: {
       modules: [
         config.rootPath,
-        'node_modules'
+        'node_modules',
       ],
       alias: {
-        "root": config.rootPath,
-        ...config.alias
+        'root': config.rootPath,
+        ...config.alias,
       },
       extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
       symlinks: false,
-      cacheWithContext: false
+      cacheWithContext: false,
     },
     module: {
       rules: [
@@ -41,41 +41,36 @@ export const commonCfg = () => {
           test: /\.s?css$/,
           exclude: /node_modules/,
           include: [
-            path.resolve(config.rootPath, 'src')
+            path.resolve(config.rootPath, 'src'),
           ],
           use: [
+            { loader: require.resolve('style-loader') },
             {
-              loader: MiniCssExtractPlugin.loader,
-              options: {
-                hmr: config.isDev,
-              },
-            },
-            {
-              loader: require.resolve('css-loader'),
+              loader: 'css-loader',
               options: {
                 modules: {
-                  localIdentName: config.cssScopeName
-                }
-              }
+                  localIdentName: config.cssScopeName,
+                },
+              },
             },
             {
               loader: require.resolve('postcss-loader'),
               options: {
-                plugins: function () {
+                plugins: () => {
                   return [
                     autoprefixer(),
                   ];
-                }
-              }
+                },
+              },
             },
-            require.resolve('sass-loader')
-          ]
+            require.resolve('sass-loader'),
+          ],
         },
         {
           test: /\.css$/,
           include: [
-            path.resolve(config.rootPath, "node_modules/perfect-scrollbar/dist/css"),
-            path.resolve(config.rootPath, "node_modules/animate.css/animate.css")
+            path.resolve(config.rootPath, 'node_modules/perfect-scrollbar/dist/css'),
+            path.resolve(config.rootPath, 'node_modules/animate.css/animate.css'),
           ],
           use: [
             require.resolve('style-loader'),
@@ -83,14 +78,14 @@ export const commonCfg = () => {
             {
               loader: require.resolve('postcss-loader'),
               options: {
-                plugins: function () {
+                plugins: () => {
                   return [
-                    autoprefixer()
+                    autoprefixer(),
                   ];
-                }
-              }
+                },
+              },
             },
-          ]
+          ],
         },
         {
           test: /\.(ts|tsx)?$/,
@@ -98,7 +93,7 @@ export const commonCfg = () => {
             {
               loader: require.resolve('babel-loader'),
               options: getBabelConfig(),
-            }
+            },
           ],
           include: path.resolve(config.rootPath, 'src'),
           exclude: /(node_modules)/,
@@ -112,18 +107,13 @@ export const commonCfg = () => {
               inline: true,
             },
           },
-          exclude: /(node_modules)/
-        }
+          exclude: /(node_modules)/,
+        },
       ],
     },
     plugins: [
       new ProgressBarPlugin(),
       new FriendlyErrorsWebpackPlugin(),
-      new MiniCssExtractPlugin({
-        filename: config.isDev ? '[name].css' : '[name].[contenthash].css',
-        chunkFilename: config.isDev ? '[id].css' : '[id].[contenthash].css',
-        ignoreOrder: false, // Enable to remove warnings about conflicting order
-      }),
       new CleanWebpackPlugin({
         verbose: true, // Write logs to console.
         dry: false, // Use boolean 'true' to test/emulate delete. (will not remove files).
@@ -131,7 +121,6 @@ export const commonCfg = () => {
     ],
   };
   const htmlConfig = filter({
-    inject: 'head',
     filename: config.htmlPlugin.filename,
     template: config.htmlPlugin.template,
     favicon: config.htmlPlugin.favicon,
@@ -143,13 +132,12 @@ export const commonCfg = () => {
       removeComments: false,
       removeEmptyAttributes: true,
     },
-    ...config.htmlPlugin.options
+    ...config.htmlPlugin.options,
   }, (item) => item !== undefined);
-  console.log(htmlConfig);
   webpackConfig.plugins.push(new HtmlWebpackPlugin(htmlConfig));
   if (config.analyze) {
     webpackConfig.plugins.push(new BundleAnalyzerPlugin());
   }
 
   return webpackConfig;
-}
+};

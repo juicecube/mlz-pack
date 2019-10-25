@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const merge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 
@@ -11,8 +10,8 @@ export const devCfg = () => {
   return {
     entry: {
       index: [
-        "webpack-hot-middleware/client?reload=true&timeout=2000&overlay=false",
-      ]
+        'webpack-hot-middleware/client?reload=true&timeout=2000&overlay=false',
+      ],
     },
     output: {
       filename: 'js/[name].js',
@@ -29,7 +28,7 @@ export const devCfg = () => {
           use: [
             {
               loader: require.resolve('file-loader'),
-            }
+            },
           ],
         },
         {
@@ -37,15 +36,15 @@ export const devCfg = () => {
           exclude: /node_modules/,
           use: [
             {
-              loader: require.resolve('url-loader'),
+              loader: 'url-loader',
               options: {
                 limit: 100000,
                 name: 'img/[hash].[ext]',
-              }
-            }
+              },
+            },
           ],
         },
-      ]
+      ],
     },
     plugins: [
       new webpack.DefinePlugin({
@@ -66,6 +65,6 @@ export const devCfg = () => {
       //   tags: ['dll/vender.dll.js'],
       //   append: false,
       // }),
-    ]
+    ],
   };
-}
+};

@@ -13,14 +13,14 @@ export type PackConfig = {
     options?:Object;
   };
   port:string;
-  alias:{[key:string]: string};
+  alias:{[key:string]:string};
   globalVariable:Object;
   analyze:boolean;
   pxToRem:{
     rootValue?:number;
     blacklist?:string[];
   };
-  libs:{[key:string]: string[]},
+  libs:{[key:string]:string[]},
 };
 
 class Config {
@@ -37,8 +37,8 @@ class Config {
   public init(filePath?:string) {
     // 有传入mlz-pack配置的地址
     if (filePath) {
-      const subConfig = import(filePath);
-      Object.assign(this.config, subConfig);
+      const subConfigs = import(filePath);
+      Object.assign(this.config, subConfigs);
       return;
     }
 

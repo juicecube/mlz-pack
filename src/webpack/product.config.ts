@@ -1,11 +1,12 @@
-const webpack = require('webpack');
+import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
-const CompressionPlugin = require("compression-webpack-plugin")
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+import CompressionPlugin from 'compression-webpack-plugin';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import { config as configs } from './config';
 
-export const prodCfg = () =>{
+export const prodCfg = () => {
   const config = configs.get();
   const libraries = config.libs;
   return {
@@ -13,7 +14,7 @@ export const prodCfg = () =>{
     output: {
       publicPath: config.publicPath, // local: '/'
       filename: 'js/[name].[chunkhash].js',
-      chunkFilename: 'js/[name].[chunkhash].js'
+      chunkFilename: 'js/[name].[chunkhash].js',
     },
     optimization: {
       removeAvailableModules: true,
@@ -38,9 +39,9 @@ export const prodCfg = () =>{
                 }
               });
               return name;
-            }
-          }
-        }
+            },
+          },
+        },
       },
       minimizer: [
         new TerserPlugin({
@@ -50,12 +51,22 @@ export const prodCfg = () =>{
           cssProcessorOptions: {
             discardComments: { removeAll: true },
           },
-          canPrint: true
+          canPrint: true,
         }),
-      ]
+      ],
     },
     module: {
       rules: [
+        {
+          test: /\.s?css$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              enforce: 'pre',
+            },
+          ],
+        },
         {
           test: /\.(jpe?g|png|gif|svg)$/,
           exclude: /node_modules/,
@@ -66,7 +77,7 @@ export const prodCfg = () =>{
                 limit: 3 * 1024,
                 name: 'images/[name]_[hash:5].[ext]',
                 publicPath: config.publicPath,
-              }
+              },
             },
             // {
             //   loader: require.resolve('image-webpack-loader'), //图片压缩
@@ -82,21 +93,26 @@ export const prodCfg = () =>{
               options: {
                 name: 'assets/[name]_[hash:5].[ext]',
                 publicPath: config.publicPath,
-              }
-            }
+              },
+            },
           ],
-        }
-      ]
+        },
+      ],
     },
     plugins: [
       new webpack.DefinePlugin({
         'DEBUG': false,
         ...config.definePlugin,
       }),
+      new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css',
+        chunkFilename: '[id].[contenthash].css',
+        ignoreOrder: false, // Enable to remove warnings about conflicting order
+      }),
       new CompressionPlugin({
         test: /\.js$|\.css$|\.html$/,
         threshold: 1024,
-        minRatio: 0.8
+        minRatio: 0.8,
       }),
       new webpack.SourceMapDevToolPlugin({
         // TODO sourceMap的地址
@@ -104,6 +120,6 @@ export const prodCfg = () =>{
         // publicPath: config.SOURCEMAP,
         filename: '[file].map',
       }),
-    ]
+    ],
   };
-}
+};

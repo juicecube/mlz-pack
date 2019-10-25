@@ -23,7 +23,7 @@ function printBanner () {
 
 program
   .version(`mlz-pack ${pkg.version}`)
-  .usage('<command> [options]')
+  .usage('<command> [options]');
 
 program
   .command('build [env]')
@@ -44,12 +44,10 @@ program
   .option('-p, --port <port>', 'port used by the server (default: 8080)')
   .action((entry, cmd) => {
     Init.serve();
-  })
-
+  });
 
 program.parse(process.argv);
 
 if (!process.argv.slice(2).length) {
-  program.outputHelp()
+  program.outputHelp();
 }
-

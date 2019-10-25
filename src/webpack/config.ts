@@ -6,20 +6,20 @@ export type WebpackConfig = {
   entryPath:string[];
   buildPath:string;
   publicPath:string;
-  devServer: {
+  devServer:{
     port:string;
   },
   htmlPlugin:{
     template?:string;
     favicon?:string;
     filename?:string;
-    options?:{[key:string]: any};
+    options?:{[key:string]:any};
   },
   analyze:boolean;
   cssScopeName:string,
-  libs: {[key:string]: string[]};
-  alias?:{[key:string]: string};
-  definePlugin?:{[key:string]: any};
+  libs:{[key:string]:string[]};
+  alias?:{[key:string]:string};
+  definePlugin?:{[key:string]:any};
   pxToRemPlugin?:{
     rootValue?:number;
     blacklist?:string[];
@@ -27,10 +27,10 @@ export type WebpackConfig = {
 };
 
 class Config {
-  private config : WebpackConfig = {
+  private config:WebpackConfig = {
     isDev: process.env.NODE_ENV !== 'production',
     devServer: {
-      port: '8080'
+      port: '8080',
     },
     rootPath: '',
     entryPath: [''],
@@ -48,15 +48,16 @@ class Config {
   };
 
   public init(param?:Partial<WebpackConfig>) {
+    console.log(this.config);
     this.config.rootPath = process.cwd();
-    this.config.entryPath = path.join(this.config.rootPath, 'src/index');
+    this.config.entryPath = [path.join(this.config.rootPath, 'src/index.tsx')];
     this.config.buildPath = path.join(this.config.rootPath, 'build');
     this.config.cssScopeName = this.config.isDev ? '[name]__[local]' : '[name]__[hash:5]';
     if (param) {
       Object.assign(this.config, param);
     }
   }
-  
+
   public get() : WebpackConfig {
     return this.config;
   }

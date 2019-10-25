@@ -13,6 +13,7 @@ export { WebpackConfig } from './config';
 
 export function build(baseCfg?:Partial<WebpackConfig>) {
   const webpackConfig = getWebpackConfig(baseCfg);
+  console.log(webpackConfig.module.rules);
   webpack(webpackConfig, (err, stats) => {
     if (err) {
       console.log(err);
@@ -27,6 +28,7 @@ export function build(baseCfg?:Partial<WebpackConfig>) {
 }
 
 export function serve(baseCfg?:Partial<WebpackConfig>) {
+  console.log(baseCfg);
   const webpackConfig = getWebpackConfig(baseCfg);
   Server(webpackConfig, config.get().devServer.port);
 }
@@ -64,5 +66,6 @@ export function getWebpackConfig(baseCfg?:Partial<WebpackConfig>) {
       entry: 'prepend',
     })(webpackConfig, devCfg());
   }
+  console.log(webpackConfig.module.rules[0].use);
   return webpackConfig;
 }
