@@ -10,9 +10,6 @@ export const devCfg = () => {
   const config = configs.get();
   return {
     entry: {
-      index: [
-        "webpack-hot-middleware/client?reload=true&timeout=2000&overlay=false",
-      ]
     },
     output: {
       filename: 'js/[name].js',
@@ -29,7 +26,7 @@ export const devCfg = () => {
           use: [
             {
               loader: require.resolve('file-loader'),
-            }
+            },
           ],
         },
         {
@@ -41,11 +38,11 @@ export const devCfg = () => {
               options: {
                 limit: 100000,
                 name: 'img/[hash].[ext]',
-              }
-            }
+              },
+            },
           ],
         },
-      ]
+      ],
     },
     plugins: [
       new webpack.DefinePlugin({
@@ -66,6 +63,6 @@ export const devCfg = () => {
       //   tags: ['dll/vender.dll.js'],
       //   append: false,
       // }),
-    ]
+    ],
   };
-}
+};
