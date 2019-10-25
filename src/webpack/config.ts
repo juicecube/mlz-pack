@@ -41,18 +41,17 @@ class Config {
     buildPath: '',
     publicPath: '/',
     analyze: false,
-    cssScopeName: '[name]__[hash:5]',
+    cssScopeName: '[path][name]__[local]',
     libs: {
       vender: [],
     },
   };
 
   public init(param?:Partial<WebpackConfig>) {
-    console.log(this.config);
     this.config.rootPath = process.cwd();
     this.config.entryPath = [path.join(this.config.rootPath, 'src/index.tsx')];
     this.config.buildPath = path.join(this.config.rootPath, 'build');
-    this.config.cssScopeName = this.config.isDev ? '[name]__[local]' : '[name]__[hash:5]';
+    this.config.cssScopeName = this.config.isDev ? '[path][name]__[local]' : '[name]__[hash:base64:5]';
     if (param) {
       Object.assign(this.config, param);
     }

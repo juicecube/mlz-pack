@@ -12,7 +12,6 @@ import { filter } from '../utils';
 
 export const commonCfg = () => {
   const config = configs.get();
-  console.log(config.cssScopeName);
   const webpackConfig = {
     entry: {
       index: config.entryPath,
@@ -48,9 +47,8 @@ export const commonCfg = () => {
             {
               loader: 'css-loader',
               options: {
-                modules: {
-                  localIdentName: config.cssScopeName,
-                },
+                modules: true,
+                localIdentName: config.cssScopeName,
               },
             },
             {
