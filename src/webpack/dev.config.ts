@@ -8,11 +8,6 @@ import { config as configs } from './config';
 export const devCfg = () => {
   const config = configs.get();
   return {
-    entry: {
-      index: [
-        'webpack-hot-middleware/client?reload=true&timeout=2000&overlay=false',
-      ],
-    },
     output: {
       filename: 'js/[name].js',
       chunkFilename: 'js/[name].js',
