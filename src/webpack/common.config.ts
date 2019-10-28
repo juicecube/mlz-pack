@@ -13,9 +13,7 @@ import { filter } from '../utils';
 export const commonCfg = () => {
   const config = configs.get();
   const webpackConfig = {
-    entry: {
-      index: config.entryPath,
-    },
+    entry: config.entryPath,
     output: {
       // 打包输出的文件
       path: config.buildPath,
@@ -133,7 +131,7 @@ export const commonCfg = () => {
     ...config.htmlPlugin.options,
   }, (item) => item !== undefined);
   webpackConfig.plugins.push(new HtmlWebpackPlugin(htmlConfig));
-  if (config.analyze) {
+  if (config.analyzePlugin) {
     webpackConfig.plugins.push(new BundleAnalyzerPlugin());
   }
 

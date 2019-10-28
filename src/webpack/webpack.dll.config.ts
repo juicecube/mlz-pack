@@ -3,13 +3,14 @@ const webpack = require('webpack');
 
 import { config } from './config';
 
+// TODO fix dll
 export const dllCfg = () => {
   return {
-    entry: {
-      vender: [
-        ...config.get().libs.vender,
-      ],
-    },
+    // entry: {
+    //   vender: [
+    //     ...config.get().libs.vender,
+    //   ],
+    // },
     mode: 'development' as 'development',
     output: {
       path: path.resolve(__dirname, 'dll'),

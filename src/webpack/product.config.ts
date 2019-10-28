@@ -3,18 +3,37 @@ import TerserPlugin from 'terser-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import autoprefixer from 'autoprefixer';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 import { config as configs } from './config';
+import { getBabelConfig } from './babel';
 
 export const prodCfg = () => {
   const config = configs.get();
   const libraries = config.libs;
   return {
     mode: 'production',
+    entry: config.entryPath,
     output: {
+      path: config.buildPath,
       publicPath: config.publicPath, // local: '/'
       filename: 'js/[name].[chunkhash].js',
       chunkFilename: 'js/[name].[chunkhash].js',
+    },
+    resolve: {
+      modules: [
+        config.rootPath,
+        'node_modules',
+      ],
+      alias: {
+        'root': config.rootPath,
+        ...config.alias,
+      },
+      extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
+      symlinks: false,
+      cacheWithContext: false,
     },
     optimization: {
       removeAvailableModules: true,
@@ -24,29 +43,29 @@ export const prodCfg = () => {
         name: 'manifest',
       },
       splitChunks: {
-      chunks: 'all',
-      cacheGroups: {
-          vendor: {
+        chunks: 'all',
+        cacheGroups: {
+          vendors: {
             test: /node_modules/,
             chunks: 'all',
             name(module) {
-              const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-              const names = Object.keys(libraries);
-              let name = 'lib';
-              names.map((val) => {
-                if (libraries[val].indexOf(packageName) >= 0) {
-                  name = val;
-                }
-              });
+              let name = 'venderLibs';
+              if (libraries) {
+                const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                const names = Object.keys(libraries);
+                names.map((val) => {
+                  if (libraries[val].indexOf(packageName) >= 0) {
+                    name = val;
+                  }
+                });
+              }
               return name;
             },
           },
         },
       },
       minimizer: [
-        new TerserPlugin({
-          sourceMap: true,
-        }),
+        new TerserPlugin({ sourceMap: true }),
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
             discardComments: { removeAll: true },
@@ -63,9 +82,36 @@ export const prodCfg = () => {
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
-              enforce: 'pre',
+            },
+            {
+              loader: require.resolve('css-loader'),
+              options: {
+                modules: true,
+                localIdentName: config.cssScopeName,
+              },
+            },
+            {
+              loader: require.resolve('postcss-loader'),
+              options: {
+                plugins: () => {
+                  return [
+                    autoprefixer(),
+                  ];
+                },
+              },
+            },
+            require.resolve('sass-loader'),
+          ],
+        },
+        {
+          test: /\.(ts|tsx)?$/,
+          use: [
+            {
+              loader: require.resolve('babel-loader'),
+              options: getBabelConfig(),
             },
           ],
+          exclude: /(node_modules)/,
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/,
@@ -97,9 +143,24 @@ export const prodCfg = () => {
             },
           ],
         },
+        {
+          test: /\.worker\.js$/,
+          use: {
+            loader: require.resolve('worker-loader'),
+            options: {
+              name: '[name].js',
+              inline: true,
+            },
+          },
+          exclude: /(node_modules)/,
+        },
       ],
     },
     plugins: [
+      new CleanWebpackPlugin({
+        verbose: true, // Write logs to console.
+        dry: false, // Use boolean 'true' to test/emulate delete. (will not remove files).
+      }),
       new webpack.DefinePlugin({
         'DEBUG': false,
         ...config.definePlugin,
@@ -119,6 +180,15 @@ export const prodCfg = () => {
         // this is the url of our local sourcemap server
         // publicPath: config.SOURCEMAP,
         filename: '[file].map',
+      }),
+      new HtmlWebpackPlugin({
+        ...config.htmlPlugin,
+        removeAttributeQuotes: true,
+        collapseWhitespace: true,
+        html5: true,
+        minifyCSS: true,
+        removeComments: false,
+        removeEmptyAttributes: true,
       }),
     ],
   };

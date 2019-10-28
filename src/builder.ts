@@ -37,7 +37,7 @@ class Builder {
       alias: baseConfig.alias,
       definePlugin: baseConfig.globalVariable,
       pxToRemPlugin: baseConfig.pxToRem,
-      analyze: baseConfig.analyze,
+      analyzePlugin: baseConfig.analyze,
       libs: baseConfig.libs,
       buildPath: baseConfig.buildPath,
       devServer: baseConfig.port ? {
