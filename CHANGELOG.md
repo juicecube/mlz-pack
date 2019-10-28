@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/juicecube/mlz-pack/compare/v0.0.2...v0.0.3) (2019-10-28)
+
+
+### Bug Fixes
+
+* css-loader bug ([55d3d77](https://github.com/juicecube/mlz-pack/commit/55d3d77))
+* resolve conflict ([df4f1f5](https://github.com/juicecube/mlz-pack/commit/df4f1f5))
+
+
+### Features
+
+* fix tslint code ([c51f3bf](https://github.com/juicecube/mlz-pack/commit/c51f3bf))
+
 ### 0.0.2 (2019-10-23)
 
 
