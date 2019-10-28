@@ -1,36 +1,15 @@
 import path from 'path';
 
 import { getPath } from './utils';
+import { WebpackConfig } from './types';
 
 export type PackConfig = {
-  baseUrl:string;
-  entry:string[];
-  buildPath:string;
-  html:{
-    template?:string;
-    favicon?:string;
-    filename?:string;
-    options?:Object;
-  };
-  port:string;
-  alias:{[key:string]:string};
-  globalVariable:Object;
-  analyze:boolean;
-  pxToRem:{
-    rootValue?:number;
-    blacklist?:string[];
-  };
-  libs:{[key:string]:string[]},
+  tool?:'webpack';
+  config:Partial<WebpackConfig>;
 };
 
 class Config {
-  private config:Partial<PackConfig> = {
-    baseUrl: process.cwd(),
-    html: {
-      filename: 'index.html',
-    },
-    analyze: false,
-  };
+  private config;
   private jsonConfigName = 'mlz-pack.json';
   private jsConfigName = 'mlz-pack.js';
 

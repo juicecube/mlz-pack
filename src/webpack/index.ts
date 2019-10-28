@@ -2,7 +2,6 @@ import webpack from 'webpack';
 import merge from 'webpack-merge';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 
-import { commonCfg } from './common.config';
 import { devCfg } from './dev.config';
 import { prodCfg } from './product.config';
 import { dllCfg } from './webpack.dll.config';
@@ -33,7 +32,7 @@ export function serve(baseCfg?:Partial<WebpackConfig>) {
 
 export function getWebpackConfig(baseCfg?:Partial<WebpackConfig>) {
   // TODO 检查到有根目录下有webpack.config.js直接return config
-  config.init(baseCfg);
+  // config.init(baseCfg);
   let webpackConfig;
   // 打包速度分析工具
   const smp = new SpeedMeasurePlugin();

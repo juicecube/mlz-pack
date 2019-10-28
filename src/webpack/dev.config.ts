@@ -45,10 +45,11 @@ export const devCfg = () => {
           use: [
             { loader: require.resolve('style-loader') },
             {
-              loader: require.resolve('css-loader'),
+              loader: 'css-loader',
               options: {
-                modules: true,
-                localIdentName: config.cssScopeName,
+                modules: {
+                  localIdentName: config.cssScopeName,
+                },
               },
             },
             {
@@ -63,16 +64,6 @@ export const devCfg = () => {
             },
             require.resolve('sass-loader'),
           ],
-        },
-        {
-          test: /\.(ts|tsx)?$/,
-          use: [
-            {
-              loader: require.resolve('babel-loader'),
-              options: getBabelConfig(),
-            },
-          ],
-          exclude: /(node_modules)/,
         },
         {
           test: /\.(woff|woff2|eot|ttf|mp3)$/,
@@ -95,6 +86,16 @@ export const devCfg = () => {
               },
             },
           ],
+        },
+        {
+          test: /\.(ts|tsx)?$/,
+          use: [
+            {
+              loader: require.resolve('babel-loader'),
+              options: getBabelConfig(),
+            },
+          ],
+          exclude: /(node_modules)/,
         },
         {
           test: /\.worker\.js$/,

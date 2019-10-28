@@ -28,21 +28,21 @@ class Builder {
   }
 
   private getWebpackBaseConfig(env:Env) {
-    const baseConfig = config.get();
+    // const baseConfig = config.get();
     const baseWebpackConfig:Partial<WebpackConfig> = {
       isDev: env !== 'prod',
-      rootPath: baseConfig.baseUrl,
-      entryPath: baseConfig.entry,
-      htmlPlugin: baseConfig.html,
-      alias: baseConfig.alias,
-      definePlugin: baseConfig.globalVariable,
-      pxToRemPlugin: baseConfig.pxToRem,
-      analyzePlugin: baseConfig.analyze,
-      libs: baseConfig.libs,
-      buildPath: baseConfig.buildPath,
-      devServer: baseConfig.port ? {
-        port: baseConfig.port,
-      } : undefined,
+      // rootPath: baseConfig.baseUrl,
+      // entryPath: baseConfig.entry,
+      // htmlPlugin: baseConfig.html,
+      // alias: baseConfig.alias,
+      // definePlugin: baseConfig.globalVariable,
+      // pxToRemPlugin: baseConfig.pxToRem,
+      // analyzePlugin: baseConfig.analyze,
+      // libs: baseConfig.libs,
+      // buildPath: baseConfig.buildPath,
+      // devServer: baseConfig.port ? {
+      //   port: baseConfig.port,
+      // } : undefined,
     };
     const valueConfig = filter(baseWebpackConfig, (item) => item !== undefined);
 

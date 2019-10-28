@@ -34,7 +34,7 @@ class Config {
     isDev: process.env.NODE_ENV !== 'production',
     rootPath: process.cwd(),
     entryPath: { index: path.resolve(process.cwd(), 'src/index.tsx') },
-    buildPath: 'build',
+    buildPath: path.resolve(process.cwd(), 'build'),
     publicPath: '/',
     devServer: {
       port: '8080',
