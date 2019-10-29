@@ -23,12 +23,12 @@ class Builder {
   // 启动webpack-dev-server
   private startWebpackDevServer() {
     const cfg = this.getWebpackBaseConfig('dev');
-    console.log(cfg);
     serve(cfg);
   }
 
   private getWebpackBaseConfig(env:Env) {
     const baseConfig = config.get();
+    console.log(baseConfig);
     const baseWebpackConfig:Partial<WebpackConfig> = {
       isDev: env !== 'prod',
       ...baseConfig.webpack,

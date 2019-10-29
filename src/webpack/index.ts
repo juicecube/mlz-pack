@@ -38,11 +38,13 @@ export function getWebpackConfig(baseCfg?:Partial<WebpackConfig>) {
   if (!baseCfg!.isDev) {
     // 正式环境
     webpackConfig = prodCfg();
-    webpackConfig = smp.wrap(webpackConfig);
   } else {
-    webpackConfig = merge.smartStrategy({
-      entry: 'prepend',
-    })(webpackConfig, devCfg());
+    webpackConfig = devCfg();
   }
+  if (baseCfg && baseCfg.loaderOptions) {
+    webpackConfig.module.rules = [...webpackConfig.module.rules, ...baseCfg.loaderOptions];
+  }
+  console.log(webpackConfig.module.rules);
+  webpackConfig = smp.wrap(webpackConfig);
   return webpackConfig;
 }

@@ -26,16 +26,19 @@ program
   .usage('<command> [options]');
 
 program
-  .command('build [env]')
-  .description('build your project in dev/prod mode')
-  .option('-e, --entry <entry>', 'entry file(.js||.ts||.tsx), default: src/index')
+  .command('build [entry]')
+  .description('build your project from a entry file(.js||.ts||.tsx), default: src/index.tsx')
+  .option('-e, --env <environment>', 'dev or prod（default: prod）')
   .option('-d, --dest <dest>', 'output directory (default: build)')
-  .action((env, cmd) => {
-    if (env === 'dev') {
-      Init.build('dev');
-    } else {
-      Init.build('prod');
-    }
+  .action((entry, cmd) => {
+    const config = {
+      webpack: {
+        entryPath: entry,
+        isDev: cmd.env === 'dev',
+        buildPath: cmd.dest,
+      },
+    };
+    Init.build(cmd.env === 'dev' ? 'dev' : 'prod', config);
   });
 
 program
@@ -44,6 +47,13 @@ program
   .option('-p, --port <port>', 'port used by the server (default: 8080)')
   .action((entry, cmd) => {
     Init.serve();
+  });
+program
+  .arguments('<command>')
+  .action((cmd) => {
+    program.outputHelp();
+    console.log(`  ` + chalk.red(`Unknown command ${chalk.yellow(cmd)}.`));
+    console.log();
   });
 
 program.parse(process.argv);
