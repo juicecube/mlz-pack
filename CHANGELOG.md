@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/juicecube/mlz-pack/compare/v0.0.5...v0.0.6) (2019-10-29)
+
+
+### Bug Fixes
+
+* load option config ([92e8e56](https://github.com/juicecube/mlz-pack/commit/92e8e56))
+
 ### [0.0.5](https://github.com/juicecube/mlz-pack/compare/v0.0.4...v0.0.5) (2019-10-29)
 
 
