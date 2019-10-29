@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/juicecube/mlz-pack/compare/v0.0.4...v0.0.5) (2019-10-29)
+
+
+### Bug Fixes
+
+* update webpack config ([0715d68](https://github.com/juicecube/mlz-pack/commit/0715d68))
+
 ### [0.0.4](https://github.com/juicecube/mlz-pack/compare/v0.0.3...v0.0.4) (2019-10-28)
 
 
