@@ -84,7 +84,7 @@ export const prodCfg = () => {
               loader: MiniCssExtractPlugin.loader,
             },
             {
-              loader: require.resolve('css-loader'),
+              loader: 'css-loader',
               options: {
                 modules: true,
                 localIdentName: config.cssScopeName,

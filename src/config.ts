@@ -4,12 +4,13 @@ import { getPath } from './utils';
 import { WebpackConfig } from './types';
 
 export type PackConfig = {
-  tool?:'webpack';
-  config:Partial<WebpackConfig>;
+  webpack:Partial<WebpackConfig>;
 };
 
 class Config {
-  private config;
+  private config = {
+    webpack: {},
+  };
   private jsonConfigName = 'mlz-pack.json';
   private jsConfigName = 'mlz-pack.js';
 
@@ -34,7 +35,7 @@ class Config {
       subConfig = require(jsPath);
     }
     // 如果配置中存在根目录就使用，不存在就使用mlz-pack.json或者mlz-pack.js所在的目录为根目录
-    Object.assign(this.config, { baseUrl: rootPath }, subConfig);
+    Object.assign(this.config, { webpack: { baseUrl: rootPath }}, subConfig);
   }
 
   /**
