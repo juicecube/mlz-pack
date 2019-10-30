@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/juicecube/mlz-pack/compare/v0.0.7...v0.0.8) (2019-10-30)
+
+
+### Bug Fixes
+
+* remove hot plugin and add image-loader ([31c50dc](https://github.com/juicecube/mlz-pack/commit/31c50dc))
+
 ### [0.0.7](https://github.com/juicecube/mlz-pack/compare/v0.0.6...v0.0.7) (2019-10-30)
 
 
