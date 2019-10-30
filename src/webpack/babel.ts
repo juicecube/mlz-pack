@@ -32,7 +32,7 @@ export const getBabelConfig = () => {
         },
       ],
       '@babel/plugin-syntax-dynamic-import',
-      ['@babel/plugin-proposal-class-properties'],
+      '@babel/plugin-proposal-class-properties',
     ],
   };
   return babelCfg;

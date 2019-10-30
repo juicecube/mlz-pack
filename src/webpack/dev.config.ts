@@ -124,7 +124,6 @@ export const devCfg = () => {
       new HtmlWebpackPlugin({
         ...config.htmlPlugin,
       }),
-      new webpack.HotModuleReplacementPlugin(),
       // TODO 的环境dll加速build
       // new webpack.DllReferencePlugin({
       //   context: path.join(__dirname, 'dll'),

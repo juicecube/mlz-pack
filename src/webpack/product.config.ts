@@ -125,9 +125,9 @@ export const prodCfg = () => {
                 publicPath: config.publicPath,
               },
             },
-            // {
-            //   loader: require.resolve('image-webpack-loader'), //图片压缩
-            // }
+            {
+              loader: require.resolve('image-webpack-loader'), // 图片压缩
+            },
           ],
         },
         {
