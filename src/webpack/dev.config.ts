@@ -47,9 +47,8 @@ export const devCfg = () => {
             {
               loader: 'css-loader',
               options: {
-                modules: {
-                  localIdentName: config.cssScopeName,
-                },
+                modules: true,
+                localIdentName: config.cssScopeName,
               },
             },
             {
