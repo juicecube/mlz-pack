@@ -11,7 +11,7 @@ export const getBabelConfig = () => {
         },
       ],
       '@babel/preset-react',
-      require.resolve('@babel/preset-typescript'), // ts
+      '@babel/preset-typescript', // ts
     ],
     'plugins': [
       ['react-css-modules', {
@@ -32,7 +32,7 @@ export const getBabelConfig = () => {
         },
       ],
       '@babel/plugin-syntax-dynamic-import',
-      [require.resolve('@babel/plugin-proposal-class-properties')],
+      ['@babel/plugin-proposal-class-properties'],
     ],
   };
   return babelCfg;

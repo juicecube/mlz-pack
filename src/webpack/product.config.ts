@@ -91,7 +91,7 @@ export const prodCfg = () => {
               },
             },
             {
-              loader: require.resolve('postcss-loader'),
+              loader: 'postcss-loader',
               options: {
                 plugins: () => {
                   return [
@@ -100,14 +100,14 @@ export const prodCfg = () => {
                 },
               },
             },
-            require.resolve('sass-loader'),
+            'sass-loader',
           ],
         },
         {
           test: /\.(ts|tsx)?$/,
           use: [
             {
-              loader: require.resolve('babel-loader'),
+              loader: 'babel-loader',
               options: getBabelConfig(),
             },
           ],
@@ -118,7 +118,7 @@ export const prodCfg = () => {
           exclude: /node_modules/,
           use: [
             {
-              loader: require.resolve('url-loader'),
+              loader: 'url-loader',
               options: {
                 limit: 3 * 1024,
                 name: 'images/[name]_[hash:5].[ext]',
@@ -135,7 +135,7 @@ export const prodCfg = () => {
           exclude: /node_modules/,
           use: [
             {
-              loader: require.resolve('file-loader'),
+              loader: 'file-loader',
               options: {
                 name: 'assets/[name]_[hash:5].[ext]',
                 publicPath: config.publicPath,
@@ -146,7 +146,7 @@ export const prodCfg = () => {
         {
           test: /\.worker\.js$/,
           use: {
-            loader: require.resolve('worker-loader'),
+            loader: 'worker-loader',
             options: {
               name: '[name].js',
               inline: true,

@@ -9,6 +9,7 @@ export default (devConfig:BaseConfig, port:string) => {
   const devServer = new webpackDevServer(compiler, {
     noInfo: true,
     hot: true,
+    inline: true,
     historyApiFallback: true,
     stats: 'errors-only',
     open: true,

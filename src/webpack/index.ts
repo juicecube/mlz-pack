@@ -44,7 +44,6 @@ export function getWebpackConfig(baseCfg?:Partial<WebpackConfig>) {
   if (baseCfg && baseCfg.loaderOptions) {
     webpackConfig.module.rules = [...webpackConfig.module.rules, ...baseCfg.loaderOptions];
   }
-  console.log(webpackConfig.module.rules);
   webpackConfig = smp.wrap(webpackConfig);
   return webpackConfig;
 }

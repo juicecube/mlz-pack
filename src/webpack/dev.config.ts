@@ -43,7 +43,7 @@ export const devCfg = () => {
           test: /\.s?css$/,
           exclude: /node_modules/,
           use: [
-            { loader: require.resolve('style-loader') },
+            { loader: 'style-loader' },
             {
               loader: 'css-loader',
               options: {
@@ -53,7 +53,7 @@ export const devCfg = () => {
               },
             },
             {
-              loader: require.resolve('postcss-loader'),
+              loader: 'postcss-loader',
               options: {
                 plugins: () => {
                   return [
@@ -62,7 +62,7 @@ export const devCfg = () => {
                 },
               },
             },
-            require.resolve('sass-loader'),
+            'sass-loader',
           ],
         },
         {
@@ -70,7 +70,7 @@ export const devCfg = () => {
           exclude: /(node_modules)/,
           use: [
             {
-              loader: require.resolve('file-loader'),
+              loader: 'file-loader',
             },
           ],
         },
@@ -79,7 +79,7 @@ export const devCfg = () => {
           exclude: /node_modules/,
           use: [
             {
-              loader: require.resolve('url-loader'),
+              loader: 'url-loader',
               options: {
                 limit: 100000,
                 name: 'img/[hash].[ext]',
@@ -91,7 +91,7 @@ export const devCfg = () => {
           test: /\.(ts|tsx)?$/,
           use: [
             {
-              loader: require.resolve('babel-loader'),
+              loader: 'babel-loader',
               options: getBabelConfig(),
             },
           ],
@@ -100,7 +100,7 @@ export const devCfg = () => {
         {
           test: /\.worker\.js$/,
           use: {
-            loader: require.resolve('worker-loader'),
+            loader: 'worker-loader',
             options: {
               name: '[name].js',
               inline: true,

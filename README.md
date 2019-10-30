@@ -39,36 +39,50 @@
 ### 4⃣️ 自定义配置
 读取项目根目录下的mlz-pack.json或者mlz-pack.js，定制化配置  
 可以通过 mlz-pack --init 初始化配置文件
-```js
-{
-  // 开发服务端口号 
-  "port": 9000,
-  // 是否开启px转化rem
-  "usePx2rem": false,
-  // 是否是多页应用，默认为单页应用
-  "multipage": false,
-  // 静态资源cdn地址
-  "cdnPath": "https://static-k12edu.codemao.cn/mlz_teacher/build/",
-  // 打包输出目录
-  "outputDir": "./dist",
-  // 速度分析
-  "speed-analysis": false,
-  // 体积分析
-  "volume-analysis": false
-  ...
-}
+```ts
+// mlz-config.js
+module.exports = {
+  webpack: {
+    // 根目录地址，默认：process.cwd()
+    rootPath:string;
+    // 入口文件,
+    entryPath:string | string[] | Entry | EntryFunc;
+    buildPath:string;
+    publicPath:string;
+    devServer:{
+      port:string;
+    },
+    cssScopeName:string,
+    libs?:{[key:string]:string[]};
+    alias?:{[key:string]:string};
+    definePlugin?:{[key:string]:any};
+    analyzePlugin?:boolean;
+    pxToRemPlugin?:{
+      rootValue?:number;
+      blacklist?:string[];
+    };
+    htmlPlugin:{
+      template?:string;
+      favicon?:string;
+      filename?:string;
+      [key:string]:any;
+    },
+    loaderOptions?:RuleSetRule[];
+    pluginOptions?:any[]
+  }
+};
 ```
 同时应该也要支持通过 mlz-pack eject 导出默认的配置文件
 ### 5⃣️ 使用方式（命令行工具）
 本地安装
 ```
-npm i mlz-pack --save-dev
+npm i @mlz/pack --save-dev
 ```
 package.json
 ```js
 {
   "scripts": {
-    "dev": "mlz-pack dev",
+    "dev": "mlz-pack serve",
     "build": "mlz-pack build"
     ...
   }
