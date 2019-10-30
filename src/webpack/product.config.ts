@@ -77,6 +77,25 @@ export const prodCfg = () => {
     module: {
       rules: [
         {
+          test: /\.css$/,
+          include: /node_modules/,
+          use: [
+            'style-loader',
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => {
+                  return [
+                    autoprefixer(),
+                  ];
+                },
+              },
+            },
+            'sass-loader',
+          ],
+        },
+        {
           test: /\.s?css$/,
           exclude: /node_modules/,
           use: [
@@ -190,6 +209,7 @@ export const prodCfg = () => {
         removeComments: false,
         removeEmptyAttributes: true,
       }),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
   };
 };

@@ -40,6 +40,25 @@ export const devCfg = () => {
     module: {
       rules: [
         {
+          test: /\.css$/,
+          include: /node_modules/,
+          use: [
+            'style-loader',
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => {
+                  return [
+                    autoprefixer(),
+                  ];
+                },
+              },
+            },
+            'sass-loader',
+          ],
+        },
+        {
           test: /\.s?css$/,
           exclude: /node_modules/,
           use: [
@@ -123,6 +142,7 @@ export const devCfg = () => {
       new HtmlWebpackPlugin({
         ...config.htmlPlugin,
       }),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       // TODO 的环境dll加速build
       // new webpack.DllReferencePlugin({
       //   context: path.join(__dirname, 'dll'),

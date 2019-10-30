@@ -14,6 +14,10 @@ export const getBabelConfig = () => {
       '@babel/preset-typescript', // ts
     ],
     'plugins': [
+      ['import', {
+        'libraryName': 'antd',
+        'style': 'css',
+      }],
       ['react-css-modules', {
         'generateScopedName': config.cssScopeName,
         'filetypes': {
