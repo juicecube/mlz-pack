@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/juicecube/mlz-pack/compare/v0.0.15...v0.0.16) (2019-10-31)
+
+
+### Features
+
+* add pxtorem ([4f1fbd8](https://github.com/juicecube/mlz-pack/commit/4f1fbd8))
+* update readme ([99249f3](https://github.com/juicecube/mlz-pack/commit/99249f3))
+* update readme ([acdd46f](https://github.com/juicecube/mlz-pack/commit/acdd46f))
+
 ### [0.0.15](https://github.com/juicecube/mlz-pack/compare/v0.0.14...v0.0.15) (2019-10-31)
 
 
