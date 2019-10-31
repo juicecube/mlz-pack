@@ -37,7 +37,7 @@ program
       webpack: {
         entryPath: path.join(process.cwd(), entry),
         isDev: cmd.env === 'dev',
-        buildPath: cmd.dest,
+        buildPath: path.join(process.cwd(), cmd.dest),
       },
     };
     Init.build(cmd.env === 'dev' ? 'dev' : 'prod', config);
