@@ -16,15 +16,18 @@ export type WebpackConfig = {
   devServer:{
     port:string;
   },
+  pxtorem?:{
+    rootValue?:number;
+    propList?:string[];
+    selectorBlackList?:string[];
+    replace?:boolean;
+    minPixelValue?:number;
+  };
   cssScopeName:string,
   libs?:{[key:string]:string[]};
   alias?:{[key:string]:string};
   definePlugin?:{[key:string]:any};
   analyzePlugin?:boolean;
-  pxToRemPlugin?:{
-    rootValue?:number;
-    blacklist?:string[];
-  };
   htmlPlugin:{
     template?:string;
     favicon?:string;

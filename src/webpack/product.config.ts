@@ -5,6 +5,7 @@ import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import autoprefixer from 'autoprefixer';
+import pxtorem from 'postcss-pxtorem';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 import { config as configs } from './config';
@@ -114,9 +115,11 @@ export const prodCfg = () => {
               loader: 'postcss-loader',
               options: {
                 plugins: () => {
-                  return [
-                    autoprefixer(),
-                  ];
+                  const plugin = [autoprefixer()];
+                  if (config.pxtorem) {
+                    plugin.push(pxtorem(config.pxtorem));
+                  }
+                  return plugin;
                 },
               },
             },

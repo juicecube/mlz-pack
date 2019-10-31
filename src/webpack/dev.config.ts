@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import path from 'path';
 import autoprefixer from 'autoprefixer';
+import pxtorem from 'postcss-pxtorem';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
@@ -75,9 +76,11 @@ export const devCfg = () => {
               loader: 'postcss-loader',
               options: {
                 plugins: () => {
-                  return [
-                    autoprefixer(),
-                  ];
+                  const plugin = [autoprefixer()];
+                  if (config.pxtorem) {
+                    plugin.push(pxtorem(config.pxtorem));
+                  }
+                  return plugin;
                 },
               },
             },
