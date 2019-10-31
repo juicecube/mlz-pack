@@ -1,44 +1,26 @@
 import path from 'path';
+import merge from 'lodash.merge';
 
 import { getPath } from './utils';
+import { WebpackConfig } from './types';
 
 export type PackConfig = {
-  baseUrl:string;
-  entry:string[];
-  buildPath:string;
-  html:{
-    template?:string;
-    favicon?:string;
-    filename?:string;
-    options?:Object;
-  };
-  port:string;
-  alias:{[key:string]: string};
-  globalVariable:Object;
-  analyze:boolean;
-  pxToRem:{
-    rootValue?:number;
-    blacklist?:string[];
-  };
-  libs:{[key:string]: string[]},
+  webpack:Partial<WebpackConfig>;
 };
 
 class Config {
-  private config:Partial<PackConfig> = {
-    baseUrl: process.cwd(),
-    html: {
-      filename: 'index.html',
-    },
-    analyze: false,
+  private config = {
+    webpack: {},
   };
   private jsonConfigName = 'mlz-pack.json';
   private jsConfigName = 'mlz-pack.js';
 
-  public init(filePath?:string) {
+  public init(configs?:string|PackConfig) {
+    let rootPath = process.cwd(); // 项目根目录
     // 有传入mlz-pack配置的地址
-    if (filePath) {
-      const subConfig = import(filePath);
-      Object.assign(this.config, subConfig);
+    if (configs && typeof configs === 'string') {
+      const subConfigs = import(configs);
+      Object.assign(this.config, subConfigs);
       return;
     }
 
@@ -46,7 +28,6 @@ class Config {
     const jsonPath = getPath(this.jsonConfigName);
     const jsPath = getPath(this.jsConfigName);
     let subConfig = {};
-    let rootPath = process.cwd(); // 项目根目录
     if (jsonPath) {
       rootPath = path.dirname(jsonPath);
       subConfig = require(jsonPath);
@@ -55,7 +36,11 @@ class Config {
       subConfig = require(jsPath);
     }
     // 如果配置中存在根目录就使用，不存在就使用mlz-pack.json或者mlz-pack.js所在的目录为根目录
-    Object.assign(this.config, { baseUrl: rootPath }, subConfig);
+    // 传入配置
+    merge(this.config, { webpack: { rootPath }}, subConfig);
+    if (configs) {
+      merge(this.config, configs);
+    }
   }
 
   /**

@@ -27,17 +27,17 @@ export const getPath = (filename:string) : string => {
     }
   }
   return path.join(currDir, filename);
-}
+};
 
-export const filter = <T, K extends keyof T>(obj:T, filter:(value:T[K], key?:K) => boolean) : Partial<T> => {
+export const filter = <T, K extends keyof T>(obj:T, func:(value:T[K], key?:K) => boolean) : Partial<T> => {
   const keys = Object.keys(obj);
   const newObj = {};
 
   keys.map((item) => {
-    if (filter(obj[item], item as any)) {
+    if (func(obj[item], item as any)) {
       newObj[item] = obj[item];
     }
   });
 
   return newObj;
-}
+};

@@ -2,14 +2,12 @@ import webpack from 'webpack';
 import merge from 'webpack-merge';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 
-import { commonCfg } from './common.config';
 import { devCfg } from './dev.config';
 import { prodCfg } from './product.config';
 import { dllCfg } from './webpack.dll.config';
-import { config, WebpackConfig } from './config';
+import { config } from './config';
+import { WebpackConfig } from '../types';
 import Server from './devServer';
-
-export { WebpackConfig } from './config';
 
 export function build(baseCfg?:Partial<WebpackConfig>) {
   const webpackConfig = getWebpackConfig(baseCfg);
@@ -32,37 +30,20 @@ export function serve(baseCfg?:Partial<WebpackConfig>) {
 }
 
 export function getWebpackConfig(baseCfg?:Partial<WebpackConfig>) {
+  // TODO 检查到有根目录下有webpack.config.js直接return config
   config.init(baseCfg);
-  let webpackConfig = commonCfg();
+  let webpackConfig;
   // 打包速度分析工具
   const smp = new SpeedMeasurePlugin();
   if (!baseCfg!.isDev) {
     // 正式环境
-    webpackConfig = merge.smartStrategy({
-      entry: 'prepend',
-    })(webpackConfig, prodCfg());
-    // TODO 是否加载打包速度分析工具
-    webpackConfig = smp.wrap(webpackConfig);
+    webpackConfig = prodCfg();
   } else {
-    // 测试环境
-    // TODO add dll
-    // if (!fs.existsSync(path.join(__dirname, './dll/vender-manifest.json'))) {
-    //   console.log('create dll file.');
-    //   webpack(dllCfg(), (err, stats) => {
-    //     if (err) {
-    //       console.log(err);
-    //       process.exit(2);
-    //     }
-    //     console.log(stats && stats.toString({
-    //       chunks: false,
-    //       colors: true,
-    //       children: false,
-    //     }));
-    //   });
-    // }
-    webpackConfig = merge.smartStrategy({
-      entry: 'prepend',
-    })(webpackConfig, devCfg());
+    webpackConfig = devCfg();
   }
+  if (baseCfg && baseCfg.loaderOptions) {
+    webpackConfig.module.rules = [...webpackConfig.module.rules, ...baseCfg.loaderOptions];
+  }
+  webpackConfig = smp.wrap(webpackConfig);
   return webpackConfig;
 }

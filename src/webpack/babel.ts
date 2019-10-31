@@ -11,9 +11,13 @@ export const getBabelConfig = () => {
         },
       ],
       '@babel/preset-react',
-      require.resolve('@babel/preset-typescript'), // ts
+      '@babel/preset-typescript', // ts
     ],
     'plugins': [
+      ['import', {
+        'libraryName': 'antd',
+        'style': 'css',
+      }],
       ['react-css-modules', {
         'generateScopedName': config.cssScopeName,
         'filetypes': {
@@ -32,7 +36,7 @@ export const getBabelConfig = () => {
         },
       ],
       '@babel/plugin-syntax-dynamic-import',
-      [require.resolve('@babel/plugin-proposal-class-properties')],
+      '@babel/plugin-proposal-class-properties',
     ],
   };
   return babelCfg;
