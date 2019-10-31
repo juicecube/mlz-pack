@@ -1,9 +1,7 @@
 import program from 'commander';
-import path from 'path';
+import Init from './index';
 import figlet from 'figlet';
 import chalk from 'chalk';
-
-import Init from './index';
 const pkg = require('../package.json');
 
 function printBanner () {
@@ -35,9 +33,8 @@ program
   .action((entry, cmd) => {
     const config = {
       webpack: {
-        entryPath: path.join(process.cwd(), entry),
-        isDev: cmd.env === 'dev',
-        buildPath: path.join(process.cwd(), cmd.dest),
+        entryPath: entry,
+        buildPath: cmd.dest,
       },
     };
     Init.build(cmd.env === 'dev' ? 'dev' : 'prod', config);
@@ -50,8 +47,10 @@ program
   .action((entry, cmd) => {
     const config = {
       webpack: {
-        entryPath: path.join(process.cwd(), entry),
-        isDev: cmd.env === 'dev',
+        entryPath: entry,
+        devServer: {
+          port: cmd.port,
+        },
       },
     };
     Init.serve(config);

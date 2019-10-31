@@ -1,7 +1,6 @@
 import { Env } from './types';
 import { build, serve } from './webpack';
 import { config } from './config';
-import { WebpackConfig } from './types';
 
 class Builder {
   // TODO 根据不同的配置选择打包工具
@@ -15,24 +14,14 @@ class Builder {
 
   // webpack打包
   private startWebpackBuilder(env:Env) {
-    const cfg = this.getWebpackBaseConfig(env);
-    build(cfg);
+    const cfg = config.get().webpack;
+    build({ isDev: env === 'dev', ...cfg });
   }
 
   // 启动webpack-dev-server
   private startWebpackDevServer() {
-    const cfg = this.getWebpackBaseConfig('dev');
-    serve(cfg);
-  }
-
-  private getWebpackBaseConfig(env:Env) {
-    const baseConfig = config.get();
-    const baseWebpackConfig:Partial<WebpackConfig> = {
-      isDev: env !== 'prod',
-      ...baseConfig.webpack,
-    };
-
-    return baseWebpackConfig;
+    const cfg = config.get().webpack;
+    serve({ ...cfg, isDev: true });
   }
 }
 
