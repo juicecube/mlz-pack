@@ -16,6 +16,7 @@ class Config {
     analyzePlugin: false,
     htmlPlugin: {
       filename: 'index.html',
+      template: path.resolve(process.cwd(), 'src/index.ejs'),
     },
   };
 

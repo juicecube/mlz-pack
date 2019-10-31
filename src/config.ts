@@ -18,7 +18,6 @@ class Config {
   public init(configs?:string|PackConfig) {
     let rootPath = process.cwd(); // 项目根目录
     // 有传入mlz-pack配置的地址
-    console.log('configs:', configs);
     if (configs && typeof configs === 'string') {
       const subConfigs = import(configs);
       Object.assign(this.config, subConfigs);
@@ -37,13 +36,10 @@ class Config {
       subConfig = require(jsPath);
     }
     // 如果配置中存在根目录就使用，不存在就使用mlz-pack.json或者mlz-pack.js所在的目录为根目录
-    console.log('subConfig:', subConfig);
     // 传入配置
     merge(this.config, { webpack: { rootPath }}, subConfig);
-    console.log(this.config);
     if (configs) {
       merge(this.config, configs);
-      console.log('config:', this.config);
     }
   }
 

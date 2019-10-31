@@ -6,7 +6,6 @@ import { WebpackConfig } from './types';
 class Builder {
   // TODO 根据不同的配置选择打包工具
   public build(env:Env) {
-    console.log(env);
     this.startWebpackBuilder(env);
   }
 
@@ -28,7 +27,6 @@ class Builder {
 
   private getWebpackBaseConfig(env:Env) {
     const baseConfig = config.get();
-    console.log(baseConfig);
     const baseWebpackConfig:Partial<WebpackConfig> = {
       isDev: env !== 'prod',
       ...baseConfig.webpack,

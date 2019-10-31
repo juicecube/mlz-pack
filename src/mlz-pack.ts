@@ -46,14 +46,19 @@ program
   .description('serve your project in development mode')
   .option('-p, --port <port>', 'port used by the server (default: 8080)')
   .action((entry, cmd) => {
-    Init.serve();
+    const config = {
+      webpack: {
+        entryPath: entry,
+        isDev: cmd.env === 'dev',
+      },
+    };
+    Init.serve(config);
   });
 program
   .arguments('<command>')
   .action((cmd) => {
     program.outputHelp();
     console.log(`  ` + chalk.red(`Unknown command ${chalk.yellow(cmd)}.`));
-    console.log();
   });
 
 program.parse(process.argv);
