@@ -37,8 +37,7 @@
 - 多进程压缩
 - ...
 ### 4⃣️ 自定义配置
-读取项目根目录下的mlz-pack.json或者mlz-pack.js，定制化配置  
-可以通过 mlz-pack --init 初始化配置文件
+读取项目根目录下的mlz-pack.json或者mlz-pack.js
 ```ts
 // mlz-config.js
 module.exports = {
@@ -81,6 +80,7 @@ TODO:
 1.支持通过 mlz-pack eject 导出默认的配置文件
 2.本地有webpack.config.js直接使用本地webpack配置
 3.dev环境编译加速
+4.定制化配置: 可以通过 mlz-pack --init 初始化配置文件
 
 ### 5⃣️ 使用方式（命令行工具）
 本地安装
