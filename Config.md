@@ -19,26 +19,29 @@
 export type WebpackConfig = {
   isDev:boolean;
   rootPath:string;
-  entryPath:string[];
+  entryPath:string | string[] | Entry | EntryFunc;
   buildPath:string;
   publicPath:string;
   devServer:{
     port:string;
   },
+  pxtorem?:{
+    rootValue?:number;
+    propList?:string[];
+    selectorBlackList?:string[];
+    replace?:boolean;
+    minPixelValue?:number;
+  };
   cssScopeName:string,
-  libs:{[key:string]:string[]};
+  libs?:{[key:string]:string[]};
   alias?:{[key:string]:string};
   definePlugin?:{[key:string]:any};
-  analyzePlugin:boolean;
-  pxToRemPlugin?:{
-    rootValue?:number;
-    blacklist?:string[];
-  };
+  analyzePlugin?:boolean;
   htmlPlugin:{
     template?:string;
     favicon?:string;
     filename?:string;
-    options?:{[key:string]:any};
+    [key:string]:any;
   },
   loaderOptions?:RuleSetRule[];
   pluginOptions?:any[]

@@ -46,21 +46,25 @@ module.exports = {
     // 根目录地址，默认：process.cwd()
     rootPath:string;
     // 入口文件,
+    rootPath:string;
     entryPath:string | string[] | Entry | EntryFunc;
     buildPath:string;
     publicPath:string;
     devServer:{
       port:string;
     },
+    pxtorem?:{
+      rootValue?:number;
+      propList?:string[];
+      selectorBlackList?:string[];
+      replace?:boolean;
+      minPixelValue?:number;
+    };
     cssScopeName:string,
     libs?:{[key:string]:string[]};
     alias?:{[key:string]:string};
     definePlugin?:{[key:string]:any};
     analyzePlugin?:boolean;
-    pxToRemPlugin?:{
-      rootValue?:number;
-      blacklist?:string[];
-    };
     htmlPlugin:{
       template?:string;
       favicon?:string;
@@ -72,7 +76,12 @@ module.exports = {
   }
 };
 ```
-同时应该也要支持通过 mlz-pack eject 导出默认的配置文件
+TODO:
+
+1.支持通过 mlz-pack eject 导出默认的配置文件
+2.本地有webpack.config.js直接使用本地webpack配置
+3.dev环境编译加速
+
 ### 5⃣️ 使用方式（命令行工具）
 本地安装
 ```
