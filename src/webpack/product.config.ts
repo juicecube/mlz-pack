@@ -7,6 +7,7 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ImageminPlugin from 'imagemin-webpack';
 
 import { config as configs } from './config';
 import { getBabelConfig } from './babel';
@@ -148,9 +149,6 @@ export const prodCfg = () => {
                 publicPath: config.publicPath,
               },
             },
-            {
-              loader: require.resolve('image-webpack-loader'), // 图片压缩
-            },
           ],
         },
         {
@@ -187,6 +185,27 @@ export const prodCfg = () => {
       new webpack.DefinePlugin({
         'DEBUG': false,
         ...config.definePlugin,
+      }),
+      new ImageminPlugin({
+        bail: false, // Ignore errors on corrupted images
+        cache: true,
+        imageminOptions: {
+          plugins: [
+            // ['gifsicle', { interlaced: true }],
+            ['jpegtran', { progressive: true }],
+            ['optipng', { optimizationLevel: 5 }],
+            [
+              'svgo',
+              {
+                plugins: [
+                  {
+                    removeViewBox: false,
+                  },
+                ],
+              },
+            ],
+          ],
+        },
       }),
       new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css',

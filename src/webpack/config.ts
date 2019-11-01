@@ -1,6 +1,8 @@
 import path from 'path';
+import merge from 'lodash.merge';
 
 import { WebpackConfig } from '../types';
+import { filter } from '../utils';
 
 class Config {
   private config:WebpackConfig = {
@@ -23,7 +25,8 @@ class Config {
   public init(param?:Partial<WebpackConfig>) {
     this.config.cssScopeName = this.config.isDev ? this.config.cssScopeName : '[name]__[hash:base64:5]';
     if (param) {
-      Object.assign(this.config, param);
+      const temp_config = filter(param, (value) => value !== undefined);
+      merge(this.config, temp_config);
     }
   }
 
