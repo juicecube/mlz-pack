@@ -8,6 +8,7 @@ import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
 import { config as configs } from './config';
 import { getBabelConfig } from './babel';
@@ -144,8 +145,9 @@ export const prodCfg = () => {
             {
               loader: 'url-loader',
               options: {
+                emitFile: true,
                 limit: 3 * 1024,
-                name: 'images/[name]_[hash:5].[ext]',
+                name: 'images/[name]__[hash:5].[ext]',
                 publicPath: config.publicPath,
               },
             },
@@ -158,7 +160,7 @@ export const prodCfg = () => {
             {
               loader: 'file-loader',
               options: {
-                name: 'assets/[name]_[hash:5].[ext]',
+                name: 'assets/[name]__[hash:5].[ext]',
                 publicPath: config.publicPath,
               },
             },
@@ -186,27 +188,6 @@ export const prodCfg = () => {
         'DEBUG': false,
         ...config.definePlugin,
       }),
-      new ImageminPlugin({
-        bail: false, // Ignore errors on corrupted images
-        cache: true,
-        imageminOptions: {
-          plugins: [
-            // ['gifsicle', { interlaced: true }],
-            ['jpegtran', { progressive: true }],
-            ['optipng', { optimizationLevel: 5 }],
-            [
-              'svgo',
-              {
-                plugins: [
-                  {
-                    removeViewBox: false,
-                  },
-                ],
-              },
-            ],
-          ],
-        },
-      }),
       new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css',
         chunkFilename: '[id].[contenthash].css',
@@ -232,7 +213,27 @@ export const prodCfg = () => {
         removeComments: false,
         removeEmptyAttributes: true,
       }),
+      new ImageminPlugin({
+        bail: true, // Ignore errors on corrupted images
+        name: '[name]__[hash:5].[ext]',
+        imageminOptions: {
+          plugins: [
+            ['jpegtran', { progressive: true }],
+            ['optipng', { optimizationLevel: 5 }],
+            ['pngquant', {
+                quality: [0.65],
+                speed: 4,
+              },
+            ],
+            ['svgo', {
+                plugins: [{ removeViewBox: false }],
+              },
+            ],
+          ],
+        },
+      }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new TsconfigPathsPlugin(),
     ],
   };
 };

@@ -6,6 +6,7 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 
@@ -147,6 +148,7 @@ export const devCfg = () => {
         ...config.htmlPlugin,
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new TsconfigPathsPlugin(),
       // TODO 的环境dll加速build
       // new webpack.DllReferencePlugin({
       //   context: path.join(__dirname, 'dll'),
