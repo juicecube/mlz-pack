@@ -37,6 +37,7 @@ export const prodCfg = () => {
       extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
       symlinks: false,
       cacheWithContext: false,
+      plugins: [new TsconfigPathsPlugin()],
     },
     optimization: {
       removeAvailableModules: true,
@@ -233,7 +234,6 @@ export const prodCfg = () => {
         },
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-      new TsconfigPathsPlugin(),
     ],
   };
 };

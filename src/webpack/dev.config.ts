@@ -36,6 +36,7 @@ export const devCfg = () => {
       extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
       symlinks: false,
       cacheWithContext: false,
+      plugins: [new TsconfigPathsPlugin()],
     },
     mode: 'development',
     devtool: 'cheap-module-eval-source-map',
@@ -148,7 +149,6 @@ export const devCfg = () => {
         ...config.htmlPlugin,
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-      new TsconfigPathsPlugin(),
       // TODO 的环境dll加速build
       // new webpack.DllReferencePlugin({
       //   context: path.join(__dirname, 'dll'),
