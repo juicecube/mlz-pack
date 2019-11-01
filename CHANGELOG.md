@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.17](https://github.com/juicecube/mlz-pack/compare/v0.0.16...v0.0.17) (2019-11-01)
+
+
+### Bug Fixes
+
+* image minify ([3ae5d4d](https://github.com/juicecube/mlz-pack/commit/3ae5d4d))
+
 ### [0.0.16](https://github.com/juicecube/mlz-pack/compare/v0.0.15...v0.0.16) (2019-10-31)
 
 
