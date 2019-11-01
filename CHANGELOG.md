@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.19](https://github.com/juicecube/mlz-pack/compare/v0.0.18...v0.0.19) (2019-11-01)
+
+
+### Bug Fixes
+
+* ts webpack plugin ([be61ec4](https://github.com/juicecube/mlz-pack/commit/be61ec4))
+
 ### [0.0.18](https://github.com/juicecube/mlz-pack/compare/v0.0.17...v0.0.18) (2019-11-01)
 
 
