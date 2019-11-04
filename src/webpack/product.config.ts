@@ -215,7 +215,7 @@ export const prodCfg = () => {
         removeEmptyAttributes: true,
       }),
       new ImageminPlugin({
-        bail: true, // Ignore errors on corrupted images
+        bail: false, // Ignore errors on corrupted images
         name: '[name]__[hash:5].[ext]',
         imageminOptions: {
           plugins: [

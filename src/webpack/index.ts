@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import merge from 'webpack-merge';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 
 import { devCfg } from './dev.config';
@@ -43,6 +43,9 @@ export function getWebpackConfig(baseCfg?:Partial<WebpackConfig>) {
   }
   if (baseCfg && baseCfg.loaderOptions) {
     webpackConfig.module.rules = [...webpackConfig.module.rules, ...baseCfg.loaderOptions];
+  }
+  if (baseCfg && baseCfg.analyzePlugin) {
+    webpackConfig.plugins.push(new BundleAnalyzerPlugin());
   }
   webpackConfig = smp.wrap(webpackConfig);
   return webpackConfig;
