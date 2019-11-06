@@ -1,5 +1,5 @@
 import { Env } from './types';
-import { build, serve } from './webpack';
+import { build, serve, eject } from './webpack';
 import { config } from './config';
 
 class Builder {
@@ -10,6 +10,10 @@ class Builder {
 
   public serve() {
     this.startWebpackDevServer();
+  }
+
+  public eject() {
+    eject();
   }
 
   // webpack打包

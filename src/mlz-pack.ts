@@ -55,6 +55,14 @@ program
     };
     Init.serve(config);
   });
+
+program
+  .command('eject')
+  .description('eject webpack config.')
+  .action(() => {
+    Init.eject();
+  });
+
 program
   .arguments('<command>')
   .action((cmd) => {

@@ -14,6 +14,10 @@ class Init {
     config.init(option);
     mlzBuilder.serve();
   }
+
+  static eject() {
+    mlzBuilder.eject();
+  }
 }
 
 export default Init;

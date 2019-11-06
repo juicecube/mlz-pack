@@ -3,41 +3,24 @@ import TerserPlugin from 'terser-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack';
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import merge from 'webpack-merge';
 
+import { commonCfg } from './common.config';
 import { config as configs } from './config';
-import { getBabelConfig } from './babel';
 
 export const prodCfg = () => {
   const config = configs.get();
+  const baseConfig = commonCfg();
   const libraries = config.libs;
-  return {
+  const prodConfig = merge(baseConfig, {
     mode: 'production',
-    entry: config.entryPath,
     output: {
-      path: config.buildPath,
-      publicPath: config.publicPath, // local: '/'
       filename: 'js/[name].[chunkhash].js',
       chunkFilename: 'js/[name].[chunkhash].js',
-    },
-    resolve: {
-      modules: [
-        config.rootPath,
-        'node_modules',
-      ],
-      alias: {
-        'root': config.rootPath,
-        ...config.alias,
-      },
-      extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
-      symlinks: false,
-      cacheWithContext: false,
-      plugins: [new TsconfigPathsPlugin()],
     },
     optimization: {
       removeAvailableModules: true,
@@ -129,66 +112,9 @@ export const prodCfg = () => {
             'sass-loader',
           ],
         },
-        {
-          test: /\.(ts|tsx)?$/,
-          use: [
-            {
-              loader: 'babel-loader',
-              options: getBabelConfig(),
-            },
-          ],
-          exclude: /(node_modules)/,
-        },
-        {
-          test: /\.(jpe?g|png|gif|svg)$/,
-          exclude: /node_modules/,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                emitFile: true,
-                limit: 3 * 1024,
-                name: 'images/[name]__[hash:5].[ext]',
-                publicPath: config.publicPath,
-              },
-            },
-          ],
-        },
-        {
-          test: /\.(woff|woff2|eot|ttf|mp3|mp4)$/,
-          exclude: /node_modules/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'assets/[name]__[hash:5].[ext]',
-                publicPath: config.publicPath,
-              },
-            },
-          ],
-        },
-        {
-          test: /\.worker\.js$/,
-          use: {
-            loader: 'worker-loader',
-            options: {
-              name: '[name].js',
-              inline: true,
-            },
-          },
-          exclude: /(node_modules)/,
-        },
       ],
     },
     plugins: [
-      new CleanWebpackPlugin({
-        verbose: true, // Write logs to console.
-        dry: false, // Use boolean 'true' to test/emulate delete. (will not remove files).
-      }),
-      new webpack.DefinePlugin({
-        'DEBUG': false,
-        ...config.definePlugin,
-      }),
       new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css',
         chunkFilename: '[id].[contenthash].css',
@@ -235,5 +161,6 @@ export const prodCfg = () => {
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
-  };
+  });
+  return prodConfig;
 };
