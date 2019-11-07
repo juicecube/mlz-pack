@@ -2,23 +2,25 @@ const path = require('path');
 const merge = require('lodash.merge');
 
 class Config {
-  config = {
-    isDev: process.env.NODE_ENV !== 'production',
-    rootPath: process.cwd(),
-    entryPath: { index: path.resolve(process.cwd(), 'src/index.tsx') },
-    buildPath: path.resolve(process.cwd(), 'build'),
-    publicPath: '/',
-    devServer: {
-      port: '8080',
-    },
-    cssScopeName: '[path][name]__[local]',
-    analyzePlugin: false,
-    htmlPlugin: {
-      filename: 'index.html',
-      template: path.resolve(process.cwd(), 'src/index.ejs'),
-    },
-  };
-
+  constructor() {
+    this.config = {
+      isDev: process.env.NODE_ENV !== 'production',
+      rootPath: process.cwd(),
+      entryPath: { index: path.resolve(process.cwd(), 'src/index.tsx') },
+      buildPath: path.resolve(process.cwd(), 'build'),
+      publicPath: '/',
+      devServer: {
+        port: '8080',
+      },
+      cssScopeName: '[path][name]__[local]',
+      analyzePlugin: false,
+      htmlPlugin: {
+        filename: 'index.html',
+        template: path.resolve(process.cwd(), 'src/index.ejs'),
+      },
+    };
+  }
+  
   init(param) {
     this.config.cssScopeName = this.config.isDev ? this.config.cssScopeName : '[name]__[hash:base64:5]';
     if (param) {
@@ -31,7 +33,7 @@ class Config {
     return this.config;
   }
 
-  filter = (obj, func) => {
+  filter(obj, func) {
     const keys = Object.keys(obj);
     const newObj = {};
     keys.map((item) => {
@@ -42,5 +44,4 @@ class Config {
     return newObj;
   }
 }
-const config = new Config();
-module.exports = config;
+module.exports = new Config();

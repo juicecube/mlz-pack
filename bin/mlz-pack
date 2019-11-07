@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('../lib/mlz-pack');
+require('../src/mlz-pack');

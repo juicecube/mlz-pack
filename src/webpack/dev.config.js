@@ -2,13 +2,13 @@ const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 
 const commonCfg = require('./common.config');
 const configs = require('./config');
 
-const devCfg = () => {
+module.exports = () => {
   const config = configs.get();
   const baseConfig = commonCfg();
   const devConfig = merge({
@@ -90,5 +90,3 @@ const devCfg = () => {
   }, baseConfig);
   return devConfig;
 };
-
-module.exports = devCfg;
