@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.20](https://github.com/juicecube/mlz-pack/compare/v0.0.19...v0.0.20) (2019-11-08)
+
+
+### Features
+
+* add bundle analyzer ([7370122](https://github.com/juicecube/mlz-pack/commit/7370122))
+* eject webpack config ([395a133](https://github.com/juicecube/mlz-pack/commit/395a133))
+* tansfer ts to js ([b2d7f31](https://github.com/juicecube/mlz-pack/commit/b2d7f31))
+
 ### [0.0.19](https://github.com/juicecube/mlz-pack/compare/v0.0.18...v0.0.19) (2019-11-01)
 
 
