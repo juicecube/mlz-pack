@@ -2,8 +2,6 @@ const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
-// const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 
 const commonCfg = require('./common.config');
 const configs = require('./config');
@@ -16,6 +14,7 @@ module.exports = () => {
     output: {
       filename: 'js/[name].js',
       chunkFilename: 'js/[name].js',
+      pathinfo: false,
     },
     devtool: 'cheap-module-eval-source-map',
     module: {
@@ -73,19 +72,6 @@ module.exports = () => {
       new HtmlWebpackPlugin({
         ...config.htmlPlugin,
       }),
-      // TODO 的环境dll加速build
-      // new webpack.DllReferencePlugin({
-      //   context: path.join(__dirname, 'dll'),
-      //   manifest: require('./dll/vender-manifest.json'),
-      // }),
-      // new CopyWebpackPlugin([{
-      //   from: path.resolve(__dirname, 'dll'),
-      //   to: 'dll',
-      // }]),
-      // new HtmlWebpackTagsPlugin({
-      //   tags: ['dll/vender.dll.js'],
-      //   append: false,
-      // }),
     ],
   }, baseConfig);
   return devConfig;
