@@ -12,7 +12,6 @@ const Server = require('./devServer');
 
 function build(baseCfg) {
   const webpackConfig = getWebpackConfig(baseCfg);
-  console.log('webpack', webpackConfig);
   webpack(webpackConfig, (err, stats) => {
     if (err) {
       console.log(err);
@@ -52,11 +51,33 @@ function getWebpackConfig(baseCfg) {
 }
 
 function eject() {
-  ncp(path.resolve(__dirname), path.resolve(process.cwd(), 'webpack'), (err) => {
+  const sourcePath = __dirname;
+  const destPath = path.resolve(process.cwd(), 'webpack');
+  const tempFile = path.resolve(__dirname, 'webpack.config.temp');
+  const destWebpackConfig = path.resolve(process.cwd(), 'webpack.config.js');
+  const noEjectFiles = [
+    path.resolve(process.cwd(), 'webpack/webpack.config.temp'), 
+    path.resolve(process.cwd(), 'webpack/index.js'),
+  ];
+
+
+  ncp(sourcePath, destPath, (err) => {
     if (err) {
       return console.error(err);
     }
-    console.log('Done!');
+   
+    fs.copyFile(tempFile, destWebpackConfig, (err) => {
+      if (err) {throw err;}
+      for (let i = 0; i < noEjectFiles.length; i++) {
+        fs.unlink(noEjectFiles[i], (err) => {
+          if (err) {
+            console.error(err)
+            return
+          }
+        });
+      }
+      console.log('Eject done!');
+    });
   });
 }
 

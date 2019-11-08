@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
@@ -119,11 +118,6 @@ module.exports = () => {
         filename: '[name].[contenthash].css',
         chunkFilename: '[id].[contenthash].css',
         ignoreOrder: false, // Enable to remove warnings about conflicting order
-      }),
-      new CompressionPlugin({
-        test: /\.js$|\.css$|\.html$/,
-        threshold: 1024,
-        minRatio: 0.8,
       }),
       new webpack.SourceMapDevToolPlugin({
         // TODO sourceMap的地址
