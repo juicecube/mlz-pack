@@ -70,6 +70,7 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
+        // inject: true,
         ...config.htmlPlugin,
       }),
     ],

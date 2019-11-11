@@ -4,7 +4,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const AutoDllPlugin = require('autodll-webpack-plugin');
+// const AutoDllPlugin = require('autodll-webpack-plugin');
 
 const configs = require('./config');
 const getBabelConfig = require('./babel');
@@ -112,17 +112,17 @@ module.exports = () => {
   if (config.pluginOptions) {
     commonConfig.plugins.push(...config.pluginOptions);
   }
-  if (config.libs) {
-    commonConfig.plugins.push(
-      new AutoDllPlugin({
-        debug: true,
-        inject: true,
-        filename: '[name]_[hash].js',
-        path: './dll',
-        entry: config.libs,
-      })
-    );
-  }
+  // if (config.libs) {
+  //   commonConfig.plugins.push(
+  //     new AutoDllPlugin({
+  //       debug: true,
+  //       inject: true,
+  //       filename: '[name].[chunkhash].js',
+  //       path: './dll',
+  //       entry: config.libs,
+  //     })
+  //   );
+  // }
 
   return commonConfig;
 };

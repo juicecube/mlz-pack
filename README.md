@@ -44,14 +44,17 @@ module.exports = {
   webpack: {
     // 根目录地址，默认：process.cwd()
     rootPath:string;
-    // 入口文件,
-    rootPath:string;
+    // 入口文件，默认：{ index: path.resolve(process.cwd(), 'src/index.tsx') }
     entryPath:string | string[] | Entry | EntryFunc;
+    // build文件夹，默认：'build'
     buildPath:string;
+    // js，css，图片等资源文件前缀，默认：'/'
     publicPath:string;
+    // 开发环境server的端口号
     devServer:{
       port:string;
     },
+    // 是否开启px转rem，并且具体配置
     pxtorem?:{
       rootValue?:number;
       propList?:string[];
@@ -59,28 +62,32 @@ module.exports = {
       replace?:boolean;
       minPixelValue?:number;
     };
+    // css的className编译规则，默认：dev环境是[path][name]__[local]，正式环境是[name]__[hash:base64:5]
     cssScopeName:string,
+    // 用于单独切分第三方依赖的bundle，例如：libs: { vender: ['react', 'react-dom']}就会将react和react-dom两个包单独打包成一个bundle
     libs?:{[key:string]:string[]};
+    // 别名，可不填，默认会读tsconfig里的paths
     alias?:{[key:string]:string};
+    // 全局变量
     definePlugin?:{[key:string]:any};
+    // 是否开启bundle分析
     analyzePlugin?:boolean;
+    // htmlPlugin相关配置
     htmlPlugin:{
       template?:string;
       favicon?:string;
       filename?:string;
       [key:string]:any;
     },
+    // loader扩展
     loaderOptions?:RuleSetRule[];
+    // plugin扩展
     pluginOptions?:any[]
   }
 };
 ```
 TODO:
-
-1.支持通过 mlz-pack eject 导出默认的配置文件
-2.本地有webpack.config.js直接使用本地webpack配置
-3.dev环境编译加速
-4.定制化配置: 可以通过 mlz-pack --init 初始化配置文件
+1.定制化配置: 可以通过 mlz-pack --init 初始化配置文件
 
 ### 5⃣️ 使用方式（命令行工具）
 本地安装
@@ -97,4 +104,7 @@ package.json
   }
 }
 ```
+支持的命令有：
+
+本地安装后执行：mlz-pack即可看到
 

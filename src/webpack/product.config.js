@@ -127,6 +127,7 @@ module.exports = () => {
       }),
       new HtmlWebpackPlugin({
         ...config.htmlPlugin,
+        // inject: true,
         removeAttributeQuotes: true,
         collapseWhitespace: true,
         html5: true,
