@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack');
+const ImageminPlugin = require('@mlz/imagemin-webpack');
 const merge = require('webpack-merge');
 
 const commonCfg = require('./common.config');
@@ -140,17 +140,8 @@ module.exports = () => {
         name: '[name]__[hash:5].[ext]',
         imageminOptions: {
           plugins: [
-            ['jpegtran', { progressive: true }],
-            ['optipng', { optimizationLevel: 5 }],
-            ['pngquant', {
-                quality: [0.65],
-                speed: 4,
-              },
-            ],
-            ['svgo', {
-                plugins: [{ removeViewBox: false }],
-              },
-            ],
+            ['@mlz/imagemin-mozjpeg', { quality: 50 }],
+            ['@mlz/imagemin-optipng', { optimizationLevel: 5 }],
           ],
         },
       }),
