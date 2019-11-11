@@ -91,6 +91,13 @@ TODO:
 
 ### 5⃣️ 使用方式（命令行工具）
 本地安装
+
+.npmrc中添加
+
+```
+mozjpeg_binary_site=https://npm.taobao.org/mirrors/mozjpeg-bin
+optipng_binary_site=https://npm.taobao.org/mirrors/optipng-bin
+```
 ```
 npm i @mlz/pack --save-dev
 ```
