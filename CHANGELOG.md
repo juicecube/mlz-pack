@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/juicecube/mlz-pack/compare/v0.1.0...v0.1.1) (2019-11-11)
+
+
+### Features
+
+* add cache-loader ([e35f79e](https://github.com/juicecube/mlz-pack/commit/e35f79e))
+* remove unuse file ([0f46339](https://github.com/juicecube/mlz-pack/commit/0f46339))
+
 ## [0.1.0](https://github.com/juicecube/mlz-pack/compare/v0.0.20...v0.1.0) (2019-11-08)
 
 ### [0.0.20](https://github.com/juicecube/mlz-pack/compare/v0.0.19...v0.0.20) (2019-11-08)
