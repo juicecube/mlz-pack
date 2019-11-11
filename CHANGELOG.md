@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/juicecube/mlz-pack/compare/v0.1.2...v0.1.3) (2019-11-11)
+
+
+### Bug Fixes
+
+* imagemin module ([7daec74](https://github.com/juicecube/mlz-pack/commit/7daec74))
+
 ### [0.1.2](https://github.com/juicecube/mlz-pack/compare/v0.1.1...v0.1.2) (2019-11-11)
 
 
