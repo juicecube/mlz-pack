@@ -24,6 +24,14 @@ package.json
 
 本地安装后执行：mlz-pack即可看到
 
+Tips:
+开启热加载需要在入口文件加入以下代码：
+```
+if(module.hot){
+  module.hot.accept()
+}
+```
+
 ### 自定义配置
 读取项目根目录下的mlz-pack.json或者mlz-pack.js
 ```ts
