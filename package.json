@@ -1,6 +1,6 @@
 {
   "name": "@mlz/pack",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "mlz-pack",
   "main": "./src/index.js",
   "bin": {
@@ -60,7 +60,7 @@
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.6.3",
-    "@babel/preset-typescript": "^7.6.0",
+    "@babel/preset-typescript": "^7.7.2",
     "@mlz/imagemin-mozjpeg": "^8.0.1",
     "@mlz/imagemin-optipng": "^7.1.1",
     "@mlz/imagemin-webpack": "^5.1.1",
