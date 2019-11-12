@@ -1,6 +1,6 @@
 {
   "name": "@mlz/pack",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "mlz-pack",
   "main": "./src/index.js",
   "bin": {
@@ -11,9 +11,11 @@
   },
   "scripts": {
     "test": "jest",
+    "test:watch": "jest -- --watch",
     "test:smoke": "node test/smoke",
     "commit": "git-cz",
-    "release": "standard-version"
+    "release": "standard-version",
+    "prepublishOnly": "npm run test && npm run release"
   },
   "repository": {
     "type": "git",
