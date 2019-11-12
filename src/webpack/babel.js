@@ -1,8 +1,9 @@
 const configs = require('./config');
+const merge = require('babel-merge');
 
 module.exports = () => {
   const config = configs.get();
-  const babelCfg = {
+  let babelCfg = {
     'presets': [
       [
         '@babel/preset-env',
@@ -41,5 +42,8 @@ module.exports = () => {
       '@babel/plugin-proposal-nullish-coalescing-operator',
     ],
   };
+  if (config.babel) {
+    babelCfg = merge(config.babel, babelCfg);
+  }
   return babelCfg;
 };
