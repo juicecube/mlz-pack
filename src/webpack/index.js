@@ -10,9 +10,9 @@ const prodCfg = require('./product.config');
 const config = require('./config');
 const Server = require('./devServer');
 
-function build(baseCfg) {
+function build(baseCfg, cb) {
   const webpackConfig = getWebpackConfig(baseCfg);
-  webpack(webpackConfig, (err, stats) => {
+  const compiler = webpack(webpackConfig, (err, stats) => {
     if (err) {
       console.log(err);
       process.exit(2);
@@ -23,11 +23,14 @@ function build(baseCfg) {
       children: false,
     }));
   });
+  compiler.plugin('done', () => {
+    cb && cb(compiler);
+  });
 }
 
-function serve(baseCfg) {
+function serve(baseCfg, cb) {
   const webpackConfig = getWebpackConfig(baseCfg);
-  Server(webpackConfig, config.get().devServer.port);
+  Server(webpackConfig, { port: config.get().devServer.port }, cb);
 }
 
 function getWebpackConfig(baseCfg) {

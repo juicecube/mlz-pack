@@ -11,6 +11,7 @@ class Config {
       publicPath: '/',
       devServer: {
         port: '8080',
+        open: true,
       },
       cssScopeName: '[path][name]__[local]',
       analyzePlugin: false,

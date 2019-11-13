@@ -51,6 +51,7 @@ module.exports = {
     // 开发环境server的端口号
     devServer:{
       port:string;
+      open:boolean;
     },
     // 是否开启px转rem，并且具体配置
     pxtorem?:{
