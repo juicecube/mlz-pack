@@ -27,7 +27,6 @@ class Config {
       const tempConfig = this.filter(param, (value) => value !== undefined);
       merge(this.config, tempConfig);
     }
-    console.log(this.config);
   }
 
   get() {
