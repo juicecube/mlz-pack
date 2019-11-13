@@ -64,3 +64,5 @@ typings/
 lib
 
 build
+
+mlz-pack.js

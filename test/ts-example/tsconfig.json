@@ -1,0 +1,9 @@
+{
+  "extends": "../../node_modules/@mlz/lint/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "example/*": ["example/*"]
+    }
+  },
+}

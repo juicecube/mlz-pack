@@ -11,6 +11,7 @@ const getBabelConfig = require('./babel');
 
 module.exports = () => {
   const config = configs.get();
+  const tsconfig = config.tsconfig ? {configFile: config.tsconfig} : {};
   const commonConfig = {
     entry: config.entryPath,
     output: {
@@ -30,7 +31,7 @@ module.exports = () => {
       extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
       symlinks: false,
       cacheWithContext: false,
-      plugins: [new TsconfigPathsPlugin()],
+      plugins: [new TsconfigPathsPlugin(tsconfig)],
     },
     watchOptions: {
       poll: 1000,
