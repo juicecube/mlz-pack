@@ -46,6 +46,8 @@ module.exports = {
     buildPath:string;
     // js，css，图片等资源文件前缀，默认：'/'
     publicPath:string;
+    // tsconfig的路径
+    tsconfig?:string;
     // 开发环境server的端口号
     devServer:{
       port:string;
