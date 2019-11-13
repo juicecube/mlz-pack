@@ -25,7 +25,7 @@ build({
     },
   }, () => {
     console.log(chalk.green('Production Passed!'));
-
+    console.log(chalk.green('Testing serve...'));
     require('./serve');
   });
 });

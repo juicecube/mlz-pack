@@ -1,4 +1,5 @@
 const path = require('path');
+const chalk = require('chalk');
 
 const rootPath = path.resolve(__dirname, '../../../');
 const entryPath = path.resolve(__dirname, '../../ts-example/index.tsx');
@@ -16,4 +17,5 @@ serve({
   }
 }, (server) => {
   server.close();
+  console.log(chalk.green('Serve Passed!'));
 });

@@ -58,7 +58,8 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -e $GIT_PARAMS"
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-push": "npm run test && npm run test:webpack"
     }
   },
   "dependencies": {
