@@ -4,7 +4,11 @@ const fs = require('fs');
 
 class Config {
   constructor() {
-    this.config = {
+    this.config = this.getInitialVal();
+  }
+
+  getInitialVal() {
+    return {
       isDev: process.env.NODE_ENV !== 'production',
       loading: {
         html: fs.readFileSync(path.join(__dirname, './loading/index.html')),
@@ -24,7 +28,7 @@ class Config {
         filename: 'index.html',
         template: path.resolve(process.cwd(), 'src/index.ejs'),
       },
-    };
+    } 
   }
   
   init(param) {
