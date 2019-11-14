@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/juicecube/mlz-pack/compare/v0.1.8...v0.1.9) (2019-11-14)
+
+
+### Bug Fixes
+
+* config unitest ([83be839](https://github.com/juicecube/mlz-pack/commit/83be839))
+* unit test ([7ecf629](https://github.com/juicecube/mlz-pack/commit/7ecf629))
+* unit test in webpck ([745fdcf](https://github.com/juicecube/mlz-pack/commit/745fdcf))
+
+
+### Features
+
+* add husky pre-push ([ad85704](https://github.com/juicecube/mlz-pack/commit/ad85704))
+* add loading in htmlPlugin ([c3ff10b](https://github.com/juicecube/mlz-pack/commit/c3ff10b))
+* add raf alias ([06ca3d3](https://github.com/juicecube/mlz-pack/commit/06ca3d3))
+* add travis config ([91f6e3a](https://github.com/juicecube/mlz-pack/commit/91f6e3a))
+* add ts-example test ([93c67ee](https://github.com/juicecube/mlz-pack/commit/93c67ee))
+
 ### [0.1.8](https://github.com/juicecube/mlz-pack/compare/v0.1.7...v0.1.8) (2019-11-13)
 
 
