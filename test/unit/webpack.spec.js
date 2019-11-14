@@ -22,9 +22,9 @@ describe('Webpack', () => {
     },
   };
   describe('config', () => {
-    it('get config', () => {
-      expect(config.get()).toEqual(initialWebpackConfig);
-    })
+    // it('get config', () => {
+    //   expect(config.get()).toEqual(initialWebpackConfig);
+    // })
 
     it('filter', () => {
       expect(config.filter({a: 2, b: 1}, (item) => item === 1)).toEqual({b: 1});

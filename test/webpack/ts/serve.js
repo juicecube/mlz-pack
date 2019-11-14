@@ -7,7 +7,6 @@ const entryPath = path.resolve(__dirname, '../../ts-example/index.tsx');
 const htmlPath = path.resolve(__dirname, '../../ts-example/index.html');
 const { serve } = require(path.resolve(rootPath, 'src/webpack/index'));
 
-console.log(process.argv);
 const argv = process.argv.slice(2);
 serve({
   isDev: true,
