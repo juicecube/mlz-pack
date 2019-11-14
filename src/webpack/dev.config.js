@@ -3,6 +3,7 @@ const pxtorem = require('postcss-pxtorem');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 
+
 const commonCfg = require('./common.config');
 const configs = require('./config');
 
@@ -71,6 +72,7 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         // inject: true,
+        loading: config.loading,
         ...config.htmlPlugin,
       }),
     ],

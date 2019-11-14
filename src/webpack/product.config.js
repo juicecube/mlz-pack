@@ -126,6 +126,7 @@ module.exports = () => {
         filename: '[file].map',
       }),
       new HtmlWebpackPlugin({
+        loading: config.loading,
         ...config.htmlPlugin,
         // inject: true,
         removeAttributeQuotes: true,

@@ -10,7 +10,8 @@
     "test": "test"
   },
   "scripts": {
-    "test:webpack": "node test/webpack/index.js",
+    "start": "node test/webpack/ts/serve.js",
+    "test:webpack": "node test/webpack/index.js -t",
     "test": "jest",
     "test:watch": "jest -- --watch",
     "test:smoke": "node test/smoke",

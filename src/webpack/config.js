@@ -1,10 +1,15 @@
 const path = require('path');
 const merge = require('lodash.merge');
+const fs = require('fs');
 
 class Config {
   constructor() {
     this.config = {
       isDev: process.env.NODE_ENV !== 'production',
+      loading: {
+        html: fs.readFileSync(path.join(__dirname, './loading/index.html')),
+        css: '<style>' + fs.readFileSync(path.join(__dirname, './loading/index.css')) + '</style>',
+      },
       rootPath: process.cwd(),
       entryPath: { index: path.resolve(process.cwd(), 'src/index.tsx') },
       buildPath: path.resolve(process.cwd(), 'build'),
