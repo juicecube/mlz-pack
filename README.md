@@ -1,3 +1,5 @@
+
+[![CircleCI](https://travis-ci.org/juicecube/mlz-pack.svg?branch=master)](https://travis-ci.org/juicecube/mlz-pack)
 ### 使用方式（命令行工具）
 本地安装
 

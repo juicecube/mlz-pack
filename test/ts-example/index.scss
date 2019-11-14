@@ -1,7 +1,7 @@
 .wrapper {
   width: 100%;
   height: 100%;
-  background: url('./assets/test-jpg.jpg');
+  background: url('~example/assets/test-jpg.jpg');
   .color {
     color: red;
     font-size: 18px;
@@ -9,6 +9,6 @@
   .icon {
     width: 30px;
     height: 30px;
-    background: url('./assets//test-png.png');
+    background: url('~example/assets//test-png.png');
   }
 }

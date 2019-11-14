@@ -1,11 +1,11 @@
 const path = require('path');
 const chalk = require('chalk');
 
-const rootPath = '../../../';
+const rootPath = path.resolve(__dirname, '../../../');
 const entryPath = path.resolve(__dirname, '../../ts-example/index.tsx');
 const htmlPath = path.resolve(__dirname, '../../ts-example/index.html');
 
-const { build } = require(`${rootPath}src/webpack/index`);
+const { build } = require(path.resolve(rootPath, 'src/webpack/index'));
 
 console.log(chalk.green('Testing build in dev...'));
 build({
@@ -14,6 +14,9 @@ build({
   htmlPlugin: {
     template: htmlPath,
   },
+  // alias: {
+  //   example: path.join(rootPath, 'test/ts-example'),
+  // }
 }, () => {
   console.log(chalk.green('Dev Passed!'));
   console.log(chalk.green('Testing build in production...'));
@@ -23,6 +26,9 @@ build({
     htmlPlugin: {
       template: htmlPath,
     },
+    // alias: {
+    //   example: path.join(rootPath, 'test/ts-example'),
+    // }
   }, () => {
     console.log(chalk.green('Production Passed!'));
     console.log(chalk.green('Testing serve...'));
