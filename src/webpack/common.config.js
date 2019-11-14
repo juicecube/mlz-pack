@@ -4,6 +4,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const path = require('path');
 // const AutoDllPlugin = require('autodll-webpack-plugin');
 
 const configs = require('./config');
@@ -26,6 +27,7 @@ module.exports = () => {
       ],
       alias: {
         'root': config.rootPath,
+        raf: path.resolve(config.rootPath, 'node_modules/raf/'),
         ...config.alias,
       },
       extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
