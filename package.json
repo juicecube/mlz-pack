@@ -11,6 +11,7 @@
   },
   "scripts": {
     "start": "node test/webpack/ts/serve.js",
+    "build": "node test/webpack/ts/build.js",
     "test:webpack": "node test/webpack/index.js -t",
     "test": "jest",
     "test:watch": "jest -- --watch",

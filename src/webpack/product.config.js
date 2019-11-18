@@ -24,6 +24,7 @@ module.exports = () => {
     optimization: {
       removeAvailableModules: true,
       removeEmptyChunks: true,
+      sideEffects: false,
       moduleIds: 'hashed',
       runtimeChunk: {
         name: 'manifest',
