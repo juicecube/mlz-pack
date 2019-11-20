@@ -116,8 +116,8 @@ module.exports = () => {
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: '[name].[contenthash].css',
-        chunkFilename: '[id].[contenthash].css',
+        filename: 'css/[name].[contenthash].css',
+        chunkFilename: 'css/[name].[contenthash].css',
         ignoreOrder: false, // Enable to remove warnings about conflicting order
       }),
       new webpack.SourceMapDevToolPlugin({

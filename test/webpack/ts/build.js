@@ -1,6 +1,7 @@
 const path = require('path');
 const chalk = require('chalk');
 
+process.chdir(path.join(__dirname, '../../ts-example'));
 const rootPath = path.resolve(__dirname, '../../../');
 const entryPath = path.resolve(__dirname, '../../ts-example/index.tsx');
 const htmlPath = path.resolve(__dirname, '../../ts-example/index.html');
@@ -32,7 +33,7 @@ build({
   }, () => {
     console.log(chalk.green('Production Passed!'));
     console.log(chalk.green('Testing serve...'));
-    require('./serve');
+    // require('./serve');
   });
 });
 
