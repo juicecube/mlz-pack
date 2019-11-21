@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.13](https://github.com/juicecube/mlz-pack/compare/v0.1.12...v0.1.13) (2019-11-21)
+
+
+### Bug Fixes
+
+* babel merge and css local name ([0d271c0](https://github.com/juicecube/mlz-pack/commit/0d271c0))
+
 ### [0.1.12](https://github.com/juicecube/mlz-pack/compare/v0.1.11...v0.1.12) (2019-11-20)
 
 ### [0.1.11](https://github.com/juicecube/mlz-pack/compare/v0.1.10...v0.1.11) (2019-11-20)
