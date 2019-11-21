@@ -32,7 +32,7 @@ class Config {
   }
   
   init(param) {
-    this.config.cssScopeName = this.config.isDev ? this.config.cssScopeName : '[name]__[hash:base64:5]';
+    this.config.cssScopeName = this.config.isDev ? this.config.cssScopeName : '[local]__[hash:base64:5]';
     if (param) {
       const tempConfig = this.filter(param, (value) => value !== undefined);
       merge(this.config, tempConfig);
