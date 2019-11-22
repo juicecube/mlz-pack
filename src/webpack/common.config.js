@@ -41,6 +41,10 @@ module.exports = () => {
     module: {
       rules: [
         {
+          test: /\.svg$/,
+          use: ['@svgr/webpack', 'url-loader']
+        },
+        {
           test: /\.(jpe?g|png|gif|svg)$/,
           exclude: /node_modules/,
           use: [

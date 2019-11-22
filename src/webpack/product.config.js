@@ -52,7 +52,18 @@ module.exports = () => {
         },
       },
       minimizer: [
-        new TerserPlugin({ sourceMap: true }),
+        new TerserPlugin({
+          sourceMap: true,
+          terserOptions: {
+            compress: {
+              drop_console: true,
+              drop_debugger: true,
+            },
+            output: {
+              comments: false
+            }
+          },
+        }),
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
             discardComments: { removeAll: true },
