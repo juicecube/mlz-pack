@@ -1,9 +1,12 @@
+# mlz-pack | 内置webpack的依赖处理的打包工具
 
 [![CircleCI](https://travis-ci.org/juicecube/mlz-pack.svg?branch=master)](https://travis-ci.org/juicecube/mlz-pack)
-### 使用方式（命令行工具）
-本地安装
 
-.npmrc中添加
+## 安装
+
+本地项目安装
+
+由于内含mozjpeg-bin，optipng-bin两个binary包，需要.npmrc中添加以下配置，直接安装很大几率安装不成功。
 
 ```
 mozjpeg_binary_site=https://npm.taobao.org/mirrors/mozjpeg-bin
@@ -12,6 +15,9 @@ optipng_binary_site=https://npm.taobao.org/mirrors/optipng-bin
 ```
 npm i @mlz/pack -D
 ```
+
+## 使用
+
 package.json
 ```js
 {
@@ -34,7 +40,7 @@ if(module.hot){
 }
 ```
 
-### 自定义配置
+## 自定义配置
 读取项目根目录下的mlz-pack.json或者mlz-pack.js
 ```ts
 // mlz-config.js

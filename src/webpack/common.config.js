@@ -41,13 +41,24 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.svg$/,
-          use: ['@svgr/webpack', 'url-loader']
-        },
-        {
-          test: /\.(jpe?g|png|gif|svg)$/,
+          test: /\.(jpe?g|png|gif)$/,
           exclude: /node_modules/,
           use: [
+            {
+              loader: 'url-loader',
+              options: {
+                emitFile: true,
+                limit: 3 * 1024,
+                name: 'images/[name]__[hash:5].[ext]',
+                publicPath: config.publicPath,
+              },
+            },
+          ],
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            '@svgr/webpack',
             {
               loader: 'url-loader',
               options: {
