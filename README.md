@@ -78,11 +78,11 @@ if(module.hot){
 | **[`rootPath`](#rootPath)** 	| `{string}` 	| `process.cwd()` 	| 项目的根目录 	|
 | **[`entryPath`](#entryPath)** 	| `{string \| string[] \| Entry \| EntryFunc}` 	| `{ index: path.resolve(process.cwd(), 'src/index.tsx') }` 	| 入口文件（webpack的entry） 	|
 | **[`buildPath`](#buildPath)** 	| `{string}` 	| `build` 	| build文件 	|
-| **[`publicPath`](#publicPath)** 	| `{string}` 	| `\/` 	| js,css,图片等资源前缀 	|
+| **[`publicPath`](#publicPath)** 	| `{string}` 	| `/` 	| js,css,图片等资源前缀 	|
 | **[`tsconfig`](#tsconfig)** 	| `{string}` 	| `undefined` 	| tsconfig路径（可选） 	|
 | **[`devServer`](#devServer)** 	| `{port:string;open:boolean;}` 	| `{port: 8080, open: true}` 	| dev-server相关配置 	|
 | **[`pxtorem`](#pxtorem)** 	| `Object` 	| `undefined` 	| 是否开启px转rem，还有相关配置 	|
-| **[`cssScopeName`](#cssScopeName)** 	| `{string}` 	| `[local]__[hash:base64:5] | [path][name]__[local]` 	| css的className编译规则，默认：dev环境是`[path][name]__[local]`，正式环境是`[name]__[hash:base64:5]` 	|
+| **[`cssScopeName`](#cssScopeName)** 	| `{string}` 	| `[local]__[hash:base64:5] \| [path][name]__[local]` 	| css的className编译规则，默认：dev环境是`[path][name]__[local]`，正式环境是`[name]__[hash:base64:5]` 	|
 | **[`alias`](#alias)** 	| `{[key:string]:string}` 	| `undefined` 	| 别名，可不填，默认会读tsconfig里的paths 	|
 | **[`definePlugin`](#definePlugin)** 	| `{[key:string]:any}` 	| `undefined` 	| 全局变量 	|
 | **[`analyzePlugin`](#analyzePlugin)** 	| `boolean` 	| `false` 	| 是否开启bundle分析 	|
