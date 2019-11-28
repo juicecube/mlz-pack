@@ -96,7 +96,7 @@ if(module.hot){
 | **[`definePlugin`](#definePlugin)** 	| `{[key:string]:any}` 	| `undefined` 	| 全局变量 	|
 | **[`analyzePlugin`](#analyzePlugin)** 	| `boolean` 	| `false` 	| 是否开启bundle分析 	|
 | **[`htmlPlugin`](#htmlPlugin)** 	| `Object` 	| `{filename: 'index.html',template: path.resolve(process.cwd(), 'src/index.ejs')}` 	| htmlplugin的参数设置 	|
-| **[`libs`](#libs)** 	| {[key:string]:string[]} 	| `undefined` 	| 用于单独切分第三方依赖的bundle的配置 	|
+| **[`libs`](#libs)** 	| `{[key:string]:string[]}` 	| `undefined` 	| 用于单独切分第三方依赖的bundle的配置 	|
 | **[`loaderOptions`](#loaderOptions)** 	| `RuleSetRule[]` 	| `undefined` 	| loader扩展 	|
 | **[`pluginOptions`](#pluginOptions)** 	| `any[]` 	| `undefined` 	| plugin扩展 	|
 | **[`babel`](#babel)** 	| `any` 	| `undefined` 	| babel扩展 	|
@@ -159,7 +159,7 @@ module.exports = {
 
 Type: `string` Default: `undefined`
 
-由于使用了 (tsconfig-paths-webpack-plugin)[https://github.com/dividab/tsconfig-paths-webpack-plugin]，默认会读取`cwd`的tsconfig.json中的path来设置webpack的alias。`tsconfig`此配置会设置该plugin的tsconfig的地址。
+由于使用了 [tsconfig-paths-webpack-plugin](https://github.com/dividab/tsconfig-paths-webpack-plugin)，默认会读取`cwd`的tsconfig.json中的path来设置webpack的alias。`tsconfig`此配置会设置该plugin的tsconfig的地址。
 
 **mlz-pack.js**
 
@@ -372,7 +372,7 @@ module.exports = {
 
 ### `libs`
 
-Type: `{[key:string]:string[]}	` Default: `undefined`
+Type: `{[key:string]:string[]}` Default: `undefined`
 
 将node_modules里的包进行分类打包，根据不同包的更新频率不同有利于缓存，默认会为第三方包创建名为`venderLibs`的bundle。
 
