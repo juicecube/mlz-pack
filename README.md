@@ -18,6 +18,8 @@ npm i @mlz/pack -D
 
 ## 使用
 
+支持serve和build两种命令，server用于本地开发，build用于代码构建。
+
 package.json
 ```js
 {
@@ -28,20 +30,69 @@ package.json
   }
 }
 ```
-支持的命令有：
+serve命令的使用
 
-本地安装后执行：mlz-pack即可看到
+```
+Usage: mlz-pack serve [options] [entry]
 
-Tips:
+serve your project in development mode
+
+Options:
+  -p, --port <port>  port used by the server (default: 8080)
+  -h, --help         output usage information
+```
+
+build命令的使用
+
+```
+Usage: mlz-pack build [options] [entry]
+
+build your project from a entry file(.js||.ts||.tsx), default: src/index.tsx
+
+Options:
+  -e, --env <environment>  dev or prod（default: prod）
+  -d, --dest <dest>        output directory (default: build)
+  -h, --help               output usage information
+```
+
+
+
+## 自定义配置
+
+读取项目根目录下的*mlz-pack.js*
+
+*Tips:*
+
 开启热加载需要在入口文件加入以下代码：
+
 ```
 if(module.hot){
   module.hot.accept()
 }
 ```
 
-## 自定义配置
-读取项目根目录下的mlz-pack.json或者mlz-pack.js
+### webpack配置
+
+|                  Name                 |                                                     Type                                                     |                                      Default                                      |                                             Description                                             |
+|:-------------------------------------:|:------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------:|
+|      **[`rootPath`](#rootPath)**      |                                                  `{string}`                                                  |                                  `process.cwd()`                                  |                                             项目的根目录                                            |
+|     **[`entryPath`](#entryPath)**     |                                 `{string \| string[] \| Entry \| EntryFunc}`                                 |             `{ index: path.resolve(process.cwd(), 'src/index.tsx') }`             |                                      入口文件（webpack的entry）                                     |
+|     **[`buildPath`](#buildPath)**     |                                                  `{string}`                                                  |                                      `build`                                      |                                              build文件                                              |
+|    **[`publicPath`](#publicPath)**    |                                                  `{string}`                                                  |                                        `\/`                                       |                                        js,css,图片等资源前缀                                        |
+|      **[`tsconfig`](#tsconfig)**      |                                                  `{string}`                                                  |                                    `undefined`                                    |                                         tsconfig路径（可选）                                        |
+|     **[`devServer`](#devServer)**     |                                         `{port:string;open:boolean;}`                                        |                             `{port: 8080, open: true}`                            |                                          dev-server相关配置                                         |
+|       **[`pxtorem`](#pxtorem)**       | `{rootValue?:number;propList?:string[];selectorBlackList?:string[];replace?:boolean;minPixelValue?:number;}` |                                    `undefined`                                    |                                    是否开启px转rem，还有相关配置                                    |
+|  **[`cssScopeName`](#cssScopeName)**  |                                                  `{string}`                                                  |           `[local]__[hash:base64:5](prod) | [path][name]__[local](dev)`           | css的className编译规则，默认：dev环境是`[path][name]__[local]`，正式环境是`[name]__[hash:base64:5]` |
+|         **[`alias`](#alias)**         |                                            `{[key:string]:string}`                                           |                                    `undefined`                                    |                               别名，可不填，默认会读tsconfig里的paths                               |
+|  **[`definePlugin`](#definePlugin)**  |                                             `{[key:string]:any}`                                             |                                    `undefined`                                    |                                               全局变量                                              |
+| **[`analyzePlugin`](#analyzePlugin)** |                                                   `boolean`                                                  |                                      `false`                                      |                                          是否开启bundle分析                                         |
+|    **[`htmlPlugin`](#htmlPlugin)**    |                    `{template?:string;favicon?:string;filename?:string;[key:string]:any;}`                   | `{filename: 'index.html',template: path.resolve(process.cwd(), 'src/index.ejs')}` |                                         htmlplugin的参数设置                                        |
+|          **[`libs`](#libs)**          |                                            {[key:string]:string[]}                                           |                                    `undefined`                                    |                                 用于单独切分第三方依赖的bundle的配置                                |
+| **[`loaderOptions`](#loaderOptions)** |                                                `RuleSetRule[]`                                               |                                    `undefined`                                    |                                              loader扩展                                             |
+| **[`pluginOptions`](#pluginOptions)** |                                                    `any[]`                                                   |                                    `undefined`                                    |                                              plugin扩展                                             |
+|         **[`babel`](#babel)**         |                                                     `any`                                                    |                                    `undefined`                                    |                                              babel扩展                                              |
+
+### `url`
 ```ts
 // mlz-config.js
 module.exports = {
@@ -95,5 +146,7 @@ module.exports = {
   }
 };
 ```
-TODO:
+
+
+### TODO
 1.定制化配置: 可以通过 mlz-pack --init 初始化配置文件
