@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/juicecube/mlz-pack/compare/v0.1.14...v0.1.15) (2019-11-28)
+
+
+### Bug Fixes
+
+* fix svg loader ([e52935a](https://github.com/juicecube/mlz-pack/commit/e52935a))
+* remove compression-webpack-plugin ([b5ba257](https://github.com/juicecube/mlz-pack/commit/b5ba257))
+
 ### [0.1.14](https://github.com/juicecube/mlz-pack/compare/v0.1.13...v0.1.14) (2019-11-22)
 
 
