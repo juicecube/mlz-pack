@@ -31,6 +31,8 @@ module.exports = () => {
       },
       splitChunks: {
         chunks: 'all',
+        maxInitialRequests: Infinity,
+        minSize: 3000,
         cacheGroups: {
           vendors: {
             test: /node_modules/,
@@ -38,7 +40,12 @@ module.exports = () => {
             name(module) {
               let name = 'venderLibs';
               if (libraries) {
-                const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                const context = module.context.split('/');
+                const n_index = context.indexOf('node_modules');
+                let packageName = context[n_index + 1];
+                if (packageName.indexOf('@') > -1) {
+                  packageName = `${context[n_index + 1]}/${context[n_index + 2]}`;
+                }
                 const names = Object.keys(libraries);
                 names.map((val) => {
                   if (libraries[val].indexOf(packageName) >= 0) {
