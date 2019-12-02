@@ -43,6 +43,7 @@ module.exports = () => {
           test: /\.s?css$/,
           exclude: /node_modules/,
           use: [
+            'cache-loader',
             { loader: 'style-loader' },
             {
               loader: 'css-loader',
