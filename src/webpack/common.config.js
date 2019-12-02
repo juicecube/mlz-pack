@@ -36,7 +36,7 @@ module.exports = () => {
         },
       },
     },
-    'happypack/loader?id=sass',
+    'sass-loader',
   ];
 
   if (!config.isDev) {
