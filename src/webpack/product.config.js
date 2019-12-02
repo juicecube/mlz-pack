@@ -2,8 +2,6 @@ const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const autoprefixer = require('autoprefixer');
-const pxtorem = require('postcss-pxtorem');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminPlugin = require('@mlz/imagemin-webpack');
 const merge = require('webpack-merge');
@@ -77,21 +75,6 @@ module.exports = () => {
           },
           canPrint: true,
         }),
-      ],
-    },
-    module: {
-      rules: [
-        {
-          test: /\.s?css$/,
-          exclude: /node_modules/,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-            },
-            'happypack/loader?id=scss',
-            'sass-loader',
-          ],
-        },
       ],
     },
     plugins: [

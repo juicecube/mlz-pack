@@ -1,6 +1,4 @@
 const HappyPack = require('happypack');
-const autoprefixer = require('autoprefixer');
-const pxtorem = require('postcss-pxtorem');
 
 var happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 const getBabelConfig = require('./babel');
@@ -17,23 +15,10 @@ module.exports = () => {
         },
       },
     },
-    // {
-    //   loader: 'postcss-loader',
-    //   options: {
-    //     plugins: () => {
-    //       const plugin = [autoprefixer()];
-    //       if (config.pxtorem) {
-    //         plugin.push(pxtorem(config.pxtorem));
-    //       }
-    //       return plugin;
-    //     },
-    //   },
-    // },
-    'sass-loader',
   ];
-  if (config.isDev) {
-    cssLoaders.unshift({ loader: 'style-loader' });
-  }
+  // if (config.isDev) {
+  //   cssLoaders.unshift({ loader: 'style-loader' });
+  // }
   return {
     plugins: [
       new HappyPack({
@@ -58,9 +43,15 @@ module.exports = () => {
         }],
       }),
       new HappyPack({
-        id: 'scss',
+        id: 'css',
         threadPool: happyThreadPool,
         loaders: cssLoaders,
+        debug: true,
+      }),
+      new HappyPack({
+        id: 'sass',
+        threadPool: happyThreadPool,
+        loaders: ['sass-loader'],
         debug: true,
       }),
     ],

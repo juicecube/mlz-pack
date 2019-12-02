@@ -6,6 +6,9 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 const autoprefixer = require('autoprefixer');
+const pxtorem = require('postcss-pxtorem');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const getBabelConfig = require('./babel');
 // const AutoDllPlugin = require('autodll-webpack-plugin');
 
 const configs = require('./config');
@@ -13,6 +16,36 @@ const configs = require('./config');
 module.exports = () => {
   const config = configs.get();
   const tsconfig = config.tsconfig ? {configFile: config.tsconfig} : {};
+  const scssRules = [
+    {
+      loader: 'css-loader',
+      options: {
+        modules: {
+          localIdentName: config.cssScopeName,
+        },
+      },
+    },
+    {
+      loader: 'postcss-loader',
+      options: {
+        plugins: () => {
+          const plugin = [autoprefixer()];
+          if (config.pxtorem) {
+            plugin.push(pxtorem(config.pxtorem));
+          }
+          return plugin;
+        },
+      },
+    },
+    'happypack/loader?id=sass',
+  ];
+
+  if (!config.isDev) {
+    scssRules.unshift({ loader: MiniCssExtractPlugin.loader });
+  } else {
+    scssRules.unshift('style-loader');
+  }
+
   const commonConfig = {
     entry: config.entryPath,
     output: {
@@ -59,9 +92,24 @@ module.exports = () => {
           ],
         },
         {
+          test: /\.s?css$/,
+          exclude: /node_modules/,
+          use: scssRules,
+        },
+        {
           test: /\.(jpe?g|png|gif)$/,
           exclude: /node_modules/,
-          use: 'happypack/loader?id=image',
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                emitFile: true,
+                limit: 3 * 1024,
+                name: 'images/[name]__[hash:5].[ext]',
+                publicPath: config.publicPath,
+              },
+            }
+          ],
         },
         {
           test: /\.svg$/,
@@ -93,7 +141,12 @@ module.exports = () => {
         },
         {
           test: /\.(ts|tsx)?$/,
-          use: 'happypack/loader?id=ts',
+          use: [
+            {
+              loader: 'babel-loader',
+              options: getBabelConfig(),
+            }
+          ],
           exclude: /(node_modules)/,
         },
         {
