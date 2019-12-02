@@ -8,7 +8,6 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const getBabelConfig = require('./babel');
 // const AutoDllPlugin = require('autodll-webpack-plugin');
 
 const configs = require('./config');
@@ -141,12 +140,7 @@ module.exports = () => {
         },
         {
           test: /\.(ts|tsx)?$/,
-          use: [
-            {
-              loader: 'babel-loader',
-              options: getBabelConfig(),
-            }
-          ],
+          use: 'happypack/loader?id=ts',
           exclude: /(node_modules)/,
         },
         {
