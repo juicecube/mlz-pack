@@ -204,7 +204,7 @@ Type:
 ```
 Default: `undefined`
 
-是否开启px转rem的功能，并且设置相关配置，有关于移动端适配的方案详细参考文档(https://shimo.im/docs/69JqRr9yRCGJXHDv)。
+是否开启px转rem的功能，并且设置相关配置，有关于移动端适配的方案详细参考文档[移动端适配方案](https://shimo.im/docs/69JqRr9yRCGJXHDv)。
 ```
 {
   rootValue: 100, // 标准设计稿的根元素的font-size
