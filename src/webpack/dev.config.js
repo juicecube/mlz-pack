@@ -6,6 +6,7 @@ const merge = require('webpack-merge');
 
 const commonCfg = require('./common.config');
 const configs = require('./config');
+const getBabelConfig = require('./babel');
 
 module.exports = () => {
   const config = configs.get();
@@ -36,7 +37,6 @@ module.exports = () => {
                 },
               },
             },
-            'sass-loader',
           ],
         },
         {
@@ -67,6 +67,17 @@ module.exports = () => {
             },
             'sass-loader',
           ],
+        },
+        {
+          test: /\.(ts|tsx)?$/,
+          use: [
+            'cache-loader',
+            {
+              loader: 'babel-loader',
+              options: getBabelConfig(),
+            },
+          ],
+          exclude: /(node_modules)/,
         },
       ],
     },

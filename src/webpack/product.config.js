@@ -82,51 +82,13 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.css$/,
-          include: /node_modules/,
-          use: [
-            'style-loader',
-            'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => {
-                  return [
-                    autoprefixer(),
-                  ];
-                },
-              },
-            },
-            'sass-loader',
-          ],
-        },
-        {
           test: /\.s?css$/,
           exclude: /node_modules/,
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
             },
-            {
-              loader: 'css-loader',
-              options: {
-                modules: {
-                  localIdentName: config.cssScopeName,
-                },
-              },
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => {
-                  const plugin = [autoprefixer()];
-                  if (config.pxtorem) {
-                    plugin.push(pxtorem(config.pxtorem));
-                  }
-                  return plugin;
-                },
-              },
-            },
+            'happypack/loader?id=scss',
             'sass-loader',
           ],
         },

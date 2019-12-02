@@ -3,9 +3,11 @@ const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const fs = require('fs');
 const path = require('path');
 const ncp = require('ncp').ncp;
+const merge = require('webpack-merge');
 
 const devCfg = require('./dev.config.js');
 const prodCfg = require('./product.config');
+const happyCfg = require('./happy');
 // const dllCfg = require('./webpack.dll.config');
 const config = require('./config');
 const Server = require('./devServer');
@@ -48,7 +50,7 @@ function getWebpackConfig(baseCfg) {
   } else {
     webpackConfig = devCfg();
   }
-
+  webpackConfig = merge(webpackConfig, happyCfg());
   webpackConfig = smp.wrap(webpackConfig);
   return webpackConfig;
 }

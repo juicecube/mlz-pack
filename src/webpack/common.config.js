@@ -5,10 +5,10 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
+const autoprefixer = require('autoprefixer');
 // const AutoDllPlugin = require('autodll-webpack-plugin');
 
 const configs = require('./config');
-const getBabelConfig = require('./babel');
 
 module.exports = () => {
   const config = configs.get();
@@ -41,19 +41,27 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.(jpe?g|png|gif)$/,
-          exclude: /node_modules/,
+          test: /\.css$/,
+          include: /node_modules/,
           use: [
+            'style-loader',
+            'css-loader',
             {
-              loader: 'url-loader',
+              loader: 'postcss-loader',
               options: {
-                emitFile: true,
-                limit: 3 * 1024,
-                name: 'images/[name]__[hash:5].[ext]',
-                publicPath: config.publicPath,
+                plugins: () => {
+                  return [
+                    autoprefixer(),
+                  ];
+                },
               },
             },
           ],
+        },
+        {
+          test: /\.(jpe?g|png|gif)$/,
+          exclude: /node_modules/,
+          use: 'happypack/loader?id=image',
         },
         {
           test: /\.svg$/,
@@ -85,13 +93,7 @@ module.exports = () => {
         },
         {
           test: /\.(ts|tsx)?$/,
-          use: [
-            config.isDev && 'cache-loader',
-            {
-              loader: 'babel-loader',
-              options: getBabelConfig(),
-            },
-          ],
+          use: 'happypack/loader?id=ts',
           exclude: /(node_modules)/,
         },
         {
@@ -130,17 +132,6 @@ module.exports = () => {
   if (config.pluginOptions) {
     commonConfig.plugins.push(...config.pluginOptions);
   }
-  // if (config.libs) {
-  //   commonConfig.plugins.push(
-  //     new AutoDllPlugin({
-  //       debug: true,
-  //       inject: true,
-  //       filename: '[name].[chunkhash].js',
-  //       path: './dll',
-  //       entry: config.libs,
-  //     })
-  //   );
-  // }
 
   return commonConfig;
 };
