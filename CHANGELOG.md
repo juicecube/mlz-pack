@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.18](https://github.com/juicecube/mlz-pack/compare/v0.1.17...v0.1.18) (2019-12-02)
+
+
+### Bug Fixes
+
+* bug of webpack base config ([c1c4f59](https://github.com/juicecube/mlz-pack/commit/c1c4f59))
+* move sass-loader use happypack ([9cc90f9](https://github.com/juicecube/mlz-pack/commit/9cc90f9))
+
+
+### Features
+
+* add happy pack ([65b4f5b](https://github.com/juicecube/mlz-pack/commit/65b4f5b))
+* move config to common ([71d5227](https://github.com/juicecube/mlz-pack/commit/71d5227))
+* use cache-loader only in production ([64dfa25](https://github.com/juicecube/mlz-pack/commit/64dfa25))
+
 ### [0.1.17](https://github.com/juicecube/mlz-pack/compare/v0.1.16...v0.1.17) (2019-12-02)
 
 
