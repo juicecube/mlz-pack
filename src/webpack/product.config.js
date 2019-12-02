@@ -18,8 +18,8 @@ module.exports = () => {
   const prodConfig = merge(baseConfig, {
     mode: 'production',
     output: {
-      filename: 'js/[name].[chunkhash].js',
-      chunkFilename: 'js/[name].[chunkhash].js',
+      filename: 'js/[name].[contenthash].js',
+      chunkFilename: 'js/[name].[contenthash].js',
     },
     optimization: {
       removeAvailableModules: true,

@@ -86,7 +86,7 @@ module.exports = () => {
         {
           test: /\.(ts|tsx)?$/,
           use: [
-            'cache-loader',
+            // 'cache-loader',
             {
               loader: 'babel-loader',
               options: getBabelConfig(),
