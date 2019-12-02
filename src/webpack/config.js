@@ -8,8 +8,9 @@ class Config {
   }
 
   getInitialVal() {
+    const isDev = process.env.NODE_ENV !== 'production';
     return {
-      isDev: process.env.NODE_ENV !== 'production',
+      isDev,
       loading: {
         html: fs.readFileSync(path.join(__dirname, './loading/index.html')),
         css: '<style>' + fs.readFileSync(path.join(__dirname, './loading/index.css')) + '</style>',
@@ -22,7 +23,7 @@ class Config {
         port: '8080',
         open: true,
       },
-      cssScopeName: '[path][name]__[local]',
+      cssScopeName: isDev ? '[path][name]__[local]' : '[local]__[hash:base64:5]',
       analyzePlugin: false,
       htmlPlugin: {
         filename: 'index.html',
@@ -32,8 +33,10 @@ class Config {
   }
   
   init(param) {
-    this.config.cssScopeName = (this.config.isDev &&  param.isDev) ? this.config.cssScopeName : '[local]__[hash:base64:5]';
     if (param) {
+      if (typeof param.isDev === 'boolean' && param.isDev !== this.config.isDev) {
+        this.config.cssScopeName = param.isDev ? '[path][name]__[local]' : '[local]__[hash:base64:5]'
+      }
       const tempConfig = this.filter(param, (value) => value !== undefined);
       merge(this.config, tempConfig);
     }

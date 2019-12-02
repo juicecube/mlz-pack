@@ -34,6 +34,7 @@ describe('Webpack', () => {
       config.init(initValue)
       expect(config.get()).toEqual(merge(initialWebpackConfig, {
         isDev: false,
+        cssScopeName: '[local]__[hash:base64:5]',
         devServer: {
           port: '8081',
         }
