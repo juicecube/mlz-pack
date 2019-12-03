@@ -11,15 +11,17 @@ module.exports = (devConfig, option, cb) => {
   compiler.plugin('done', () => {
     cb && cb(devServer);
   });
-  const devServer = new webpackDevServer(compiler, {
+
+  const serverConfig = {
     noInfo: true,
     hot: true,
     inline: true,
     historyApiFallback: true,
     stats: 'errors-only',
-    open: devServerConfig.open,
-    // proxy: devServerConfig.proxy ? devServerConfig.proxy : {},
-  });
+    open: true,
+    ...devServerConfig,
+  }
+  const devServer = new webpackDevServer(compiler, serverConfig);
   
   devServer.listen(devServerConfig.port, HOST, (err) => {
     if (err) {

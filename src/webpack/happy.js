@@ -2,7 +2,6 @@ const HappyPack = require('happypack');
 
 var happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 const getBabelConfig = require('./babel');
-const configs = require('./config');
 
 module.exports = () => {
   return {

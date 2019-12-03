@@ -89,8 +89,8 @@ if(module.hot){
 | **[`buildPath`](#buildPath)** 	| `string` 	| `build` 	| build文件 	|
 | **[`publicPath`](#publicPath)** 	| `string` 	| `/` 	| js,css,图片等资源前缀 	|
 | **[`tsconfig`](#tsconfig)** 	| `string` 	| `undefined` 	| tsconfig路径（可选） 	|
-| **[`devServer`](#devServer)** 	| `{port:string;open:boolean;}` 	| `{port: 8080, open: true}` 	| dev-server相关配置 	|
-| **[`pxtorem`](#pxtorem)** 	| `Object` 	| `undefined` 	| 是否开启px转rem，还有相关配置 	|
+| **[`devServer`](#devServer)** 	| `object` 	| `{port: 8080, noInfo: true, hot: true, inline: true, historyApiFallback: true, stats: 'errors-only', open: true}` 	| dev-server相关配置 	|
+| **[`pxtorem`](#pxtorem)** 	| `object` 	| `undefined` 	| 是否开启px转rem，还有相关配置 	|
 | **[`cssScopeName`](#cssScopeName)** 	| `string` 	| `[local]__[hash:base64:5] \| [path][name]__[local]` 	| css的className编译规则，默认：dev环境是`[path][name]__[local]`，正式环境是`[name]__[hash:base64:5]` 	|
 | **[`alias`](#alias)** 	| `{[key:string]:string}` 	| `undefined` 	| 别名，可不填，默认会读tsconfig里的paths 	|
 | **[`definePlugin`](#definePlugin)** 	| `{[key:string]:any}` 	| `undefined` 	| 全局变量 	|
@@ -173,9 +173,9 @@ module.exports = {
 
 ### `devServer`
 
-Type: `{ port:string, open:boolean, }` Default: `{ port: '8080', open: true, }`
+Type: `object` Default: `{port: 8080, noInfo: true, hot: true, inline: true, historyApiFallback: true, stats: 'errors-only', open: true}`
 
-开发环境的server的配置，端口号和是否自动打开浏览器。
+开发环境的server的配置，见[webpack-dev-server](https://webpack.js.org/configuration/dev-server/#devserver)。
 
 **mlz-pack.js**
 
