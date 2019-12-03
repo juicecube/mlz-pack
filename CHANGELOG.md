@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.20](https://github.com/juicecube/mlz-pack/compare/v0.1.19...v0.1.20) (2019-12-03)
+
+
+### Features
+
+* add devserver config ([b057917](https://github.com/juicecube/mlz-pack/commit/b057917))
+
 ### [0.1.19](https://github.com/juicecube/mlz-pack/compare/v0.1.18...v0.1.19) (2019-12-03)
 
 
