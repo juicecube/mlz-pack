@@ -29,6 +29,15 @@ module.exports = () => {
           },
         },
       }],
+      [
+        '@babel/plugin-transform-runtime',
+        {
+          'corejs': false,
+          'helpers': true,
+          'regenerator': true,
+          'useESModules': false,
+        },
+      ],
       ['@babel/plugin-proposal-decorators', { 'legacy': true }],
       ["@babel/plugin-proposal-class-properties", { "loose" : true }],
       '@babel/plugin-syntax-dynamic-import',

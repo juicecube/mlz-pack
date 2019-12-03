@@ -18,6 +18,7 @@ module.exports = (devConfig, option, cb) => {
     historyApiFallback: true,
     stats: 'errors-only',
     open: devServerConfig.open,
+    // proxy: devServerConfig.proxy ? devServerConfig.proxy : {},
   });
   
   devServer.listen(devServerConfig.port, HOST, (err) => {
@@ -25,6 +26,6 @@ module.exports = (devConfig, option, cb) => {
       console.log(err);
       return;
     }
-    console.log(chalk.cyan('\nStarting the development server...\n'));
+    console.log(chalk.cyan(`\nStarting the development server at http://${HOST}:${devServerConfig.port}\n`));
   });
 };
