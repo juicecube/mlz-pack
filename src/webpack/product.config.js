@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminPlugin = require('@mlz/imagemin-webpack');
 const merge = require('webpack-merge');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const commonCfg = require('./common.config');
 const configs = require('./config');
@@ -78,6 +79,7 @@ module.exports = () => {
       ],
     },
     plugins: [
+      new HardSourceWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash].css',
         chunkFilename: 'css/[name].[contenthash].css',

@@ -12,18 +12,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const configs = require('./config');
 
+
 module.exports = () => {
   const config = configs.get();
   const tsconfig = config.tsconfig ? {configFile: config.tsconfig} : {};
   const scssRules = [
-    {
-      loader: 'css-loader',
-      options: {
-        modules: {
-          localIdentName: config.cssScopeName,
-        },
-      },
-    },
+    'happypack/loader?id=css',
     {
       loader: 'postcss-loader',
       options: {
@@ -76,6 +70,7 @@ module.exports = () => {
           test: /\.css$/,
           include: /node_modules/,
           use: [
+            'thread-loader',
             'style-loader',
             'css-loader',
             {
@@ -93,7 +88,7 @@ module.exports = () => {
         {
           test: /\.s?css$/,
           exclude: /node_modules/,
-          use: scssRules,
+          use: [...scssRules],
         },
         {
           test: /\.(jpe?g|png|gif)$/,
@@ -145,13 +140,15 @@ module.exports = () => {
         },
         {
           test: /\.worker\.js$/,
-          use: {
-            loader: 'worker-loader',
-            options: {
-              name: '[name].js',
-              inline: true,
+          use: [
+            {
+              loader: 'worker-loader',
+              options: {
+                name: '[name].js',
+                inline: true,
+              },
             },
-          },
+          ],
           exclude: /(node_modules)/,
         },
       ],

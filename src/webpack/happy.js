@@ -2,8 +2,10 @@ const HappyPack = require('happypack');
 
 var happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 const getBabelConfig = require('./babel');
+const configs = require('./config');
 
 module.exports = () => {
+  const config = configs.get();
   return {
     plugins: [
       new HappyPack({
@@ -15,10 +17,19 @@ module.exports = () => {
         }],
       }),
       new HappyPack({
-        id: 'sass',
+        id: 'css',
         threadPool: happyThreadPool,
-        loaders: ['sass-loader'],
-        debug: true,
+        loaders: [{
+          loader: 'css-loader',
+          options: {
+            modules: {
+              localIdentName: config.cssScopeName,
+              context: process.cwd(),
+            },
+            importLoaders: 3,
+            sourceMap: false,
+          },
+        }],
       }),
     ],
   };
