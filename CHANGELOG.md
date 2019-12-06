@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.22](https://github.com/juicecube/mlz-pack/compare/v0.1.21...v0.1.22) (2019-12-06)
+
+
+### Bug Fixes
+
+* fix postcss-import-sync2 ([fe0f6e1](https://github.com/juicecube/mlz-pack/commit/fe0f6e1))
+
 ### [0.1.21](https://github.com/juicecube/mlz-pack/compare/v0.1.20...v0.1.21) (2019-12-06)
 
 
