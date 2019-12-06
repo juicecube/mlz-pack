@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.21](https://github.com/juicecube/mlz-pack/compare/v0.1.20...v0.1.21) (2019-12-06)
+
+
+### Bug Fixes
+
+* sass import file error ([817d0ae](https://github.com/juicecube/mlz-pack/commit/817d0ae))
+
+
+### Features
+
+* add hard-source and fix happypack in css ([42d23c0](https://github.com/juicecube/mlz-pack/commit/42d23c0))
+
 ### [0.1.20](https://github.com/juicecube/mlz-pack/compare/v0.1.19...v0.1.20) (2019-12-03)
 
 
