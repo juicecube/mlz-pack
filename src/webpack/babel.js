@@ -1,5 +1,6 @@
 const configs = require('./config');
 const merge = require('babel-merge');
+const path = require('path');
 
 module.exports = () => {
   const config = configs.get();
@@ -23,9 +24,22 @@ module.exports = () => {
       }],
       ['react-css-modules', {
         'generateScopedName': config.cssScopeName,
+        handleMissingStyleName: "warn",
+        webpackHotModuleReloading: true,
         'filetypes': {
           '.scss': {
             'syntax': 'postcss-scss',
+            "plugins": [
+              [
+                "postcss-import-sync2",
+                {
+                  resolve: function(id, basedir) {
+                    let nextId = id;
+                    return path.resolve(basedir, nextId);
+                  }
+                }
+              ],
+            ],
           },
         },
       }],

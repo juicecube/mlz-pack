@@ -17,7 +17,17 @@ module.exports = () => {
   const config = configs.get();
   const tsconfig = config.tsconfig ? {configFile: config.tsconfig} : {};
   const scssRules = [
-    'happypack/loader?id=css',
+    {
+      loader: 'css-loader',
+      options: {
+        modules: {
+          localIdentName: config.cssScopeName,
+          context: process.cwd(),
+        },
+        importLoaders: 3,
+        sourceMap: false,
+      },
+    },
     {
       loader: 'postcss-loader',
       options: {
@@ -70,7 +80,6 @@ module.exports = () => {
           test: /\.css$/,
           include: /node_modules/,
           use: [
-            'thread-loader',
             'style-loader',
             'css-loader',
             {
