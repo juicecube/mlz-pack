@@ -1,6 +1,8 @@
 const HappyPack = require('happypack');
+const os = require('os');
 
-var happyThreadPool = HappyPack.ThreadPool({ size: 5 });
+const cpuCount = os.cpus().length;
+var happyThreadPool = HappyPack.ThreadPool({ size: cpuCount - 1 });
 const getBabelConfig = require('./babel');
 const configs = require('./config');
 
