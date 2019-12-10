@@ -1,5 +1,5 @@
 const configs = require('./config');
-const merge = require('babel-merge');
+const merge = require('@mlz/babel-merge');
 const path = require('path');
 
 module.exports = () => {
