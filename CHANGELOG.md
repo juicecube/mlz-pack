@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.24](https://github.com/juicecube/mlz-pack/compare/v0.1.23...v0.1.24) (2019-12-11)
+
+
+### Features
+
+* add babel cache and css handler ([ff3d13b](https://github.com/juicecube/mlz-pack/commit/ff3d13bbc06dd607fb8ac74fde81b9b5305e7bf4))
+
 ### [0.1.23](https://github.com/juicecube/mlz-pack/compare/v0.1.22...v0.1.23) (2019-12-10)
 
 
