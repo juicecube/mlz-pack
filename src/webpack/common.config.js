@@ -78,7 +78,7 @@ module.exports = () => {
       rules: [
         {
           test: /\.css$/,
-          include: /node_modules/,
+          // include: /node_modules/,
           use: [
             'style-loader',
             'css-loader',
@@ -95,7 +95,7 @@ module.exports = () => {
           ],
         },
         {
-          test: /\.s?css$/,
+          test: /\.scss$/,
           exclude: /node_modules/,
           use: [...scssRules],
         },

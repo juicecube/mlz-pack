@@ -5,6 +5,8 @@ const path = require('path');
 module.exports = () => {
   const config = configs.get();
   let babelCfg = {
+    cacheDirectory: true,
+    cacheCompression: false,
     'presets': [
       [
         '@babel/preset-env',
