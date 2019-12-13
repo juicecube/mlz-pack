@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.26](https://github.com/juicecube/mlz-pack/compare/v0.1.25...v0.1.26) (2019-12-13)
+
+
+### Features
+
+* add sentryPlugin ([f223cc0](https://github.com/juicecube/mlz-pack/commit/f223cc0b69b07127b56a13ee8c5068abaf894b3f))
+
 ### [0.1.25](https://github.com/juicecube/mlz-pack/compare/v0.1.24...v0.1.25) (2019-12-13)
 
 

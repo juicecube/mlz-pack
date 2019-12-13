@@ -1,6 +1,6 @@
 {
   "name": "@mlz/pack",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "description": "mlz-pack",
   "main": "./src/index.js",
   "bin": {
