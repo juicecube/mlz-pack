@@ -85,12 +85,12 @@ module.exports = () => {
         chunkFilename: 'css/[name].[contenthash].css',
         ignoreOrder: false, // Enable to remove warnings about conflicting order
       }),
-      // new webpack.SourceMapDevToolPlugin({
-      //   // TODO sourceMap的地址
-      //   // this is the url of our local sourcemap server
-      //   // publicPath: config.SOURCEMAP,
-      //   filename: '[file].map',
-      // }),
+      new webpack.SourceMapDevToolPlugin({
+        // TODO sourceMap的地址
+        // this is the url of our local sourcemap server
+        // publicPath: config.SOURCEMAP,
+        filename: '[file].map',
+      }),
       new HtmlWebpackPlugin({
         loading: config.loading,
         ...config.htmlPlugin,
