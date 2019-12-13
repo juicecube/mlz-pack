@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.25](https://github.com/juicecube/mlz-pack/compare/v0.1.24...v0.1.25) (2019-12-13)
+
+
+### Bug Fixes
+
+* sourcemap in prod ([d836226](https://github.com/juicecube/mlz-pack/commit/d83622610a4586809ef8c0f7f3a2ea35afb2e303))
+
 ### [0.1.24](https://github.com/juicecube/mlz-pack/compare/v0.1.23...v0.1.24) (2019-12-11)
 
 
