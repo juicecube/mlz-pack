@@ -1,0 +1,40 @@
+{
+  "name": "@mlz/pack",
+  "version": "0.1.26",
+  "description": "mlz-pack",
+  "main": "./src/index.js",
+  "bin": {
+    "mlz-pack": "./bin/mlz-pack"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+  },
+  "repository": {
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "juicecube",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juicecube/mlz-pack/issues"
+  },
+  "homepage": "https://github.com/juicecube/mlz-pack#readme",
+  "devDependencies": {
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-push": "npm run test && npm run test:webpack"
+    }
+  },
+  "dependencies": {
+  }
+}
