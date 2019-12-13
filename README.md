@@ -96,6 +96,7 @@ if(module.hot){
 | **[`definePlugin`](#definePlugin)** 	| `{[key:string]:any}` 	| `undefined` 	| 全局变量 	|
 | **[`analyzePlugin`](#analyzePlugin)** 	| `boolean` 	| `false` 	| 是否开启bundle分析 	|
 | **[`htmlPlugin`](#htmlPlugin)** 	| `Object` 	| `{filename: 'index.html',template: path.resolve(process.cwd(), 'src/index.ejs')}` 	| htmlplugin的参数设置 	|
+| **[`sentryPlugin`](#sentryPlugin)** 	| `Object` 	| `{release: version, suppressConflictError: true, deleteAfterCompile: true, filenameTransform: function(filename) { return config.publicPath + filename; }, baseSentryURL: 'https://sentry.codemao.cn/api/0',}` 	| sentryPlugin配置 	|
 | **[`libs`](#libs)** 	| `{[key:string]:string[]}` 	| `undefined` 	| 用于单独切分第三方依赖的bundle的配置 	|
 | **[`loaderOptions`](#loaderOptions)** 	| `RuleSetRule[]` 	| `undefined` 	| loader扩展 	|
 | **[`pluginOptions`](#pluginOptions)** 	| `any[]` 	| `undefined` 	| plugin扩展 	|
@@ -366,6 +367,38 @@ module.exports = {
         html: '',
       };
     }
+  },
+}
+```
+
+### `sentryPlugin`
+
+Type: `object`
+
+Default:
+```
+{
+  release: version,
+  suppressConflictError: true,
+  deleteAfterCompile: true,
+  filenameTransform: function(filename) {
+    return config.publicPath + filename;
+  },
+  baseSentryURL: 'https://sentry.codemao.cn/api/0',
+}
+```
+sentryPlugin配置，详细可见：[webpack-sentry-plugin](https://github.com/40thieves/webpack-sentry-plugin#options)
+
+**mlz-pack.js**
+
+```js
+module.exports = {
+  webpack: {
+    sentryPlugin: {
+      organization: 'xxx',
+      project: 'xxx',
+      apiKey: 'xxx',
+    },
   },
 }
 ```
