@@ -115,6 +115,7 @@
     "style-loader": "^1.0.0",
     "terser-webpack-plugin": "^2.2.1",
     "ts-loader": "^6.0.4",
+    "tsconfig-paths": "^3.9.0",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.6.2",
     "url-loader": "^2.2.0",

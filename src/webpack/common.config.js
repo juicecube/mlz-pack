@@ -63,8 +63,6 @@ module.exports = () => {
         'node_modules',
       ],
       alias: {
-        'root': config.rootPath,
-        raf: path.resolve(config.rootPath, 'node_modules/raf/'),
         ...config.alias,
       },
       extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],

@@ -15,6 +15,10 @@ class Config {
         html: fs.readFileSync(path.join(__dirname, './loading/index.html')),
         css: '<style>' + fs.readFileSync(path.join(__dirname, './loading/index.css')) + '</style>',
       },
+      alias: {
+        root: process.cwd(),
+        raf: path.resolve(process.cwd(), 'node_modules/raf/'),
+      },
       rootPath: process.cwd(),
       entryPath: { index: path.resolve(process.cwd(), 'src/index.tsx') },
       buildPath: path.resolve(process.cwd(), 'build'),

@@ -4,6 +4,36 @@ const path = require('path');
 
 module.exports = () => {
   const config = configs.get();
+  const tsconfigPath = config.tsconfig || path.resolve(process.cwd(), 'tsconfig.json');
+  const alias = config.alias;
+  try {
+    const paths = require(tsconfigPath).compilerOptions.paths;
+    if (paths) {
+      Object.keys(paths).forEach((item) => {
+        const key = item.replace('/*', '');
+        const value = path.resolve(process.cwd(), paths[item][0].replace('/*', '').replace('*', ''));
+        alias[key] = value;
+      });
+    }
+  } catch(e) {
+    console.log(e);
+  }
+
+  function a(id, basedir) {
+    let nextId = id;
+    const keys = Object.keys(alias);
+    const key = id.split('/')[0];
+
+    if (keys.find((item) => item === key)) {
+      console.log('alias', alias[key]);
+      console.log('replace', id.replace(key, '.'));
+      return path.resolve(alias[key], id.replace(key, '.'));
+    }
+    return path.resolve(basedir, nextId);
+  }
+
+  console.log('result: ', a('src/commons/css/icon.scss', ''));
+
   let babelCfg = {
     cacheDirectory: true,
     cacheCompression: false,
@@ -37,6 +67,12 @@ module.exports = () => {
                 {
                   resolve: function(id, basedir) {
                     let nextId = id;
+                    const keys = Object.keys(alias);
+                    const key = id.split('/')[0];
+
+                    if (keys.find((item) => item === key)) {
+                      return path.resolve(alias[key], id.replace(key, '.'));
+                    }
                     return path.resolve(basedir, nextId);
                   }
                 }
