@@ -17,7 +17,6 @@ const configs = require('./config');
 module.exports = () => {
   const config = configs.get();
   const tsconfig = config.tsconfig ? {configFile: config.tsconfig} : {};
-  const version = require(path.resolve(process.cwd(), 'package.json')).version;
   const scssRules = [
     {
       loader: 'css-loader',
@@ -183,6 +182,12 @@ module.exports = () => {
     commonConfig.plugins.push(new BundleAnalyzerPlugin());
   }
   if (config.sentryPlugin) {
+    let version = '0.0.1';
+    try {
+      version = require(path.resolve(process.cwd(), 'package.json')).version
+    } catch(e) {
+      console.log(e);
+    }
     commonConfig.devtool = 'source-map';
     commonConfig.plugins.push(new SentryPlugin({
       release: version,
