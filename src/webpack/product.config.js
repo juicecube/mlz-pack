@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminPlugin = require('@mlz/imagemin-webpack');
 const merge = require('webpack-merge');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const SentryPlugin = require('webpack-sentry-plugin');
+const path = require('path');
 
 const commonCfg = require('./common.config');
 const configs = require('./config');
@@ -85,12 +87,6 @@ module.exports = () => {
         chunkFilename: 'css/[name].[contenthash].css',
         ignoreOrder: false, // Enable to remove warnings about conflicting order
       }),
-      new webpack.SourceMapDevToolPlugin({
-        // TODO sourceMap的地址
-        // this is the url of our local sourcemap server
-        // publicPath: config.SOURCEMAP,
-        filename: '[file].map',
-      }),
       new HtmlWebpackPlugin({
         loading: config.loading,
         ...config.htmlPlugin,
@@ -115,5 +111,25 @@ module.exports = () => {
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
   });
+
+  if (config.sentryPlugin) {
+    let version = '0.0.1';
+    try {
+      version = require(path.resolve(process.cwd(), 'package.json')).version
+    } catch(e) {
+      console.log(e);
+    }
+    prodConfig.devtool = 'source-map';
+    prodConfig.plugins.push(new SentryPlugin({
+      release: version,
+      suppressConflictError: true,
+      deleteAfterCompile: true,
+      filenameTransform: function(filename) {
+        return config.publicPath + filename;
+      },
+      baseSentryURL: 'https://sentry.codemao.cn/api/0',
+      ...config.sentryPlugin,
+    }));
+  }
   return prodConfig;
 };

@@ -4,11 +4,9 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const path = require('path');
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const SentryPlugin = require('webpack-sentry-plugin');
 // const AutoDllPlugin = require('autodll-webpack-plugin');
 
 const configs = require('./config');
@@ -178,25 +176,6 @@ module.exports = () => {
   };
   if (config.analyzePlugin) {
     commonConfig.plugins.push(new BundleAnalyzerPlugin());
-  }
-  if (config.sentryPlugin) {
-    let version = '0.0.1';
-    try {
-      version = require(path.resolve(process.cwd(), 'package.json')).version
-    } catch(e) {
-      console.log(e);
-    }
-    commonConfig.devtool = 'source-map';
-    commonConfig.plugins.push(new SentryPlugin({
-      release: version,
-      suppressConflictError: true,
-      deleteAfterCompile: true,
-      filenameTransform: function(filename) {
-        return config.publicPath + filename;
-      },
-      baseSentryURL: 'https://sentry.codemao.cn/api/0',
-      ...config.sentryPlugin,
-    }));
   }
   if (config.loaderOptions) {
     commonConfig.module.rules.push(...config.loaderOptions);
