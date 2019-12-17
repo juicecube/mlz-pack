@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.30](https://github.com/juicecube/mlz-pack/compare/v0.1.29...v0.1.30) (2019-12-17)
+
+
+### Features
+
+* add config to control hard-source-webpack-plugin ([877f6f2](https://github.com/juicecube/mlz-pack/commit/877f6f2fcb7dd80ad840a1a213f93b0b9ebc3afd))
+
 ### [0.1.29](https://github.com/juicecube/mlz-pack/compare/v0.1.28...v0.1.29) (2019-12-16)
 
 ### [0.1.28](https://github.com/juicecube/mlz-pack/compare/v0.1.27...v0.1.28) (2019-12-16)
