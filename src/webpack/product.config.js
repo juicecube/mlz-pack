@@ -81,7 +81,6 @@ module.exports = () => {
       ],
     },
     plugins: [
-      new HardSourceWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash].css',
         chunkFilename: 'css/[name].[contenthash].css',
@@ -111,6 +110,10 @@ module.exports = () => {
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
   });
+
+  if (config.hardSourcePlugin) {
+    prodConfig.plugins.push(new HardSourceWebpackPlugin());
+  }
 
   if (config.sentryPlugin) {
     let version = '0.0.1';

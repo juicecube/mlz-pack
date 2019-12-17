@@ -97,6 +97,7 @@ if(module.hot){
 | **[`analyzePlugin`](#analyzePlugin)** 	| `boolean` 	| `false` 	| 是否开启bundle分析 	|
 | **[`htmlPlugin`](#htmlPlugin)** 	| `Object` 	| `{filename: 'index.html',template: path.resolve(process.cwd(), 'src/index.ejs')}` 	| htmlplugin的参数设置 	|
 | **[`sentryPlugin`](#sentryPlugin)** 	| `Object` 	| `{release: version, suppressConflictError: true, deleteAfterCompile: true, filenameTransform: function(filename) { return config.publicPath + filename; }, baseSentryURL: 'https://sentry.codemao.cn/api/0',}` 	| sentryPlugin配置 	|
+| **[`hardSourcePlugin`](#hardSourcePlugin)** 	| `boolean` 	| `false` 	| 开启hard-source-webpack-plugin，用于build缓存 	|
 | **[`libs`](#libs)** 	| `{[key:string]:string[]}` 	| `undefined` 	| 用于单独切分第三方依赖的bundle的配置 	|
 | **[`loaderOptions`](#loaderOptions)** 	| `RuleSetRule[]` 	| `undefined` 	| loader扩展 	|
 | **[`pluginOptions`](#pluginOptions)** 	| `any[]` 	| `undefined` 	| plugin扩展 	|
@@ -399,6 +400,25 @@ module.exports = {
       project: 'xxx',
       apiKey: 'xxx',
     },
+  },
+}
+```
+
+### `hardSourcePlugin`
+
+Type: `boolean` Default: `false`
+
+是否开启[hard-source-webpack-plugin](https://github.com/mzgoddard/hard-source-webpack-plugin)，以便于build缓存的利用。
+
+**mlz-pack.js**
+
+```js
+module.exports = {
+  webpack: {
+    libs: {
+      vender: ['react', 'react-dom'],
+      juice: ['@mlz/pack', '@mlz/lint'],
+    }
   },
 }
 ```
