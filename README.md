@@ -415,10 +415,7 @@ Type: `boolean` Default: `false`
 ```js
 module.exports = {
   webpack: {
-    libs: {
-      vender: ['react', 'react-dom'],
-      juice: ['@mlz/pack', '@mlz/lint'],
-    }
+    hardSourcePlugin: true,
   },
 }
 ```
