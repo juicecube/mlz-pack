@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.36](https://github.com/juicecube/mlz-pack/compare/v0.1.35...v0.1.36) (2019-12-18)
+
+
+### Bug Fixes
+
+* fix load tsconfig.json ([69b1af1](https://github.com/juicecube/mlz-pack/commit/69b1af120141f8ce246e721a05e417be1a8e4be2))
+
 ### [0.1.35](https://github.com/juicecube/mlz-pack/compare/v0.1.34...v0.1.35) (2019-12-18)
 
 
