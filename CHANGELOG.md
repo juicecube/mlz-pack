@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.31](https://github.com/juicecube/mlz-pack/compare/v0.1.30...v0.1.31) (2019-12-18)
+
+
+### Features
+
+* add extracss config to control ([d5e59fb](https://github.com/juicecube/mlz-pack/commit/d5e59fb0741c47eb78353d752fe763b84f2a0496))
+
 ### [0.1.30](https://github.com/juicecube/mlz-pack/compare/v0.1.29...v0.1.30) (2019-12-17)
 
 
