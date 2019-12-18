@@ -91,6 +91,7 @@ if(module.hot){
 | **[`tsconfig`](#tsconfig)** 	| `string` 	| `undefined` 	| tsconfig路径（可选） 	|
 | **[`devServer`](#devServer)** 	| `object` 	| `{port: 8080, noInfo: true, hot: true, inline: true, historyApiFallback: true, stats: 'errors-only', open: true}` 	| dev-server相关配置 	|
 | **[`pxtorem`](#pxtorem)** 	| `object` 	| `undefined` 	| 是否开启px转rem，还有相关配置 	|
+| **[`svgr`](#svgr)** 	| `boolean` 	| `false` 	| 是否开启svgr，可以使svg作为组件使用 	|
 | **[`cssScopeName`](#cssScopeName)** 	| `string` 	| `[local]__[hash:base64:5] \| [path][name]__[local]` 	| css的className编译规则，默认：dev环境是`[path][name]__[local]`，正式环境是`[name]__[hash:base64:5]` 	|
 | **[`alias`](#alias)** 	| `{[key:string]:string}` 	| `undefined` 	| 别名，可不填，默认会读tsconfig里的paths 	|
 | **[`definePlugin`](#definePlugin)** 	| `{[key:string]:any}` 	| `undefined` 	| 全局变量 	|
@@ -189,6 +190,22 @@ module.exports = {
       port: '8080',
       open: true,
     },
+  },
+}
+```
+
+### `svgr`
+
+Type: `boolean` Default: `false`
+
+是否开启[svgr](https://github.com/smooth-code/svgr)
+
+**mlz-pack.js**
+
+```js
+module.exports = {
+  webpack: {
+    svgr: true,
   },
 }
 ```
