@@ -1,4 +1,7 @@
+!src/**/*
+!bin/**/*
 test/
 ts/
 node_modules
 .npmrc
+.github
