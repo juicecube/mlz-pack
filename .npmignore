@@ -1,7 +1,13 @@
-!src/**/*
-!bin/**/*
 test/
 ts/
 node_modules
 .npmrc
 .github
+.commitlintrc.js
+.DS_Store
+.eslintrc
+.commitlintrc.js
+jest.config.js
+CHANGELOG.md
+Config.md
+.travis.yml
