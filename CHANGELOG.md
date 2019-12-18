@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.33](https://github.com/juicecube/mlz-pack/compare/v0.1.32...v0.1.33) (2019-12-18)
+
+
+### Bug Fixes
+
+* update npmignore ([3bbb7ca](https://github.com/juicecube/mlz-pack/commit/3bbb7ca7de7b74434d3830902e3b4f221727a048))
+
 ### [0.1.32](https://github.com/juicecube/mlz-pack/compare/v0.1.31...v0.1.32) (2019-12-18)
 
 
