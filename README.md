@@ -98,6 +98,7 @@ if(module.hot){
 | **[`htmlPlugin`](#htmlPlugin)** 	| `Object` 	| `{filename: 'index.html',template: path.resolve(process.cwd(), 'src/index.ejs')}` 	| htmlplugin的参数设置 	|
 | **[`sentryPlugin`](#sentryPlugin)** 	| `Object` 	| `{release: version, suppressConflictError: true, deleteAfterCompile: true, filenameTransform: function(filename) { return config.publicPath + filename; }, baseSentryURL: 'https://sentry.codemao.cn/api/0',}` 	| sentryPlugin配置 	|
 | **[`hardSourcePlugin`](#hardSourcePlugin)** 	| `boolean` 	| `false` 	| 开启hard-source-webpack-plugin，用于build缓存 	|
+| **[`extraCssPlugin`](#extraCssPlugin)** 	| `boolean` 	| `true` 	| 是否在正式环境开启mini-css-extract-plugin 	|
 | **[`libs`](#libs)** 	| `{[key:string]:string[]}` 	| `undefined` 	| 用于单独切分第三方依赖的bundle的配置 	|
 | **[`loaderOptions`](#loaderOptions)** 	| `RuleSetRule[]` 	| `undefined` 	| loader扩展 	|
 | **[`pluginOptions`](#pluginOptions)** 	| `any[]` 	| `undefined` 	| plugin扩展 	|
@@ -416,6 +417,22 @@ Type: `boolean` Default: `false`
 module.exports = {
   webpack: {
     hardSourcePlugin: true,
+  },
+}
+```
+
+### `extraCssPlugin`
+
+Type: `boolean` Default: `true`
+
+是否在正式环境开启[mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin)。
+
+**mlz-pack.js**
+
+```js
+module.exports = {
+  webpack: {
+    extraCssPlugin: false,
   },
 }
 ```
