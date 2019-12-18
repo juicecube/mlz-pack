@@ -5,5 +5,5 @@
     "paths": {
       "example/*": ["../ts-example/*"]
     }
-  },
+  }
 }

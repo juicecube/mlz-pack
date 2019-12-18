@@ -20,6 +20,17 @@
     "release": "standard-version",
     "prepublishOnly": "npm run test && npm run release"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS",
+      "pre-push": "npm run test && npm run test:webpack"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juicecube/mlz-pack.git"
@@ -52,17 +63,6 @@
     "rimraf": "^3.0.0",
     "standard-version": "^7.0.0",
     "validate-commit-msg": "^2.14.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $GIT_PARAMS",
-      "pre-push": "npm run test && npm run test:webpack"
-    }
   },
   "dependencies": {
     "@babel/core": "^7.5.5",

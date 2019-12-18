@@ -54,7 +54,6 @@ module.exports = () => {
                     let nextId = id;
                     const keys = Object.keys(alias);
                     const key = id.split('/')[0];
-                    console.log('path', path.resolve(alias[key], id.replace(key, '.')));
                     if (keys.find((item) => item === key)) {
                       return path.resolve(alias[key], id.replace(key, '.'));
                     }
