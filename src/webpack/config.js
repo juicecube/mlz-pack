@@ -30,6 +30,7 @@ class Config {
       cssScopeName: isDev ? '[path][name]__[local]' : '[local]__[hash:base64:5]',
       analyzePlugin: false,
       hardSourcePlugin: false,
+      extraCssPlugin: true,
       htmlPlugin: {
         filename: 'index.html',
         template: path.resolve(process.cwd(), 'src/index.ejs'),

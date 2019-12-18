@@ -81,11 +81,6 @@ module.exports = () => {
       ],
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash].css',
-        chunkFilename: 'css/[name].[contenthash].css',
-        ignoreOrder: false, // Enable to remove warnings about conflicting order
-      }),
       new HtmlWebpackPlugin({
         loading: config.loading,
         ...config.htmlPlugin,
@@ -110,6 +105,14 @@ module.exports = () => {
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
   });
+
+  if (config.extraCssPlugin) {
+    prodConfig.plugins.push(new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css',
+      chunkFilename: 'css/[name].[contenthash].css',
+      ignoreOrder: false, // Enable to remove warnings about conflicting order
+    }));
+  }
 
   if (config.hardSourcePlugin) {
     prodConfig.plugins.push(new HardSourceWebpackPlugin());

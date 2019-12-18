@@ -42,7 +42,7 @@ module.exports = () => {
     'sass-loader',
   ];
 
-  if (!config.isDev) {
+  if (!config.isDev && config.extraCssPlugin) {
     scssRules.unshift({ loader: MiniCssExtractPlugin.loader });
   } else {
     scssRules.unshift('style-loader');
