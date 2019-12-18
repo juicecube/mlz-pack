@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.34](https://github.com/juicecube/mlz-pack/compare/v0.1.33...v0.1.34) (2019-12-18)
+
+
+### Features
+
+* add svgr config ([895f00a](https://github.com/juicecube/mlz-pack/commit/895f00a0ea0f4b792cf134caa49315b576d5d390))
+* update readme ([4cac199](https://github.com/juicecube/mlz-pack/commit/4cac199f965b817ed9f7eb8167e29e21f43dd622))
+
 ### [0.1.33](https://github.com/juicecube/mlz-pack/compare/v0.1.32...v0.1.33) (2019-12-18)
 
 
