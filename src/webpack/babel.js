@@ -1,17 +1,19 @@
 const configs = require('./config');
 const merge = require('@mlz/babel-merge');
 const path = require('path');
+const pathsTsconfig = require('tsconfig-paths');
 
 module.exports = () => {
   const config = configs.get();
   const tsconfigPath = config.tsconfig || path.resolve(process.cwd(), 'tsconfig.json');
   const alias = config.alias;
   try {
-    const paths = require(tsconfigPath).compilerOptions.paths;
-    if (paths) {
+    const result = pathsTsconfig.loadConfig(tsconfigPath);
+    if (result.resultType == 'success' && result.paths) {
+      const paths = result.paths;
       Object.keys(paths).forEach((item) => {
         const key = item.replace('/*', '');
-        const value = path.resolve(process.cwd(), paths[item][0].replace('/*', '').replace('*', ''));
+        const value = path.resolve(result.absoluteBaseUrl, paths[item][0].replace('/*', '').replace('*', ''));
         alias[key] = value;
       });
     }
