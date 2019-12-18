@@ -160,8 +160,11 @@ module.exports = () => {
     ],
   };
   if (config.svgr) {
-    commonConfig.module.rules.push({
+    commonConfig.module.rules.unshift({
       test: /\.svg$/,
+      issuer: {
+        test: /\.(jsx|tsx)?$/
+      },
       use: [
         '@svgr/webpack',
         {
@@ -174,7 +177,7 @@ module.exports = () => {
           },
         },
       ],
-    })
+    });
   }
   if (config.analyzePlugin) {
     commonConfig.plugins.push(new BundleAnalyzerPlugin());

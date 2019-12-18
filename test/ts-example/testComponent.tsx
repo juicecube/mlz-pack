@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-import svg from 'example/assets/test-svg.svg';
+import TestSvg from 'example/assets/test-svg.svg';
 import './index.scss';
 
+console.log(TestSvg);
 export function Test() {
   const [num, setNum] = useState(0);
 
@@ -11,7 +12,8 @@ export function Test() {
       <p styleName="color">{num}</p>
       <i styleName="icon"></i>
       <i styleName="icon-svg"></i>
-      <img src={svg} alt=""/>
+      <TestSvg />
+      <img src={require('./assets/test-svg.svg')}></img>
       <button onClick={() => setNum(num + 1)}>加一</button>
     </div>
   );

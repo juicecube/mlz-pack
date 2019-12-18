@@ -11,3 +11,4 @@ jest.config.js
 CHANGELOG.md
 Config.md
 .travis.yml
+*.tgz

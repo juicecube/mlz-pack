@@ -14,6 +14,7 @@ serve({
   htmlPlugin: {
     template: htmlPath,
   },
+  svgr: true,
   devServer: {
     open: false,
   }

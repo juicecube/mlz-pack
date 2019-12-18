@@ -27,7 +27,6 @@ build({
     htmlPlugin: {
       template: htmlPath,
     },
-    svgr: true,
     // alias: {
     //   example: path.join(rootPath, 'test/ts-example'),
     // }
