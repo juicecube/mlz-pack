@@ -27,6 +27,7 @@ class Config {
         port: '8080',
         open: true,
       },
+      svgr: false,
       cssScopeName: isDev ? '[path][name]__[local]' : '[local]__[hash:base64:5]',
       analyzePlugin: false,
       hardSourcePlugin: false,

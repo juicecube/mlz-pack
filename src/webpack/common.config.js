@@ -97,7 +97,7 @@ module.exports = () => {
           use: [...scssRules],
         },
         {
-          test: /\.(jpe?g|png|gif)$/,
+          test: /\.(jpe?g|png|gif|svg)$/,
           exclude: /node_modules/,
           use: [
             {
@@ -109,21 +109,6 @@ module.exports = () => {
                 publicPath: config.publicPath,
               },
             }
-          ],
-        },
-        {
-          test: /\.svg$/,
-          use: [
-            '@svgr/webpack',
-            {
-              loader: 'url-loader',
-              options: {
-                emitFile: true,
-                limit: 3 * 1024,
-                name: 'images/[name]__[hash:5].[ext]',
-                publicPath: config.publicPath,
-              },
-            },
           ],
         },
         {
@@ -174,6 +159,23 @@ module.exports = () => {
       
     ],
   };
+  if (config.svgr) {
+    commonConfig.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        '@svgr/webpack',
+        {
+          loader: 'url-loader',
+          options: {
+            emitFile: true,
+            limit: 3 * 1024,
+            name: 'images/[name]__[hash:5].[ext]',
+            publicPath: config.publicPath,
+          },
+        },
+      ],
+    })
+  }
   if (config.analyzePlugin) {
     commonConfig.plugins.push(new BundleAnalyzerPlugin());
   }
@@ -183,8 +185,6 @@ module.exports = () => {
   if (config.pluginOptions) {
     commonConfig.plugins.push(...config.pluginOptions);
   }
-
-  
 
   return commonConfig;
 };
