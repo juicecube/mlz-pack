@@ -10,6 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const AutoDllPlugin = require('autodll-webpack-plugin');
 
 const configs = require('./config');
+const getBabelConfig = require('./babel');
 
 
 module.exports = () => {
@@ -126,7 +127,10 @@ module.exports = () => {
         },
         {
           test: /\.(ts|tsx)?$/,
-          use: 'happypack/loader?id=ts',
+          use: [{
+            loader: 'babel-loader',
+            options: getBabelConfig(),
+          }],
           exclude: /(node_modules)/,
         },
         {
