@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.37](https://github.com/juicecube/mlz-pack/compare/v0.1.36...v0.1.37) (2019-12-20)
+
+
+### Bug Fixes
+
+* remove happypack in babel ([1be4060](https://github.com/juicecube/mlz-pack/commit/1be40606322f5954fedb3fa6874de81e69d2161b))
+
 ### [0.1.36](https://github.com/juicecube/mlz-pack/compare/v0.1.35...v0.1.36) (2019-12-18)
 
 
