@@ -51,6 +51,7 @@ module.exports = () => {
 
   const commonConfig = {
     entry: config.entryPath,
+    target: config.target,
     output: {
       // 打包输出的文件
       path: config.buildPath,
