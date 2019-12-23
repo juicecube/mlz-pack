@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.38](https://github.com/juicecube/mlz-pack/compare/v0.1.37...v0.1.38) (2019-12-23)
+
+
+### Features
+
+* add target field for webpack. ([fc7946b](https://github.com/juicecube/mlz-pack/commit/fc7946bd814db9dfa7ebd14f78fe9687e6afa791))
+
 ### [0.1.37](https://github.com/juicecube/mlz-pack/compare/v0.1.36...v0.1.37) (2019-12-20)
 
 
