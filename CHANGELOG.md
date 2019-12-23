@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.39](https://github.com/juicecube/mlz-pack/compare/v0.1.38...v0.1.39) (2019-12-23)
+
+
+### Features
+
+* downgrade style-loader 1.0.0 ([5dea774](https://github.com/juicecube/mlz-pack/commit/5dea774877c65549dda1466e227f6d87db019b6a))
+
 ### [0.1.38](https://github.com/juicecube/mlz-pack/compare/v0.1.37...v0.1.38) (2019-12-23)
 
 
