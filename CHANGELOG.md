@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.41](https://github.com/juicecube/mlz-pack/compare/v0.1.40...v0.1.41) (2019-12-25)
+
+
+### Features
+
+* remove babel-react-modules hotreload ([6649d55](https://github.com/juicecube/mlz-pack/commit/6649d55bdebac2a486bd7aac54ea7867cafbd097))
+
 ### [0.1.40](https://github.com/juicecube/mlz-pack/compare/v0.1.39...v0.1.40) (2019-12-25)
 
 
