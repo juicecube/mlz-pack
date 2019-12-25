@@ -22,7 +22,7 @@ module.exports = () => {
   }
 
   let babelCfg = {
-    cacheDirectory: true,
+    cacheDirectory: false,
     cacheCompression: false,
     'presets': [
       [
