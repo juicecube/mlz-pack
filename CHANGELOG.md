@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.40](https://github.com/juicecube/mlz-pack/compare/v0.1.39...v0.1.40) (2019-12-25)
+
+
+### Features
+
+* turn off cache ([a79179b](https://github.com/juicecube/mlz-pack/commit/a79179b429ef76a6369176aba36a268c0893ccb3))
+
 ### [0.1.39](https://github.com/juicecube/mlz-pack/compare/v0.1.38...v0.1.39) (2019-12-23)
 
 
