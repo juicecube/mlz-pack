@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.42](https://github.com/juicecube/mlz-pack/compare/v0.1.41...v0.1.42) (2019-12-30)
+
+
+### Features
+
+* add module resolver to resolve alias ([7ab1aea](https://github.com/juicecube/mlz-pack/commit/7ab1aeaef261412e3474b6a79cd599ff83c5c542))
+
 ### [0.1.41](https://github.com/juicecube/mlz-pack/compare/v0.1.40...v0.1.41) (2019-12-25)
 
 
