@@ -41,9 +41,14 @@ module.exports = () => {
         'libraryName': 'antd',
         'style': 'css',
       }],
+      ["module-resolver", {
+        "extensions": [".js", ".jsx", ".mjs", ".ts", ".tsx", ".css", ".scss"],
+        "alias": alias,
+      }],
       ['react-css-modules', {
         'generateScopedName': config.cssScopeName,
         handleMissingStyleName: "warn",
+        webpackHotModuleReloading: true,
         'filetypes': {
           '.scss': {
             'syntax': 'postcss-scss',
