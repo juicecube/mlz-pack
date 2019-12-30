@@ -47,7 +47,6 @@ module.exports = () => {
       }],
       ['react-css-modules', {
         'generateScopedName': config.cssScopeName,
-        handleMissingStyleName: "warn",
         webpackHotModuleReloading: true,
         'filetypes': {
           '.scss': {
