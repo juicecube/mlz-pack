@@ -20,6 +20,7 @@ class Config {
         raf: path.resolve(process.cwd(), 'node_modules/raf/'),
       },
       target: 'web',
+      dropConsole: true,
       rootPath: process.cwd(),
       entryPath: { index: path.resolve(process.cwd(), 'src/index.tsx') },
       buildPath: path.resolve(process.cwd(), 'build'),
