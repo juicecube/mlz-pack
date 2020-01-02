@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.44](https://github.com/juicecube/mlz-pack/compare/v0.1.43...v0.1.44) (2020-01-02)
+
+
+### Features
+
+* add config API. ([9dc364a](https://github.com/juicecube/mlz-pack/commit/9dc364a07d522c86c01e7aa83ea66309f21763a9))
+
 ### [0.1.43](https://github.com/juicecube/mlz-pack/compare/v0.1.42...v0.1.43) (2019-12-30)
 
 ### [0.1.42](https://github.com/juicecube/mlz-pack/compare/v0.1.41...v0.1.42) (2019-12-30)
