@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.45](https://github.com/juicecube/mlz-pack/compare/v0.1.44...v0.1.45) (2020-01-06)
+
+
+### Features
+
+* use sass replace node-sass to support [@use](https://github.com/use) ([6b24e81](https://github.com/juicecube/mlz-pack/commit/6b24e81190dea930a66e5c963c6f33906f12c9d4))
+
 ### [0.1.44](https://github.com/juicecube/mlz-pack/compare/v0.1.43...v0.1.44) (2020-01-02)
 
 
