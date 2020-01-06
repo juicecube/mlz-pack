@@ -83,7 +83,6 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         loading: config.loading,
-        ...config.htmlPlugin,
         // inject: true,
         removeAttributeQuotes: true,
         collapseWhitespace: true,
@@ -91,6 +90,7 @@ module.exports = () => {
         minifyCSS: true,
         removeComments: false,
         removeEmptyAttributes: true,
+        ...config.htmlPlugin,
       }),
       new ImageminPlugin({
         bail: false, // Ignore errors on corrupted images
