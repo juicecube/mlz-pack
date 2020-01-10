@@ -1,6 +1,6 @@
 {
   "name": "@mlz/pack",
-  "version": "0.1.45",
+  "version": "1.0.0",
   "description": "mlz-pack",
   "main": "./src/index.js",
   "bin": {
@@ -18,7 +18,7 @@
     "test:smoke": "node test/smoke",
     "commit": "git-cz",
     "release": "standard-version",
-    "prepublishOnly": "npm run test && npm run release"
+    "prepublishOnly": "npm run test"
   },
   "config": {
     "commitizen": {
