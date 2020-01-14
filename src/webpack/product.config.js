@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -7,7 +8,6 @@ const ImageminPlugin = require('@mlz/imagemin-webpack');
 const merge = require('webpack-merge');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const SentryPlugin = require('webpack-sentry-plugin');
-const path = require('path');
 
 const commonCfg = require('./common.config');
 const configs = require('./config');
@@ -42,10 +42,10 @@ module.exports = () => {
               let name = 'venderLibs';
               if (libraries) {
                 const context = module.context.split('/');
-                const n_index = context.indexOf('node_modules');
-                let packageName = context[n_index + 1];
+                const nIndex = context.indexOf('node_modules');
+                let packageName = context[nIndex + 1];
                 if (packageName.indexOf('@') > -1) {
-                  packageName = `${context[n_index + 1]}/${context[n_index + 2]}`;
+                  packageName = `${context[nIndex + 1]}/${context[nIndex + 2]}`;
                 }
                 const names = Object.keys(libraries);
                 names.map((val) => {
@@ -64,12 +64,12 @@ module.exports = () => {
           sourceMap: true,
           terserOptions: {
             compress: {
-              drop_console: config.dropConsole,
-              drop_debugger: true,
+              'drop_console': config.dropConsole,
+              'drop_debugger': true,
             },
             output: {
-              comments: false
-            }
+              comments: false,
+            },
           },
         }),
         new OptimizeCSSAssetsPlugin({
@@ -121,7 +121,7 @@ module.exports = () => {
   if (config.sentryPlugin) {
     let version = '0.0.1';
     try {
-      version = require(path.resolve(process.cwd(), 'package.json')).version
+      version = require(path.resolve(process.cwd(), 'package.json')).version;
     } catch(e) {
       console.log(e);
     }

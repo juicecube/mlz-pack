@@ -17,11 +17,10 @@ serve({
   svgr: true,
   devServer: {
     open: false,
-  }
+  },
 }, (server) => {
   if (argv.find((el) => el === '-t')) {
     server.close();
   }
-  
   console.log(chalk.green('Serve Passed!'));
 });

@@ -20,9 +20,9 @@ module.exports = (devConfig, option, cb) => {
     stats: 'errors-only',
     open: true,
     ...devServerConfig,
-  }
+  };
   const devServer = new webpackDevServer(compiler, serverConfig);
-  
+
   devServer.listen(devServerConfig.port, HOST, (err) => {
     if (err) {
       console.log(err);

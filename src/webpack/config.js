@@ -1,6 +1,6 @@
 const path = require('path');
-const merge = require('lodash.merge');
 const fs = require('fs');
+const merge = require('lodash.merge');
 
 class Config {
   constructor() {
@@ -13,7 +13,7 @@ class Config {
       isDev,
       loading: {
         html: fs.readFileSync(path.join(__dirname, './loading/index.html')),
-        css: '<style>' + fs.readFileSync(path.join(__dirname, './loading/index.css')) + '</style>',
+        css: `<style>${ fs.readFileSync(path.join(__dirname, './loading/index.css')) }</style>`,
       },
       alias: {
         root: process.cwd(),
@@ -38,13 +38,13 @@ class Config {
         filename: 'index.html',
         template: path.resolve(process.cwd(), 'src/index.ejs'),
       },
-    } 
+    };
   }
-  
+
   init(param) {
     if (param) {
       if (typeof param.isDev === 'boolean' && param.isDev !== this.config.isDev) {
-        this.config.cssScopeName = param.isDev ? '[path][name]__[local]' : '[local]__[hash:base64:5]'
+        this.config.cssScopeName = param.isDev ? '[path][name]__[local]' : '[local]__[hash:base64:5]';
       }
       const tempConfig = this.filter(param, (value) => value !== undefined);
       merge(this.config, tempConfig);

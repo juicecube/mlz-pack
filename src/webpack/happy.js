@@ -1,5 +1,5 @@
-const HappyPack = require('happypack');
 const os = require('os');
+const HappyPack = require('happypack');
 
 const cpuCount = os.cpus().length;
 var happyThreadPool = HappyPack.ThreadPool({ size: cpuCount - 1 });

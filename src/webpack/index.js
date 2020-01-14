@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const fs = require('fs');
 const path = require('path');
+const webpack = require('webpack');
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const ncp = require('ncp').ncp;
 // const merge = require('webpack-merge');
 
@@ -12,6 +12,10 @@ const prodCfg = require('./product.config');
 const config = require('./config');
 const Server = require('./devServer');
 
+/**
+ * build
+ * 获取webpack配置，并启动webpack进行打包
+*/
 function build(baseCfg, cb) {
   const webpackConfig = getWebpackConfig(baseCfg);
   const compiler = webpack(webpackConfig, (err, stats) => {
@@ -25,16 +29,19 @@ function build(baseCfg, cb) {
       children: false,
     }));
   });
+  // 打包完成执行回调
   compiler.plugin('done', () => {
     cb && cb(compiler);
   });
 }
 
+/** 开启webpack-dev-deserver */
 function serve(baseCfg, cb) {
   const webpackConfig = getWebpackConfig(baseCfg);
   Server(webpackConfig, { port: config.get().devServer.port }, cb);
 }
 
+// 获取webpack，通过从写的webpack配置和
 function getWebpackConfig(baseCfg) {
   if (fs.existsSync(path.join(process.cwd(), 'webpack.config.js'))) {
     const configs = require(path.join(process.cwd(), 'webpack.config.js'));
@@ -48,6 +55,7 @@ function getWebpackConfig(baseCfg) {
     // 正式环境
     webpackConfig = prodCfg();
   } else {
+    // 开发环境
     webpackConfig = devCfg();
   }
   // webpackConfig = merge(webpackConfig, happyCfg());
@@ -55,29 +63,34 @@ function getWebpackConfig(baseCfg) {
   return webpackConfig;
 }
 
+/**
+ * 导出webpack文件夹里面的webpack配置文件
+ * 生成webpack入口文件
+ */
 function eject() {
-  const sourcePath = __dirname;
-  const destPath = path.resolve(process.cwd(), 'webpack');
-  const tempFile = path.resolve(__dirname, 'webpack.config.temp');
-  const destWebpackConfig = path.resolve(process.cwd(), 'webpack.config.js');
-  const noEjectFiles = [
-    path.resolve(process.cwd(), 'webpack/webpack.config.temp'), 
+  const sourcePath = __dirname; // 原地址
+  const destPath = path.resolve(process.cwd(), 'webpack'); // 目标地址
+  const tempFile = path.resolve(__dirname, 'webpack.config.temp'); // webpack入口文件模板
+  const destWebpackConfig = path.resolve(process.cwd(), 'webpack.config.js'); // webpack入口文件地址
+  const noEjectFiles = [ // 不需要导出的文件
+    path.resolve(process.cwd(), 'webpack/webpack.config.temp'),
     path.resolve(process.cwd(), 'webpack/index.js'),
   ];
 
-
+  // 拷贝文件夹到目标地址
   ncp(sourcePath, destPath, (err) => {
     if (err) {
       return console.error(err);
     }
-   
+    // 生成webpack入口文件
     fs.copyFile(tempFile, destWebpackConfig, (err) => {
       if (err) {throw err;}
+      // 删除不需要的导出的文件
       for (let i = 0; i < noEjectFiles.length; i++) {
         fs.unlink(noEjectFiles[i], (err) => {
           if (err) {
-            console.error(err)
-            return
+            console.error(err);
+            return;
           }
         });
       }

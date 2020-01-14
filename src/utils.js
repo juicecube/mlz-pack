@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+// 从根目录往上一级一级的找到filename的路径
 const getPath = (filename) => {
   let currDir = process.cwd() || __dirname;
   while (!fs.existsSync(path.join(currDir, filename))) {

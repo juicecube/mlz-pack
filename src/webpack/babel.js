@@ -1,15 +1,17 @@
-const configs = require('./config');
-const merge = require('@mlz/babel-merge');
 const path = require('path');
+const merge = require('@mlz/babel-merge');
 const pathsTsconfig = require('tsconfig-paths');
+
+const configs = require('./config');
 
 module.exports = () => {
   const config = configs.get();
+  // 读取tsconfig中的path和config中的alias来生成alias数组，以供module-resolver和postcss-import做地址转换
   const tsconfigPath = config.tsconfig || path.resolve(process.cwd(), 'tsconfig.json');
   const alias = config.alias;
   try {
     const result = pathsTsconfig.loadConfig(tsconfigPath);
-    if (result.resultType == 'success' && result.paths) {
+    if (result.resultType === 'success' && result.paths) {
       const paths = result.paths;
       Object.keys(paths).forEach((item) => {
         const key = item.replace('/*', '');
@@ -41,9 +43,9 @@ module.exports = () => {
         'libraryName': 'antd',
         'style': 'css',
       }],
-      ["module-resolver", {
-        "extensions": [".js", ".jsx", ".mjs", ".ts", ".tsx", ".css", ".scss"],
-        "alias": alias,
+      ['module-resolver', {
+        'extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.css', '.scss'],
+        'alias': alias,
       }],
       ['react-css-modules', {
         'generateScopedName': config.cssScopeName,
@@ -51,20 +53,20 @@ module.exports = () => {
         'filetypes': {
           '.scss': {
             'syntax': 'postcss-scss',
-            "plugins": [
+            'plugins': [
               [
-                "postcss-import-sync2",
+                'postcss-import-sync2',
                 {
                   resolve: function(id, basedir) {
-                    let nextId = id;
+                    const nextId = id;
                     const keys = Object.keys(alias);
                     const key = id.split('/')[0];
                     if (keys.find((item) => item === key)) {
                       return path.resolve(alias[key], id.replace(key, '.'));
                     }
                     return path.resolve(basedir, nextId);
-                  }
-                }
+                  },
+                },
               ],
             ],
           },
@@ -80,7 +82,7 @@ module.exports = () => {
         },
       ],
       ['@babel/plugin-proposal-decorators', { 'legacy': true }],
-      ["@babel/plugin-proposal-class-properties", { "loose" : true }],
+      ['@babel/plugin-proposal-class-properties', { 'loose': true }],
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-proposal-nullish-coalescing-operator',

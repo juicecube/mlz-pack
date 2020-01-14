@@ -1,30 +1,14 @@
 const program = require('commander');
-const Init = require('./index');
-// const figlet = require('figlet');
 const chalk = require('chalk');
-const pkg = require('../package.json');
 
-// function printBanner () {
-//   figlet.text('mlz pack', {
-//     font: '3D-ASCII',
-//     horizontalLayout: 'default',
-//     verticalLayout: 'default',
-//   }, function(err, data) {
-//     if (err) {
-//       console.log('Something went wrong...');
-//       console.dir(err);
-//       return;
-//     }
-//     console.log(chalk.blue(data));
-//     console.log(chalk.blue(` mlz-pack 当前版本 ${pkg.version}`));
-//     console.log(chalk.blue(' Run mlz-pack to see usage.'));
-//   });
-// }
+const pkg = require('../package.json');
+const Pack = require('./index');
 
 program
   .version(`mlz-pack ${pkg.version}`)
   .usage('<command> [options]');
 
+// build命令可指定入口文件，同时可配置环境变量和输出的文件夹
 program
   .command('build [entry]')
   .description('build your project from a entry file(.js||.ts||.tsx), default: src/index.tsx')
@@ -37,9 +21,10 @@ program
         buildPath: cmd.dest,
       },
     };
-    Init.build(cmd.env === 'dev' ? 'dev' : 'prod', config);
+    Pack.build(cmd.env === 'dev' ? 'dev' : 'prod', config);
   });
 
+// serve命令可起一个开发服务，可指定入口文件，同时可以配置端口号
 program
   .command('serve [entry]')
   .description('serve your project in development mode')
@@ -54,21 +39,23 @@ program
         },
       },
     };
-    Init.serve(config);
+    Pack.serve(config);
   });
 
+// 导出webpack配置以便用户自定义webpack配置
 program
   .command('eject')
   .description('eject webpack config.')
   .action(() => {
-    Init.eject();
+    Pack.eject();
   });
 
+// 未知命令的提示
 program
   .arguments('<command>')
   .action((cmd) => {
     program.outputHelp();
-    console.log(`  ` + chalk.red(`Unknown command ${chalk.yellow(cmd)}.`));
+    console.log(`  ${ chalk.red(`Unknown command ${chalk.yellow(cmd)}.`)}`);
   });
 
 program.parse(process.argv);

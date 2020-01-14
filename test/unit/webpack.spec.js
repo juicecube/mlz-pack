@@ -7,10 +7,10 @@ describe('Webpack', () => {
   describe('config', () => {
     it('get config', () => {
       expect(config.get()).toEqual(initialWebpackConfig);
-    })
+    });
 
     it('filter', () => {
-      expect(config.filter({a: 2, b: 1}, (item) => item === 1)).toEqual({b: 1});
+      expect(config.filter({ a: 2, b: 1 }, (item) => item === 1)).toEqual({ b: 1 });
     });
 
     it('init empty config', () => {
@@ -19,7 +19,7 @@ describe('Webpack', () => {
     });
 
     it('init undefined config', () => {
-      config.init({isDev: undefined, rootPath: undefined});
+      config.init({ isDev: undefined, rootPath: undefined });
       expect(config.get()).toEqual(initialWebpackConfig);
     });
 
@@ -29,15 +29,15 @@ describe('Webpack', () => {
         publicPath: undefined,
         devServer: {
           port: '8081',
-        }
+        },
       };
-      config.init(initValue)
+      config.init(initValue);
       expect(config.get()).toEqual(merge(initialWebpackConfig, {
         isDev: false,
         cssScopeName: '[local]__[hash:base64:5]',
         devServer: {
           port: '8081',
-        }
+        },
       }));
     });
 

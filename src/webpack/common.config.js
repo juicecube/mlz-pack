@@ -15,7 +15,7 @@ const getBabelConfig = require('./babel');
 
 module.exports = () => {
   const config = configs.get();
-  const tsconfig = config.tsconfig ? {configFile: config.tsconfig} : {};
+  const tsconfig = config.tsconfig ? { configFile: config.tsconfig } : {};
   const scssRules = [
     {
       loader: 'css-loader',
@@ -43,11 +43,12 @@ module.exports = () => {
     {
       loader: 'sass-loader',
       options: {
-        implementation: require('sass')
-      }
-    }
+        implementation: require('sass'),
+      },
+    },
   ];
 
+  // 正式环境并且extraCssPlugin时导出css文件，否则用style-loader处理
   if (!config.isDev && config.extraCssPlugin) {
     scssRules.unshift({ loader: MiniCssExtractPlugin.loader });
   } else {
@@ -89,11 +90,9 @@ module.exports = () => {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: () => {
-                  return [
-                    autoprefixer(),
-                  ];
-                },
+                plugins: () => [
+                  autoprefixer(),
+                ],
               },
             },
           ],
@@ -115,7 +114,7 @@ module.exports = () => {
                 name: 'images/[name]__[hash:5].[ext]',
                 publicPath: config.publicPath,
               },
-            }
+            },
           ],
         },
         {
@@ -166,14 +165,14 @@ module.exports = () => {
         ...config.definePlugin,
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-      
+
     ],
   };
   if (config.svgr) {
     commonConfig.module.rules.unshift({
       test: /\.svg$/,
       issuer: {
-        test: /\.(jsx|tsx)?$/
+        test: /\.(jsx|tsx)?$/,
       },
       use: [
         '@svgr/webpack',
