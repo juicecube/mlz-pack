@@ -1,5 +1,6 @@
 # mlz-pack | 内置webpack的依赖处理的打包工具
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4c849bc9b5664c31b61449975144e615)](https://app.codacy.com/gh/juicecube/mlz-pack?utm_source=github.com&utm_medium=referral&utm_content=juicecube/mlz-pack&utm_campaign=Badge_Grade_Dashboard)
 [![CircleCI](https://travis-ci.org/juicecube/mlz-pack.svg?branch=master)](https://travis-ci.org/juicecube/mlz-pack)
 
 ## 安装
