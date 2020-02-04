@@ -88,6 +88,7 @@ if(module.hot){
 | **[`rootPath`](#rootPath)** 	| `string` 	| `process.cwd()` 	| 项目的根目录 	|
 | **[`entryPath`](#entryPath)** 	| `string \| string[] \| Entry \| EntryFunc` 	| `{ index: path.resolve(process.cwd(), 'src/index.tsx') }` 	| 入口文件（webpack的entry） 	|
 | **[`target`](#target)** 	| `string` 	| `web` 	| 项目打包的目标环境 	|
+| **[`dropConsole`](#dropConsole)** 	| `boolean` 	| `true` 	| 删除console 	| 
 | **[`buildPath`](#buildPath)** 	| `string` 	| `build` 	| build文件 	|
 | **[`publicPath`](#publicPath)** 	| `string` 	| `/` 	| js,css,图片等资源前缀 	|
 | **[`tsconfig`](#tsconfig)** 	| `string` 	| `undefined` 	| tsconfig路径（可选） 	|
@@ -118,6 +119,12 @@ Type: `string` Default: `process.cwd()`
 Type: `string` Default: `web`
 
 设置项目打包的目标环境，参数值有：`async-node`,`electron-main`,`electron-renderer`,`electron-preload`,`node`,`node-webkit`,`web`,`webworker`。
+
+### `dropConsole`
+
+Type: `boolean` Default: `true`
+
+是否删除console
 
 ### `entryPath`
 
