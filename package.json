@@ -20,11 +20,6 @@
     "release": "standard-version",
     "prepublishOnly": "npm run test"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
@@ -34,8 +29,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint",
-      "git add"
+      "eslint"
     ]
   },
   "repository": {

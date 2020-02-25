@@ -7,11 +7,12 @@
 
 本地项目安装
 
-由于内含mozjpeg-bin，optipng-bin两个binary包，需要.npmrc中添加以下配置，直接安装很大几率安装不成功。
+由于内含mozjpeg-bin，optipng-bin，sentry等binary包，需要.npmrc中添加以下配置，直接安装很大几率安装不成功。
 
 ```
 mozjpeg_binary_site=https://npm.taobao.org/mirrors/mozjpeg-bin
 optipng_binary_site=https://npm.taobao.org/mirrors/optipng-bin
+sentrycli_cdnurl=https://npm.taobao.org/mirrors/sentry-cli
 ```
 ```
 npm i @mlz/pack -D
