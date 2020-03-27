@@ -92,19 +92,22 @@ module.exports = () => {
         removeEmptyAttributes: true,
         ...config.htmlPlugin,
       }),
-      new ImageminPlugin({
-        bail: false, // Ignore errors on corrupted images
-        name: '[name]__[hash:5].[ext]',
-        imageminOptions: {
-          plugins: [
-            ['@mlz/imagemin-mozjpeg', { quality: 50 }],
-            ['@mlz/imagemin-optipng', { optimizationLevel: 5 }],
-          ],
-        },
-      }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
   });
+
+  if (config.imageminPlugin) {
+    prodConfig.plugins.push(new ImageminPlugin({
+      bail: false, // Ignore errors on corrupted images
+      name: '[name]__[hash:5].[ext]',
+      imageminOptions: {
+        plugins: [
+          ['@mlz/imagemin-mozjpeg', { quality: 50 }],
+          ['@mlz/imagemin-optipng', { optimizationLevel: 5 }],
+        ],
+      },
+    }));
+  }
 
   if (config.extraCssPlugin) {
     prodConfig.plugins.push(new MiniCssExtractPlugin({

@@ -34,6 +34,7 @@ class Config {
       analyzePlugin: false,
       hardSourcePlugin: false,
       extraCssPlugin: true,
+      imageMinPlugin: true,
       htmlPlugin: {
         filename: 'index.html',
         template: path.resolve(process.cwd(), 'src/index.ejs'),
