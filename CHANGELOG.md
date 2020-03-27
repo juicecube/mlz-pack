@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/juicecube/mlz-pack/compare/v1.0.0...v1.0.1) (2020-03-27)
+
+
+### Features
+
+* add comment and eslint fix ([cb2599b](https://github.com/juicecube/mlz-pack/commit/cb2599b9b21489f1b83806e94f40dfae5e5e670e))
+* add lint-stage ([2e20daa](https://github.com/juicecube/mlz-pack/commit/2e20daa7bcc11d2db4a16f19d1f2967d24661085))
+* config to control imageminPlugin ([694ac83](https://github.com/juicecube/mlz-pack/commit/694ac83bf8a9d278c864c332eab785307b6cdb84))
+* update package version ([11e91bd](https://github.com/juicecube/mlz-pack/commit/11e91bdd4ad2ada81e2e404bcbcec6728985a46a))
+
+
+### Bug Fixes
+
+* add pre commit eslint fix ([5e3cd9a](https://github.com/juicecube/mlz-pack/commit/5e3cd9a337439ca1f67c86baa6804813082133af))
+* update readme ([0c757e0](https://github.com/juicecube/mlz-pack/commit/0c757e0d7127ca2655f7e5c13a4dc146772f206d))
+
 ## [1.0.0](https://github.com/juicecube/mlz-pack/compare/v0.1.45...v1.0.0) (2020-01-10)
 
 ### [0.1.45](https://github.com/juicecube/mlz-pack/compare/v0.1.44...v0.1.45) (2020-01-06)
