@@ -5,7 +5,7 @@ name: Publish-package
 
 on:
   release:
-    types: [release]
+    types: [created]
 
 jobs:
   build:
