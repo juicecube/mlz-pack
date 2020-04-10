@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/juicecube/mlz-pack/compare/v1.0.3...v1.0.4) (2020-04-10)
+
+
+### Features
+
+* add publish yml ([07f60c2](https://github.com/juicecube/mlz-pack/commit/07f60c2df0ec8ee9c4c6f354837444f80e076326))
+
 ### [1.0.3](https://github.com/juicecube/mlz-pack/compare/v1.0.2...v1.0.3) (2020-04-10)
 
 
