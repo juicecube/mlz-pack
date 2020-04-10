@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/juicecube/mlz-pack/compare/v1.0.2...v1.0.3) (2020-04-10)
+
+
+### Features
+
+* add auto release ([c758d54](https://github.com/juicecube/mlz-pack/commit/c758d541a44dd7c46149b4de3448e41278b638b2))
+* update actions file ([643f88f](https://github.com/juicecube/mlz-pack/commit/643f88f5449e3726814da6ba6901c8ac5a47b394))
+
 ### [1.0.2](https://github.com/juicecube/mlz-pack/compare/v1.0.1...v1.0.2) (2020-03-27)
 
 
