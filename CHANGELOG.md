@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.6](https://github.com/juicecube/mlz-pack/compare/v1.0.5...v1.0.6) (2020-04-14)
+
+
+### Features
+
+* add release workflow ([bfad3c6](https://github.com/juicecube/mlz-pack/commit/bfad3c61a9f21fd8944424c39aab37cfbb947153))
+* **created:** test for publish ([de6e601](https://github.com/juicecube/mlz-pack/commit/de6e601d28235fc076bb4e079483e54337c05836))
+* fix npm publish ([5d889b7](https://github.com/juicecube/mlz-pack/commit/5d889b72af90663ed593581998c6f817ce3083aa))
+
+
+### Bug Fixes
+
+* add auto release workflow ([83ce733](https://github.com/juicecube/mlz-pack/commit/83ce733f5eebb4824935f7f9b2de9dac68371565))
+* drafter template config ([ae7e559](https://github.com/juicecube/mlz-pack/commit/ae7e559a8b82a9ba3c3bd4e097cb9c1c7a739819))
+* drafter template config ([624a3a0](https://github.com/juicecube/mlz-pack/commit/624a3a003136910e9cd788529b0465201b69d9e0))
+* move drafter config to .github ([7fde8cb](https://github.com/juicecube/mlz-pack/commit/7fde8cb2066cd99fcee1fc97f6f0bd13a2105b7b))
+* release yml ([bf393e7](https://github.com/juicecube/mlz-pack/commit/bf393e78d771c45557933d37ef417aa9f740239c))
+* remove node-ci ([a5eace5](https://github.com/juicecube/mlz-pack/commit/a5eace56e19977dee7144730475e63b94cae8cae))
+* udpate release.yml with githubtoken ([2c0199a](https://github.com/juicecube/mlz-pack/commit/2c0199ac708270f5437c309802bbd2105092bcfd))
+
 ### [1.0.5](https://github.com/juicecube/mlz-pack/compare/v1.0.4...v1.0.5) (2020-04-10)
 
 ### [1.0.4](https://github.com/juicecube/mlz-pack/compare/v1.0.3...v1.0.4) (2020-04-10)
