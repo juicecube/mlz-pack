@@ -11,6 +11,10 @@ jobs:
     name: Create Release
     runs-on: ubuntu-latest
     steps:
+      - name: Read CHANGELOG
+        id: changelog
+        run: |
+          echo "::set-output name=body::$(cat CHANGELOG.md)"
       - name: Checkout code
         uses: actions/checkout@master
       - name: Create Release
@@ -20,8 +24,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Changes in this Release
+          release_name: ${{ github.ref }}
+          body: ${{ steps.changelog.outputs.body }}
           draft: false
           prerelease: false

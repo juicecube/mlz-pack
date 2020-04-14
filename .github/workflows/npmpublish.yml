@@ -4,8 +4,9 @@
 name: Publish-package
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
