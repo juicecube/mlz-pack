@@ -92,6 +92,7 @@ if(module.hot){
 | **[`dropConsole`](#dropConsole)** 	| `boolean` 	| `true` 	| 删除console 	| 
 | **[`buildPath`](#buildPath)** 	| `string` 	| `build` 	| build文件 	|
 | **[`publicPath`](#publicPath)** 	| `string` 	| `/` 	| js,css,图片等资源前缀 	|
+| **[`assetsPublicPath`](#assetsPublicPath)** 	| `string` 	| `/` 	| 特别指定图片，文件等资源前缀，默认与publicPath保持一致 	|
 | **[`tsconfig`](#tsconfig)** 	| `string` 	| `undefined` 	| tsconfig路径（可选） 	|
 | **[`devServer`](#devServer)** 	| `object` 	| `{port: 8080, noInfo: true, hot: true, inline: true, historyApiFallback: true, stats: 'errors-only', open: true}` 	| dev-server相关配置 	|
 | **[`pxtorem`](#pxtorem)** 	| `object` 	| `undefined` 	| 是否开启px转rem，还有相关配置 	|
@@ -171,6 +172,22 @@ js,css,图片等资源前缀，默认是`/`，正式环境请设置为cdn的地�
 module.exports = {
   webpack: {
     publicPath: '/',
+  }
+}
+```
+
+### `assetsPublicPath`
+
+Type: `string` Default: `/`
+
+图片，字体等资源前缀，默认与publicPath保持一致
+
+**mlz-pack.js**
+
+```js
+module.exports = {
+  webpack: {
+    assetsPublicPath: '/',
   }
 }
 ```

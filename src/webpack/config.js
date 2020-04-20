@@ -25,6 +25,7 @@ class Config {
       entryPath: { index: path.resolve(process.cwd(), 'src/index.tsx') },
       buildPath: path.resolve(process.cwd(), 'build'),
       publicPath: '/',
+      assetsPublicPath: '/',
       devServer: {
         port: '8080',
         open: true,
@@ -49,6 +50,9 @@ class Config {
       }
       const tempConfig = this.filter(param, (value) => value !== undefined);
       merge(this.config, tempConfig);
+      if (!tempConfig.assetsPublicPath) {
+        this.config.assetsPublicPath = this.config.publicPath;
+      }
     }
   }
 
