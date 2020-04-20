@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.9](https://github.com/juicecube/mlz-pack/compare/v1.0.8...v1.0.9) (2020-04-20)
+
+
+### Features
+
+* add assetsPublicPath to control assets ([926945d](https://github.com/juicecube/mlz-pack/commit/926945d57c91dc490e9fa5a37aff37b5e169c907))
+
 ### [1.0.8](https://github.com/juicecube/mlz-pack/compare/v1.0.7...v1.0.8) (2020-04-14)
 
 
