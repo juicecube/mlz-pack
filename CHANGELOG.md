@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.10](https://github.com/juicecube/mlz-pack/compare/v1.0.9...v1.0.10) (2020-05-06)
+
+
+### Features
+
+* warning of babel-css-module ([e149541](https://github.com/juicecube/mlz-pack/commit/e1495417bbc3db55879b571b803eacecca599d47))
+
 ### [1.0.9](https://github.com/juicecube/mlz-pack/compare/v1.0.8...v1.0.9) (2020-04-20)
 
 
