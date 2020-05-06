@@ -14,9 +14,10 @@ serve({
   htmlPlugin: {
     template: htmlPath,
   },
-  svgr: true,
+  svgr: false,
   devServer: {
     open: false,
+    port: 5001,
   },
 }, (server) => {
   if (argv.find((el) => el === '-t')) {

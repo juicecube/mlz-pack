@@ -50,6 +50,7 @@ module.exports = () => {
       ['react-css-modules', {
         'generateScopedName': config.cssScopeName,
         webpackHotModuleReloading: true,
+        handleMissingStyleName: 'warn',
         'filetypes': {
           '.scss': {
             'syntax': 'postcss-scss',

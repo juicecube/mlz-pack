@@ -27,6 +27,7 @@ build({
     htmlPlugin: {
       template: htmlPath,
     },
+    dropConsole: false,
     // alias: {
     //   example: path.join(rootPath, 'test/ts-example'),
     // }
