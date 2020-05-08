@@ -83,13 +83,14 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         loading: config.loading,
-        // inject: true,
-        removeAttributeQuotes: true,
-        collapseWhitespace: true,
-        html5: true,
-        minifyCSS: true,
-        removeComments: false,
-        removeEmptyAttributes: true,
+        minify: {
+          collapseWhitespace: true,
+          removeComments: false,
+          removeRedundantAttributes: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          useShortDoctype: true,
+        },
         ...config.htmlPlugin,
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
