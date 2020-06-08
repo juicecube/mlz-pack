@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.12](https://github.com/juicecube/mlz-pack/compare/v1.0.11...v1.0.12) (2020-06-08)
+
+
+### Bug Fixes
+
+* cache make hot reload useless ([31e1eef](https://github.com/juicecube/mlz-pack/commit/31e1eef311f0a3edd60e849f69bc0d7d47ca7bfe))
+
 ### [1.0.11](https://github.com/juicecube/mlz-pack/compare/v1.0.10...v1.0.11) (2020-05-08)
 
 
