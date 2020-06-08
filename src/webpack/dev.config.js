@@ -19,6 +19,7 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         // inject: true,
+        cache: false,
         loading: config.loading,
         ...config.htmlPlugin,
       }),

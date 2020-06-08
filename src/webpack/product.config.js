@@ -83,6 +83,7 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         loading: config.loading,
+        cache: false,
         minify: {
           collapseWhitespace: true,
           removeComments: false,
