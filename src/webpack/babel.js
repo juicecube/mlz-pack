@@ -42,7 +42,11 @@ module.exports = () => {
       ['import', {
         'libraryName': 'antd',
         'style': 'css',
-      }],
+      }, 'antd'],
+      ['import', {
+        'libraryName': '@mlz/doraemon',
+        'camel2DashComponentName': false,
+      }, 'doraemon'],
       ['module-resolver', {
         'extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.css', '.scss'],
         'alias': alias,
