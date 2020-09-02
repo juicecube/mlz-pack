@@ -79,7 +79,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.6.3",
     "@babel/preset-typescript": "^7.7.2",
-    "@mlz/babel-merge": "^2.0.1",
+    "@mlz/babel-merge": "^2.0.2",
     "@mlz/imagemin-mozjpeg": "^8.0.1",
     "@mlz/imagemin-optipng": "^7.1.1",
     "@mlz/imagemin-webpack": "^5.1.1",
