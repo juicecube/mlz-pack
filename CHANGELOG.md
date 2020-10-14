@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.16](https://github.com/juicecube/mlz-pack/compare/v1.0.15...v1.0.16) (2020-10-14)
+
+
+### Features
+
+* 增加自定义postcss配置 ([c1a3b3c](https://github.com/juicecube/mlz-pack/commit/c1a3b3cee92c21dada7d5bf56fcf43cbc2e00348))
+
+## [1.1.0](https://github.com/juicecube/mlz-pack/compare/v1.0.15...v1.1.0) (2020-10-14)
+
+
+### Features
+
+* 增加自定义postcss配置 ([c1a3b3c](https://github.com/juicecube/mlz-pack/commit/c1a3b3cee92c21dada7d5bf56fcf43cbc2e00348))
+
 ### [1.0.15](https://github.com/juicecube/mlz-pack/compare/v1.0.14...v1.0.15) (2020-09-02)
 
 
