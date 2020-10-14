@@ -32,6 +32,10 @@ module.exports = () => {
       loader: 'postcss-loader',
       options: {
         plugins: () => {
+          // 配置有直接全覆盖
+          if (config.postScssPlugins) {
+            return config.postScssPlugins.map((plugin) => require(plugin.name)(plugin.options || {}));
+          }
           const plugin = [autoprefixer()];
           if (config.pxtorem) {
             plugin.push(pxtorem(config.pxtorem));
@@ -90,9 +94,13 @@ module.exports = () => {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: () => [
-                  autoprefixer(),
-                ],
+                plugins: () => {
+                  // 配置有plugin、全亮覆盖
+                  if (config.postCssPlugins) {
+                    return config.postCssPlugins.map((plugin) => require(plugin.name)(plugin.options || {}));
+                  }
+                  return [autoprefixer()];
+                },
               },
             },
           ],
