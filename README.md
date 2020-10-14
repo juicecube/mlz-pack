@@ -486,7 +486,40 @@ module.exports = {
   },
 }
 ```
-
+### `postCssPlugins`
+Type: Object Array
+postCss 解析css文件插件，配置后覆盖原有
+```
+module.exports = {
+  webpack: {
+    postCssPlugins: [{
+      // 插件名
+      name:'tailwindcss', 
+      //插件配置
+      options:{
+        ...
+      }
+    }],
+  },
+}
+```
+### `postScssPlugins`
+Type: Object Array
+postCss 解析scss文件插件，配置后覆盖原有
+```
+module.exports = {
+  webpack: {
+    postCssPlugins: [{
+      // 插件名
+      name:'tailwindcss', 
+      //插件配置
+      options:{
+        ...
+      }
+    }],
+  },
+}
+```
 ### `libs`
 
 Type: `{[key:string]:string[]}` Default: `undefined`
