@@ -163,7 +163,6 @@ module.exports = () => {
     },
     plugins: [
       new ProgressBarPlugin(),
-      new FriendlyErrorsWebpackPlugin(),
       new CleanWebpackPlugin({
         verbose: true, // Write logs to console.
         dry: false,
