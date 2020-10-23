@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.17](https://github.com/juicecube/mlz-pack/compare/v1.0.16...v1.0.17) (2020-10-23)
+
+
+### Bug Fixes
+
+* remove friendly-errors-webpack-plugin - take long time ([23b9da7](https://github.com/juicecube/mlz-pack/commit/23b9da76188814fa6f543b6282b4229e03203297))
+
 ### [1.0.16](https://github.com/juicecube/mlz-pack/compare/v1.0.15...v1.0.16) (2020-10-14)
 
 
