@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.18](https://github.com/juicecube/mlz-pack/compare/v1.0.17...v1.0.18) (2020-10-23)
+
+
+### Bug Fixes
+
+* remove IgnorePlugin ([0882938](https://github.com/juicecube/mlz-pack/commit/0882938e35d5748715eb192a957c0f53a05c4711))
+
 ### [1.0.17](https://github.com/juicecube/mlz-pack/compare/v1.0.16...v1.0.17) (2020-10-23)
 
 
