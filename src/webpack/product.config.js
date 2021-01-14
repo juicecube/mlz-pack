@@ -5,7 +5,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminPlugin = require('@mlz/imagemin-webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const SentryPlugin = require('webpack-sentry-plugin');
 

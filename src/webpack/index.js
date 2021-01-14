@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const ncp = require('ncp').ncp;
-// const merge = require('webpack-merge');
+// const { merge } = require('webpack-merge');
 
 const devCfg = require('./dev.config.js');
 const prodCfg = require('./product.config');

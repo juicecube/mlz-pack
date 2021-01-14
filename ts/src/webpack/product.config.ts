@@ -7,7 +7,7 @@ import autoprefixer from 'autoprefixer';
 import pxtorem from 'postcss-pxtorem';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack';
-import merge from 'webpack-merge';
+import { merge } from 'webpack-merge';
 
 import { commonCfg } from './common.config';
 import { config as configs } from './config';

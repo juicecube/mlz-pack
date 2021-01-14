@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 
 
 const commonCfg = require('./common.config');
@@ -15,7 +15,7 @@ module.exports = () => {
       chunkFilename: 'js/[name].js',
       pathinfo: false,
     },
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'eval-cheap-module-source-map',
     plugins: [
       new HtmlWebpackPlugin({
         // inject: true,
