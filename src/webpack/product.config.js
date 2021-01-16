@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -26,7 +25,8 @@ module.exports = () => {
       removeAvailableModules: true,
       removeEmptyChunks: true,
       sideEffects: false,
-      moduleIds: 'hashed',
+      // new
+      moduleIds: 'deterministic',
       runtimeChunk: {
         name: 'manifest',
       },
@@ -60,18 +60,6 @@ module.exports = () => {
         },
       },
       minimizer: [
-        new TerserPlugin({
-          sourceMap: true,
-          terserOptions: {
-            compress: {
-              'drop_console': config.dropConsole,
-              'drop_debugger': true,
-            },
-            output: {
-              comments: false,
-            },
-          },
-        }),
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
             discardComments: { removeAll: true },

@@ -22,7 +22,8 @@ module.exports = () => {
       options: {
         modules: {
           localIdentName: config.cssScopeName,
-          context: process.cwd(),
+          // new
+          localIdentContext: process.cwd(),
         },
         importLoaders: 3,
         sourceMap: false,
@@ -31,16 +32,19 @@ module.exports = () => {
     {
       loader: 'postcss-loader',
       options: {
-        plugins: () => {
-          // 配置有直接全覆盖
-          if (config.postScssPlugins) {
-            return config.postScssPlugins.map((plugin) => require(plugin.name)(plugin.options || {}));
-          }
-          const plugin = [autoprefixer()];
-          if (config.pxtorem) {
-            plugin.push(pxtorem(config.pxtorem));
-          }
-          return plugin;
+        // new
+        postcssOptions: {
+          plugins: () => {
+            // 配置有直接全覆盖
+            if (config.postScssPlugins) {
+              return config.postScssPlugins.map((plugin) => require(plugin.name)(plugin.options || {}));
+            }
+            const plugin = [autoprefixer()];
+            if (config.pxtorem) {
+              plugin.push(pxtorem(config.pxtorem));
+            }
+            return plugin;
+          },
         },
       },
     },

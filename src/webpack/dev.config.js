@@ -15,6 +15,7 @@ module.exports = () => {
       chunkFilename: 'js/[name].js',
       pathinfo: false,
     },
+    // new
     devtool: 'eval-cheap-module-source-map',
     plugins: [
       new HtmlWebpackPlugin({

@@ -1,5 +1,4 @@
 import webpack from 'webpack';
-import TerserPlugin from 'terser-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
@@ -52,7 +51,6 @@ export const prodCfg = () => {
         },
       },
       minimizer: [
-        new TerserPlugin({ sourceMap: true }),
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
             discardComments: { removeAll: true },

@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
-const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+// ! 不支持webpack5
+// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const ncp = require('ncp').ncp;
 // const { merge } = require('webpack-merge');
 
@@ -30,7 +31,7 @@ function build(baseCfg, cb) {
     }));
   });
   // 打包完成执行回调
-  compiler.plugin('done', () => {
+  compiler.hooks.done.tap({ name: 'done' }, () => {
     cb && cb(compiler);
   });
 }
@@ -50,7 +51,8 @@ function getWebpackConfig(baseCfg) {
   config.init(baseCfg);
   let webpackConfig;
   // 打包速度分析工具
-  const smp = new SpeedMeasurePlugin();
+  // ! 不支持webpack5
+  // const smp = new SpeedMeasurePlugin();
   if (!baseCfg.isDev) {
     // 正式环境
     webpackConfig = prodCfg();
@@ -59,7 +61,8 @@ function getWebpackConfig(baseCfg) {
     webpackConfig = devCfg();
   }
   // webpackConfig = merge(webpackConfig, happyCfg());
-  webpackConfig = smp.wrap(webpackConfig);
+  // ! 不支持webpack5
+  // webpackConfig = smp.wrap(webpackConfig);
   return webpackConfig;
 }
 
