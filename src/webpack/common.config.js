@@ -33,18 +33,19 @@ module.exports = () => {
       loader: 'postcss-loader',
       options: {
         // new
-        postcssOptions: {
-          plugins: () => {
-            // 配置有直接全覆盖
-            if (config.postScssPlugins) {
-              return config.postScssPlugins.map((plugin) => require(plugin.name)(plugin.options || {}));
-            }
-            const plugin = [autoprefixer()];
-            if (config.pxtorem) {
-              plugin.push(pxtorem(config.pxtorem));
-            }
-            return plugin;
-          },
+        postcssOptions: () => {
+          const options = {};
+          // 配置有plugin、全亮覆盖
+          if (config.postCssPlugins) {
+            options.plugins = config.postCssPlugins.map((plugin) => require(plugin.name)(plugin.options || {}));
+            return options;
+          }
+          const plugins = [autoprefixer()];
+          if (config.pxtorem) {
+            plugins.push(pxtorem(config.pxtorem));
+          }
+          options.plugins = plugins;
+          return options;
         },
       },
     },
@@ -104,9 +105,9 @@ module.exports = () => {
                   // 配置有plugin、全亮覆盖
                   if (config.postCssPlugins) {
                     options.plugins = config.postCssPlugins.map((plugin) => require(plugin.name)(plugin.options || {}));
-                  } else {
-                    options.plugins = [autoprefixer()];
+                    return options;
                   }
+                  options.plugins = [autoprefixer()];
                   return options;
                 },
               },
