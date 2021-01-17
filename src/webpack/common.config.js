@@ -98,12 +98,16 @@ module.exports = () => {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: () => {
+                // new
+                postcssOptions: () => {
+                  const options = {};
                   // 配置有plugin、全亮覆盖
                   if (config.postCssPlugins) {
-                    return config.postCssPlugins.map((plugin) => require(plugin.name)(plugin.options || {}));
+                    options.plugins = config.postCssPlugins.map((plugin) => require(plugin.name)(plugin.options || {}));
+                  } else {
+                    options.plugins = [autoprefixer()];
                   }
-                  return [autoprefixer()];
+                  return options;
                 },
               },
             },
