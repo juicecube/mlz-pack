@@ -67,6 +67,13 @@ module.exports = () => {
   const commonConfig = {
     entry: config.entryPath,
     target: config.target,
+    // new
+    cache: {
+      type: 'filesystem',
+      buildDependencies: {
+        config: [__filename],
+      },
+    },
     output: {
       // 打包输出的文件
       path: config.buildPath,
@@ -81,6 +88,7 @@ module.exports = () => {
         ...config.alias,
       },
       extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],
+      // ? 看情况确认是否需要修改
       symlinks: false,
       cacheWithContext: false,
       plugins: [new TsconfigPathsPlugin(tsconfig)],

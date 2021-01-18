@@ -8,7 +8,7 @@ const HOST = process.env.HOST || '0.0.0.0';
 module.exports = (devConfig, option, cb) => {
   const devServerConfig = config.get().devServer;
   const compiler = webpack(devConfig);
-  compiler.plugin('done', () => {
+  compiler.hooks.done.tap('done', () => {
     cb && cb(devServer);
   });
 
