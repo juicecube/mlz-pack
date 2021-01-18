@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin;
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -179,7 +178,8 @@ module.exports = () => {
       ],
     },
     plugins: [
-      new ProgressBarPlugin(),
+      // new
+      new webpack.ProgressPlugin(),
       new FriendlyErrorsWebpackPlugin(),
       new CleanWebpackPlugin({
         verbose: true, // Write logs to console.

@@ -62,16 +62,20 @@ module.exports = () => {
       },
       minimizer: [
         new TerserPlugin({
-          // new sourceMap: true,
+          // new
+          // sourceMap: true,
           terserOptions: {
             compress: {
               'drop_console': config.dropConsole,
               'drop_debugger': true,
             },
-            output: {
+            // new 原output
+            format: {
               comments: false,
             },
           },
+          // new 是否将注释剥离到单独文件中
+          extractComments: false,
         }),
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
