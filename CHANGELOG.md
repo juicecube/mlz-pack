@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.19](https://github.com/juicecube/mlz-pack/compare/v1.0.18...v1.0.19) (2021-01-28)
+
+
+### Features
+
+* add md file ([688d057](https://github.com/juicecube/mlz-pack/commit/688d057a20bcbb327743f4e1e3b83589e423324a))
+* output config support ([334bd8c](https://github.com/juicecube/mlz-pack/commit/334bd8c8606e313b8b9e55fa5388a409ed22c4da))
+
+
+### Bug Fixes
+
+* output options ([f4743ad](https://github.com/juicecube/mlz-pack/commit/f4743ad2c951a8da6f706f160d38092a4d15d9f8))
+* output options ([cd68b58](https://github.com/juicecube/mlz-pack/commit/cd68b585e205a3de8ff5cab07f91b1cba0e197ca))
+
 ### [1.0.18](https://github.com/juicecube/mlz-pack/compare/v1.0.17...v1.0.18) (2020-10-23)
 
 
