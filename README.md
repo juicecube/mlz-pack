@@ -429,9 +429,8 @@ module.exports = {
 Type: 
 ```
 {
-  template?:string;
-  favicon?:string;
   filename?:string;
+  chunkFilename?:string;
   [key:string]:any;
 }
 ```
