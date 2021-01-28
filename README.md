@@ -88,6 +88,7 @@ if(module.hot){
 |:-------------------------------------:	|:--------------------------------------------:	|:---------------------------------------------------------------------------------:	|:---------------------------------------------------------------------------------------------------:	|
 | **[`rootPath`](#rootPath)** 	| `string` 	| `process.cwd()` 	| 项目的根目录 	|
 | **[`entryPath`](#entryPath)** 	| `string \| string[] \| Entry \| EntryFunc` 	| `{ index: path.resolve(process.cwd(), 'src/index.tsx') }` 	| 入口文件（webpack的entry） 	|
+| **[`output`](#output)** 	| `Object` 	| [webpack: output](https://webpack.js.org/configuration/output/) 	| 项目打包输出的相关配置 	|
 | **[`target`](#target)** 	| `string` 	| `web` 	| 项目打包的目标环境 	|
 | **[`dropConsole`](#dropConsole)** 	| `boolean` 	| `true` 	| 删除console 	| 
 | **[`buildPath`](#buildPath)** 	| `string` 	| `build` 	| build文件 	|
@@ -422,6 +423,34 @@ module.exports = {
   },
 }
 ```
+
+### `output	`
+
+Type: 
+```
+{
+  template?:string;
+  favicon?:string;
+  filename?:string;
+  [key:string]:any;
+}
+```
+Default:
+```
+dev.config.js
+{
+  filename: 'js/[name].js',
+  chunkFilename: 'js/[name].js',
+  pathinfo: false,
+}
+
+product.config.js 
+{
+  filename: 'js/[name].[contenthash].js',
+  chunkFilename: 'js/[name].[contenthash].js',
+}
+```
+output，用于配置打包输出的相关配置，详细可见：[webpack: output](https://webpack.js.org/configuration/output/)
 
 ### `sentryPlugin`
 
