@@ -63,6 +63,7 @@ module.exports = () => {
     entry: config.entryPath,
     target: config.target,
     output: {
+      ...config.output,
       // 打包输出的文件
       path: config.buildPath,
       publicPath: config.publicPath,
