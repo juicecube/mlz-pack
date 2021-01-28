@@ -25,6 +25,12 @@ export type WebpackConfig = {
   devServer:{
     port:string;
   },
+  output: {
+    filename:string,
+    chunkFilename:string,
+    pathinfo:boolean,
+    ...
+  },
   pxtorem?:{
     rootValue?:number;
     propList?:string[];
