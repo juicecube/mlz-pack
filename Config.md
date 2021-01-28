@@ -25,7 +25,7 @@ export type WebpackConfig = {
   devServer:{
     port:string;
   },
-  output: {
+  output?: {
     filename:string,
     chunkFilename:string,
     pathinfo:boolean,
