@@ -19,6 +19,10 @@ serve({
     open: false,
     port: 5001,
   },
+  externals: {
+    react: 'window.React',
+    'react-dom': 'window.ReactDOM',
+  },
 }, (server) => {
   if (argv.find((el) => el === '-t')) {
     server.close();
