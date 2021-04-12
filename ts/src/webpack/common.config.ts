@@ -97,6 +97,7 @@ export const commonCfg = () => {
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
+    externals: {},
   };
   if (config.analyzePlugin) {
     commonConfig.plugins.push(new BundleAnalyzerPlugin());
@@ -106,6 +107,9 @@ export const commonCfg = () => {
   }
   if (config.pluginOptions) {
     commonConfig.plugins.push(...config.pluginOptions);
+  }
+  if(config.externals){
+    commonConfig.externals = config.externals;
   }
 
   return commonConfig;

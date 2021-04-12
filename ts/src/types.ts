@@ -35,7 +35,8 @@ export type WebpackConfig = {
     [key:string]:any;
   },
   loaderOptions?:RuleSetRule[];
-  pluginOptions?:any[]
+  pluginOptions?:any[];
+  externals?:{[key:string]:string};
 };
 
 export type Env = 'dev' | 'prod';

@@ -31,6 +31,10 @@ build({
     // alias: {
     //   example: path.join(rootPath, 'test/ts-example'),
     // }
+    externals: {
+      react: 'window.React',
+      'react-dom': 'window.ReactDOM',
+    },
   }, () => {
     console.log(chalk.green('Production Passed!'));
     console.log(chalk.green('Testing serve...'));
