@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/juicecube/mlz-pack/compare/v1.1.1...v1.1.2) (2021-04-25)
+
+
+### Bug Fixes
+
+* use hidden-source-map instead of source-map ([e76368b](https://github.com/juicecube/mlz-pack/commit/e76368bdf095a517fd4dc521c3478858ae36fcfb))
+
 ### [1.1.1](https://github.com/juicecube/mlz-pack/compare/v1.1.0...v1.1.1) (2021-04-25)
 
 
