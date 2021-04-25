@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminPlugin = require('@mlz/imagemin-webpack');
 const merge = require('webpack-merge');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-const SentryPlugin = require('webpack-sentry-plugin');
+const SentryPlugin = require('@sentry/webpack-plugin');
 
 const commonCfg = require('./common.config');
 const configs = require('./config');
@@ -132,13 +132,12 @@ module.exports = () => {
     }
     prodConfig.devtool = 'hidden-source-map';
     prodConfig.plugins.push(new SentryPlugin({
+      include: config.buildPath,
+      ignoreFile: '.sentrycliignore',
+      ignore: ['node_modules'],
+      configFile: 'sentry.properties',
+      urlPrefix: config.publicPath,
       release: version,
-      suppressConflictError: true,
-      deleteAfterCompile: true,
-      filenameTransform: function(filename) {
-        return config.publicPath + filename;
-      },
-      baseSentryURL: 'https://sentry.codemao.cn/api/0',
       ...config.sentryPlugin,
     }));
   }

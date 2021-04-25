@@ -83,7 +83,7 @@
     "@mlz/imagemin-mozjpeg": "^8.0.1",
     "@mlz/imagemin-optipng": "^7.1.1",
     "@mlz/imagemin-webpack": "^5.1.1",
-    "@sentry/webpack-plugin": "^1.9.3",
+    "@sentry/webpack-plugin": "^1.15.1",
     "@svgr/webpack": "^4.3.3",
     "autodll-webpack-plugin": "^0.4.2",
     "autoprefixer": "^9.6.1",
@@ -125,7 +125,6 @@
     "webpack-bundle-analyzer": "^3.6.1",
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2",
-    "webpack-sentry-plugin": "^2.0.2",
     "worker-loader": "^2.0.0"
   }
 }
