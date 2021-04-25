@@ -22,7 +22,6 @@ module.exports = () => {
       filename: 'js/[name].[contenthash].js',
       chunkFilename: 'js/[name].[contenthash].js',
     },
-    devtool: 'hidden-source-map',
     optimization: {
       removeAvailableModules: true,
       removeEmptyChunks: true,
@@ -131,7 +130,7 @@ module.exports = () => {
     } catch(e) {
       console.log(e);
     }
-    prodConfig.devtool = 'source-map';
+    prodConfig.devtool = 'hidden-source-map';
     prodConfig.plugins.push(new SentryPlugin({
       release: version,
       suppressConflictError: true,
