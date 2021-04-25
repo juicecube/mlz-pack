@@ -103,7 +103,7 @@ if(module.hot){
 | **[`definePlugin`](#definePlugin)** 	| `{[key:string]:any}` 	| `undefined` 	| 全局变量 	|
 | **[`analyzePlugin`](#analyzePlugin)** 	| `boolean` 	| `false` 	| 是否开启bundle分析 	|
 | **[`htmlPlugin`](#htmlPlugin)** 	| `Object` 	| `{filename: 'index.html',template: path.resolve(process.cwd(), 'src/index.ejs')}` 	| htmlplugin的参数设置 	|
-| **[`sentryPlugin`](#sentryPlugin)** 	| `Object` 	| `{release: version, suppressConflictError: true, deleteAfterCompile: true, filenameTransform: function(filename) { return config.publicPath + filename; }, baseSentryURL: 'https://sentry.codemao.cn/api/0',}` 	| sentryPlugin配置 	|
+| **[`sentryPlugin`](#sentryPlugin)** 	| `Object` 	| `{}` 	| sentryPlugin配置，更新了sentry的配置方式见详情 	|
 | **[`hardSourcePlugin`](#hardSourcePlugin)** 	| `boolean` 	| `false` 	| 开启hard-source-webpack-plugin，用于build缓存 	|
 | **[`extraCssPlugin`](#extraCssPlugin)** 	| `boolean` 	| `true` 	| 是否在正式环境开启mini-css-extract-plugin 	|
 | **[`libs`](#libs)** 	| `{[key:string]:string[]}` 	| `undefined` 	| 用于单独切分第三方依赖的bundle的配置 	|
@@ -458,29 +458,36 @@ Type: `object`
 Default:
 ```
 {
+  include: config.buildPath,
+  ignoreFile: '.sentrycliignore',
+  ignore: ['node_modules'],
+  configFile: 'sentry.properties',
+  urlPrefix: config.publicPath,
   release: version,
-  suppressConflictError: true,
-  deleteAfterCompile: true,
-  filenameTransform: function(filename) {
-    return config.publicPath + filename;
-  },
-  baseSentryURL: 'https://sentry.codemao.cn/api/0',
 }
 ```
-sentryPlugin配置，详细可见：[webpack-sentry-plugin](https://github.com/40thieves/webpack-sentry-plugin#options)
+sentryPlugin配置，详细可见：[webpack-sentry-plugin](https://github.com/getsentry/sentry-webpack-plugin#options)
+由于webpack-sentry-plugin更新接口。在本库v1.1.3以上的配置方式如下：
+根目录下新建 **.sentryclirc** 文件
 
 **mlz-pack.js**
 
 ```js
 module.exports = {
   webpack: {
-    sentryPlugin: {
-      organization: 'xxx',
-      project: 'xxx',
-      apiKey: 'xxx',
-    },
+    sentryPlugin: {},
   },
 }
+```
+**.sentryclirc**
+
+```
+[defaults]
+url = [sentry address] // 例如：https://sentry.codemao.cn
+org = [sentry org] // 例如：codemao
+project = xxx //project名
+[auth]
+token = xxx
 ```
 
 ### `hardSourcePlugin`
