@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/juicecube/mlz-pack/compare/v1.1.2...v1.1.3) (2021-04-25)
+
+
+### Bug Fixes
+
+* update sentry version ([d45f818](https://github.com/juicecube/mlz-pack/commit/d45f8187fc82b2ceec34bd38cbba4968e34a0705))
+
 ### [1.1.2](https://github.com/juicecube/mlz-pack/compare/v1.1.1...v1.1.2) (2021-04-25)
 
 
