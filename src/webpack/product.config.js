@@ -22,6 +22,7 @@ module.exports = () => {
       filename: 'js/[name].[contenthash].js',
       chunkFilename: 'js/[name].[contenthash].js',
     },
+    devtool: 'hidden-source-map',
     optimization: {
       removeAvailableModules: true,
       removeEmptyChunks: true,
