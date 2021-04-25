@@ -467,8 +467,8 @@ Default:
 }
 ```
 sentryPlugin配置，详细可见：[webpack-sentry-plugin](https://github.com/getsentry/sentry-webpack-plugin#options)
+
 由于webpack-sentry-plugin更新接口。在本库v1.1.3以上的配置方式如下：
-根目录下新建 **.sentryclirc** 文件
 
 **mlz-pack.js**
 
@@ -479,6 +479,9 @@ module.exports = {
   },
 }
 ```
+
+根目录下新建 **.sentryclirc** 文件
+
 **.sentryclirc**
 
 ```
