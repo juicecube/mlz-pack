@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/juicecube/mlz-pack/compare/v1.1.2...v1.1.3) (2021-04-25)
+
+
+### Bug Fixes
+
+* update sentry version ([d45f818](https://github.com/juicecube/mlz-pack/commit/d45f8187fc82b2ceec34bd38cbba4968e34a0705))
+
+### [1.1.2](https://github.com/juicecube/mlz-pack/compare/v1.1.1...v1.1.2) (2021-04-25)
+
+
+### Bug Fixes
+
+* use hidden-source-map instead of source-map ([e76368b](https://github.com/juicecube/mlz-pack/commit/e76368bdf095a517fd4dc521c3478858ae36fcfb))
+
+### [1.1.1](https://github.com/juicecube/mlz-pack/compare/v1.1.0...v1.1.1) (2021-04-25)
+
+
+### Bug Fixes
+
+* add source map in production for sentry ([39bd828](https://github.com/juicecube/mlz-pack/commit/39bd82872cf13ab633b61d9fc1a572f1d2928c3d))
+
+## [1.1.0](https://github.com/juicecube/mlz-pack/compare/v1.0.19...v1.1.0) (2021-04-12)
+
+
+### Features
+
+* 添加webpack.externals配置 ([0ac4dd8](https://github.com/juicecube/mlz-pack/commit/0ac4dd8fc190af399465866b12b51146f73e7d6c))
+
+### [1.0.19](https://github.com/juicecube/mlz-pack/compare/v1.0.18...v1.0.19) (2021-01-28)
+
+
+### Features
+
+* add md file ([688d057](https://github.com/juicecube/mlz-pack/commit/688d057a20bcbb327743f4e1e3b83589e423324a))
+* output config support ([334bd8c](https://github.com/juicecube/mlz-pack/commit/334bd8c8606e313b8b9e55fa5388a409ed22c4da))
+
+
+### Bug Fixes
+
+* output options ([f4743ad](https://github.com/juicecube/mlz-pack/commit/f4743ad2c951a8da6f706f160d38092a4d15d9f8))
+* output options ([cd68b58](https://github.com/juicecube/mlz-pack/commit/cd68b585e205a3de8ff5cab07f91b1cba0e197ca))
+
 ### [1.0.18](https://github.com/juicecube/mlz-pack/compare/v1.0.17...v1.0.18) (2020-10-23)
 
 

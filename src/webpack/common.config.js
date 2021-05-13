@@ -74,6 +74,7 @@ module.exports = () => {
       },
     },
     output: {
+      ...config.output,
       // 打包输出的文件
       path: config.buildPath,
       publicPath: config.publicPath,
@@ -190,6 +191,7 @@ module.exports = () => {
         ...config.definePlugin,
       }),
     ],
+    externals: {},
   };
   if (config.svgr) {
     commonConfig.module.rules.unshift({
@@ -219,6 +221,9 @@ module.exports = () => {
   }
   if (config.pluginOptions) {
     commonConfig.plugins.push(...config.pluginOptions);
+  }
+  if(config.externals){
+    commonConfig.externals = config.externals;
   }
 
   return commonConfig;
