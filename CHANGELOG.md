@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.4](https://github.com/juicecube/mlz-pack/compare/v1.1.3...v1.1.4) (2021-05-17)
+
+
+### Bug Fixes
+
+* update @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript and use loose mode ([59eb1b6](https://github.com/juicecube/mlz-pack/commit/59eb1b69d541d9d15f182cd7f5f80c8c589dc30b))
+* update readme ([5fdd210](https://github.com/juicecube/mlz-pack/commit/5fdd210b1baf696f6065987a903f3dfcd96e1c3e))
+* update readme style ([4df631b](https://github.com/juicecube/mlz-pack/commit/4df631bf6fd5b2f3f6b72519f95f221c0610e1eb))
+
 ### [1.1.3](https://github.com/juicecube/mlz-pack/compare/v1.1.2...v1.1.3) (2021-04-25)
 
 
