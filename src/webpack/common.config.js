@@ -78,6 +78,7 @@ module.exports = () => {
       // 打包输出的文件
       path: config.buildPath,
       publicPath: config.publicPath,
+      assetModuleFilename: 'images/[name]__[hash:5].[ext]',
     },
     resolve: {
       modules: [
@@ -130,30 +131,17 @@ module.exports = () => {
         {
           test: /\.(jpe?g|png|gif|svg)$/,
           exclude: /node_modules/,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                emitFile: true,
-                limit: 3 * 1024,
-                name: 'images/[name]__[hash:5].[ext]',
-                publicPath: config.assetsPublicPath,
-              },
+          type: 'asset',
+          parser: {
+            dataUrlCondition: {
+              maxSize: 3 * 1024, // 4kb
             },
-          ],
+          },
         },
         {
           test: /\.(woff|woff2|eot|ttf|mp3|mp4)$/,
           exclude: /node_modules/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'assets/[name]__[hash:5].[ext]',
-                publicPath: config.assetsPublicPath,
-              },
-            },
-          ],
+          type: 'asset',
         },
         {
           test: /\.(ts|tsx)?$/,

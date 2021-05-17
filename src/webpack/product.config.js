@@ -26,8 +26,6 @@ module.exports = () => {
       removeAvailableModules: true,
       removeEmptyChunks: true,
       sideEffects: false,
-      // new
-      moduleIds: 'deterministic',
       runtimeChunk: {
         name: 'manifest',
       },
@@ -36,7 +34,7 @@ module.exports = () => {
         maxInitialRequests: Infinity,
         minSize: 3000,
         cacheGroups: {
-          vendors: {
+          defaultVendors: {
             test: /node_modules/,
             chunks: 'all',
             name(module) {
