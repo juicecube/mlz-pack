@@ -101,6 +101,7 @@ if(module.hot){
 | **[`cssScopeName`](#cssScopeName)** 	| `string` 	| `[local]__[hash:base64:5] \| [path][name]__[local]` 	| css的className编译规则，默认：dev环境是`[path][name]__[local]`，正式环境是`[name]__[hash:base64:5]` 	|
 | **[`alias`](#alias)** 	| `{[key:string]:string}` 	| `undefined` 	| 别名，可不填，默认会读tsconfig里的paths 	|
 | **[`definePlugin`](#definePlugin)** 	| `{[key:string]:any}` 	| `undefined` 	| 全局变量 	|
+| **[`imageminPlugin`](#imageminPlugin)** 	| `boolean` 	| `true` 	| 图片压缩配置 	|
 | **[`analyzePlugin`](#analyzePlugin)** 	| `boolean` 	| `false` 	| 是否开启bundle分析 	|
 | **[`htmlPlugin`](#htmlPlugin)** 	| `Object` 	| `{filename: 'index.html',template: path.resolve(process.cwd(), 'src/index.ejs')}` 	| htmlplugin的参数设置 	|
 | **[`sentryPlugin`](#sentryPlugin)** 	| `Object` 	| `{}` 	| sentryPlugin配置，更新了sentry的配置方式见详情 	|
@@ -339,6 +340,22 @@ Type: `{[key:string]:any}` Default: `undefined`
 module.exports = {
   webpack: {
     definePlugin: {DEBUG: false},
+  },
+}
+```
+
+### `imageminPlugin`
+
+Type: `boolean` Default: `true`
+
+是否开启图片压缩
+
+**mlz-pack.js**
+
+```js
+module.exports = {
+  webpack: {
+    imageminPlugin: false,
   },
 }
 ```
