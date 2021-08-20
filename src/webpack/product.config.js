@@ -10,6 +10,7 @@ const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const SentryPlugin = require('@sentry/webpack-plugin');
 
 const commonCfg = require('./common.config');
+const getSplitChunks = require('./splitChunks');
 const configs = require('./config');
 
 module.exports = () => {
@@ -30,35 +31,7 @@ module.exports = () => {
       runtimeChunk: {
         name: 'manifest',
       },
-      splitChunks: {
-        chunks: 'all',
-        maxInitialRequests: Infinity,
-        minSize: 3000,
-        cacheGroups: {
-          vendors: {
-            test: /node_modules/,
-            chunks: 'all',
-            name(module) {
-              let name = 'venderLibs';
-              if (libraries) {
-                const context = module.context.split('/');
-                const nIndex = context.indexOf('node_modules');
-                let packageName = context[nIndex + 1];
-                if (packageName.indexOf('@') > -1) {
-                  packageName = `${context[nIndex + 1]}/${context[nIndex + 2]}`;
-                }
-                const names = Object.keys(libraries);
-                names.map((val) => {
-                  if (libraries[val].indexOf(packageName) >= 0) {
-                    name = val;
-                  }
-                });
-              }
-              return name;
-            },
-          },
-        },
-      },
+      splitChunks: getSplitChunks(config.splitChunks, libraries),
       minimizer: [
         new TerserPlugin({
           sourceMap: true,
