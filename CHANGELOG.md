@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/juicecube/mlz-pack/compare/v1.1.5...v1.2.0) (2021-08-23)
+
+
+### Features
+
+* add splitChunks custom config ([b2cf9f1](https://github.com/juicecube/mlz-pack/commit/b2cf9f17f7f1476878313a2671fb855e65bdbe23))
+* remove excess code ([b079ef3](https://github.com/juicecube/mlz-pack/commit/b079ef38d8e8d48170a886d726f494f1b5eab447))
+* update readme ([eddd13d](https://github.com/juicecube/mlz-pack/commit/eddd13de7e719616be0cfc18c0ac8fa7bae60323))
+* 更改libs实现规则 ([f13e512](https://github.com/juicecube/mlz-pack/commit/f13e512304b38c78965565518a259389bf38f560))
+
+
+### Bug Fixes
+
+* add imageminPlugin readme ([45a018b](https://github.com/juicecube/mlz-pack/commit/45a018bc8accb0c61ce71618ab7a2f088949e2b3))
+
 ### [1.1.5](https://github.com/juicecube/mlz-pack/compare/v1.1.4...v1.1.5) (2021-07-06)
 
 
