@@ -602,7 +602,7 @@ Type: `undefined | 'libs' | function () => object` Default: `undefined`
 
 当值为`undefined`时，按照如上文档`libs`api中的相关逻辑
 
-当值为`libs`时，会将node_modules里的包进行分类打包，会将`libs`中的第三方包拍平，会为第三方包创建名为`venderLibs`的bundle。不在`libs`中的，则会按照`splitChunks`的`chunks: 'all'`规则进行拆分
+当值为`libs`时，会将node_modules里的包进行分类打包，会将`libs`中的第三方包创建名为对应`[key]`的bundle。不在`libs`中的，则会按照`splitChunks`的`chunks: 'all'`规则进行拆分
 
 当值为`function`类型时，必须返回一个`webpack.splitChunks`类型的的`object`。该类型时提供自定义`splitChunks`的功能
 
