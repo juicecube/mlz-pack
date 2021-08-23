@@ -4,23 +4,19 @@ module.exports = (splitChunks, libraries) => {
   }
   if (splitChunks === 'libs') {
     if (libraries) {
-      const libs = [];
-      const names = Object.keys(libraries);
-      names.map((val) => {
-        libraries[val].map((lib) => {
-          libs.push(lib);
-        });
-      });
+      const cacheGroups = {};
+      for (const libName in libraries) {
+        const value = libraries[libName];
+        cacheGroups[libName] = {
+          test: eval(`/${value.join('|')}/`),
+          name: libName,
+        };
+      }
       return {
         chunks: 'all',
         maxInitialRequests: Infinity,
         minSize: 3000,
-        cacheGroups: {
-          vendors: {
-            test: eval(`/${libs.join('|')}/`),
-            name: 'venderLibs',
-          },
-        },
+        cacheGroups: cacheGroups,
       };
     }
   }
