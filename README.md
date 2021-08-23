@@ -108,6 +108,7 @@ if(module.hot){
 | **[`hardSourcePlugin`](#hardSourcePlugin)** 	| `boolean` 	| `false` 	| 开启hard-source-webpack-plugin，用于build缓存 	|
 | **[`extraCssPlugin`](#extraCssPlugin)** 	| `boolean` 	| `true` 	| 是否在正式环境开启mini-css-extract-plugin 	|
 | **[`libs`](#libs)** 	| `{[key:string]:string[]}` 	| `undefined` 	| 用于单独切分第三方依赖的bundle的配置 	|
+| **[`splitChunks`](#splitChunks)** 	| `undefined | 'libs' | function () => object` 	| `undefined` 	| 自定义splitChunks 	|
 | **[`loaderOptions`](#loaderOptions)** 	| `RuleSetRule[]` 	| `undefined` 	| loader扩展 	|
 | **[`pluginOptions`](#pluginOptions)** 	| `any[]` 	| `undefined` 	| plugin扩展 	|
 | **[`babel`](#babel)** 	| `any` 	| `undefined` 	| babel扩展 	|
@@ -592,6 +593,30 @@ module.exports = {
       vender: ['react', 'react-dom'],
       juice: ['@mlz/pack', '@mlz/lint'],
     }
+  },
+}
+```
+### `splitChunks`
+
+Type: `undefined | 'libs' | function () => object` Default: `undefined`
+
+当值为`undefined`时，按照如上文档`libs`api中的相关逻辑
+
+当值为`libs`时，会将node_modules里的包进行分类打包，会将`libs`中的第三方包创建名为对应`[key]`的bundle。不在`libs`中的，则会按照`splitChunks`的`chunks: 'all'`规则进行拆分
+
+当值为`function`类型时，必须返回一个`webpack.splitChunks`类型的的`object`。该类型时提供自定义`splitChunks`的功能
+
+**mlz-pack.js**
+
+```js
+module.exports = {
+  webpack: {
+    splitChunks: 'libs',
+    splitChunks: ()=>{
+      return {
+        chunks: 'all'
+      };
+    },
   },
 }
 ```
