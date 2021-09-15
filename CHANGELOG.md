@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/juicecube/mlz-pack/compare/v1.2.0...v1.2.1) (2021-09-15)
+
+
+### Bug Fixes
+
+* assetsPublicPath undefined ([a0f5065](https://github.com/juicecube/mlz-pack/commit/a0f50659bde8e3b63cfc57cb7555319c28469ccc))
+
 ## [1.2.0](https://github.com/juicecube/mlz-pack/compare/v1.1.5...v1.2.0) (2021-08-23)
 
 
