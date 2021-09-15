@@ -24,7 +24,7 @@
     "hooks": {
       "commit-msg": "commitlint -e $GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "npm run test && npm run test:webpack"
+      "pre-push": "npm run test"
     }
   },
   "lint-staged": {
