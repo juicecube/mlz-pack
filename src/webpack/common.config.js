@@ -22,7 +22,7 @@ module.exports = () => {
         modules: {
           localIdentName: config.cssScopeName,
           // new
-          localIdentContext: process.cwd(),
+          context: process.cwd(),
         },
         importLoaders: 3,
         sourceMap: false,
@@ -34,7 +34,7 @@ module.exports = () => {
         // new
         postcssOptions: () => {
           const options = {};
-          // 配置有plugin、全亮覆盖
+          // 配置有plugin、全量覆盖
           if (config.postCssPlugins) {
             options.plugins = config.postCssPlugins.map((plugin) => require(plugin.name)(plugin.options || {}));
             return options;
@@ -168,7 +168,19 @@ module.exports = () => {
     },
     plugins: [
       // new
-      new webpack.ProgressPlugin(),
+      new webpack.ProgressPlugin({
+        activeModules: false,
+        entries: true,
+        modules: true,
+        modulesCount: 5000,
+        profile: false,
+        dependencies: true,
+        dependenciesCount: 10000,
+        percentBy: 'entries',
+        // handler: (percentage, message, ...args) => {
+        //   console.info(percentage, message, ...args);
+        // }
+      }),
       new FriendlyErrorsWebpackPlugin(),
       new CleanWebpackPlugin({
         verbose: true, // Write logs to console.
