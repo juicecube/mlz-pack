@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminPlugin = require('@mlz/imagemin-webpack');
@@ -75,11 +75,10 @@ module.exports = () => {
           // new 是否将注释剥离到单独文件中
           extractComments: false,
         }),
-        new OptimizeCSSAssetsPlugin({
-          cssProcessorOptions: {
+        new CssMinimizerPlugin({
+          minimizerOptions: {
             discardComments: { removeAll: true },
           },
-          canPrint: true,
         }),
       ],
     },

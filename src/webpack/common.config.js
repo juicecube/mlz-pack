@@ -9,7 +9,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const AutoDllPlugin = require('autodll-webpack-plugin');
 
 const configs = require('./config');
-const getBabelConfig = require('./babel');
+const getBabelConfig = require('./loaders/babel');
 
 
 module.exports = () => {
@@ -33,6 +33,9 @@ module.exports = () => {
       options: {
         // new
         postcssOptions: () => {
+          if (config.isDev) {
+            return;
+          }
           const options = {};
           // 配置有plugin、全量覆盖
           if (config.postCssPlugins) {
@@ -177,9 +180,9 @@ module.exports = () => {
         dependencies: true,
         dependenciesCount: 10000,
         percentBy: 'entries',
-        // handler: (percentage, message, ...args) => {
-        //   console.info(percentage, message, ...args);
-        // }
+        handler: (percentage, message, ...args) => {
+          console.info(message, ...args);
+        },
       }),
       new FriendlyErrorsWebpackPlugin(),
       new CleanWebpackPlugin({

@@ -8,8 +8,6 @@ const ncp = require('ncp').ncp;
 
 const devCfg = require('./dev.config.js');
 const prodCfg = require('./product.config');
-// const happyCfg = require('./happy');
-// const dllCfg = require('./webpack.dll.config');
 const config = require('./config');
 const Server = require('./devServer');
 
