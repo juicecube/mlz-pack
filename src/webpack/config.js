@@ -50,7 +50,7 @@ class Config {
       }
       const tempConfig = this.filter(param, (value) => value !== undefined);
       merge(this.config, tempConfig);
-      if (!tempConfig.assetsPublicPath) {
+      if (tempConfig.assetsPublicPath === undefined) {
         this.config.assetsPublicPath = this.config.publicPath;
       }
     }
