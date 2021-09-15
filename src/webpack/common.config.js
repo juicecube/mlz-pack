@@ -180,9 +180,6 @@ module.exports = () => {
         dependencies: true,
         dependenciesCount: 10000,
         percentBy: 'entries',
-        handler: (percentage, message, ...args) => {
-          console.info(message, ...args);
-        },
       }),
       new FriendlyErrorsWebpackPlugin(),
       new CleanWebpackPlugin({
