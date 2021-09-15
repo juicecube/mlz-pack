@@ -2,7 +2,7 @@ const path = require('path');
 const merge = require('@mlz/babel-merge');
 const pathsTsconfig = require('tsconfig-paths');
 
-const configs = require('./config');
+const configs = require('../config');
 
 module.exports = () => {
   const config = configs.get();
