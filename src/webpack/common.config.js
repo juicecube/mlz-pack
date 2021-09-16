@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin;
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
@@ -95,7 +94,6 @@ module.exports = () => {
       // ? 看情况确认是否需要修改
       symlinks: false,
       cacheWithContext: false,
-      plugins: [new TsconfigPathsPlugin(tsconfig)],
     },
     watchOptions: {
       poll: 1000,

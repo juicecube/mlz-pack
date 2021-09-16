@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminPlugin = require('@mlz/imagemin-webpack');
 const { merge } = require('webpack-merge');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const SentryPlugin = require('@sentry/webpack-plugin');
 
 const commonCfg = require('./common.config');

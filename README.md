@@ -104,7 +104,6 @@ if(module.hot){
 | **[`analyzePlugin`](#analyzePlugin)** 	| `boolean` 	| `false` 	| 是否开启bundle分析 	|
 | **[`htmlPlugin`](#htmlPlugin)** 	| `Object` 	| `{filename: 'index.html',template: path.resolve(process.cwd(), 'src/index.ejs')}` 	| htmlplugin的参数设置 	|
 | **[`sentryPlugin`](#sentryPlugin)** 	| `Object` 	| `{}` 	| sentryPlugin配置，更新了sentry的配置方式见详情 	|
-| **[`hardSourcePlugin`](#hardSourcePlugin)** 	| `boolean` 	| `false` 	| 开启hard-source-webpack-plugin，用于build缓存 	|
 | **[`extraCssPlugin`](#extraCssPlugin)** 	| `boolean` 	| `true` 	| 是否在正式环境开启mini-css-extract-plugin 	|
 | **[`libs`](#libs)** 	| `{[key:string]:string[]}` 	| `undefined` 	| 用于单独切分第三方依赖的bundle的配置 	|
 | **[`loaderOptions`](#loaderOptions)** 	| `RuleSetRule[]` 	| `undefined` 	| loader扩展 	|
@@ -491,22 +490,6 @@ org = [sentry org] // 例如：codemao
 project = xxx //project名
 [auth]
 token = xxx
-```
-
-### `hardSourcePlugin`
-
-Type: `boolean` Default: `false`
-
-是否开启[hard-source-webpack-plugin](https://github.com/mzgoddard/hard-source-webpack-plugin)，以便于build缓存的利用。
-
-**mlz-pack.js**
-
-```js
-module.exports = {
-  webpack: {
-    hardSourcePlugin: true,
-  },
-}
 ```
 
 ### `extraCssPlugin`
