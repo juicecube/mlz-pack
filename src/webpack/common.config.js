@@ -5,7 +5,6 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const AutoDllPlugin = require('autodll-webpack-plugin');
 
 const configs = require('./config');
 const getBabelConfig = require('./loaders/babel');
@@ -13,7 +12,6 @@ const getBabelConfig = require('./loaders/babel');
 
 module.exports = () => {
   const config = configs.get();
-  const tsconfig = config.tsconfig ? { configFile: config.tsconfig } : {};
   const scssRules = [
     {
       loader: 'css-loader',

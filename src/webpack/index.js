@@ -28,9 +28,9 @@ function build(baseCfg, cb) {
     }));
   });
   // 打包完成执行回调
-  compiler.hooks.done.tap({ name: 'done' }, () => {
-    cb && cb(compiler);
-  });
+  // compiler.hooks.done.tap({ name: 'done' }, () => {
+  //   cb && cb(compiler);
+  // });
 }
 
 /** 开启webpack-dev-deserver */
@@ -48,16 +48,16 @@ function getWebpackConfig(baseCfg) {
   config.init(baseCfg);
   let webpackConfig;
   // 打包速度分析工具
-  const smp = new SpeedMeasurePlugin();
   if (!baseCfg.isDev) {
     // 正式环境
     webpackConfig = prodCfg();
   } else {
     // 开发环境
+    const smp = new SpeedMeasurePlugin();
     webpackConfig = devCfg();
+    // 不支持terser
+    webpackConfig = smp.wrap(webpackConfig);
   }
-  // ! 不支持webpack5
-  webpackConfig = smp.wrap(webpackConfig);
   return webpackConfig;
 }
 
