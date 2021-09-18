@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 // ! 不支持webpack5
-const SpeedMeasurePlugin = require('speed-measure-webpack5-plugin');
+// const SpeedMeasurePlugin = require('speed-measure-webpack5-plugin');
 const ncp = require('ncp').ncp;
 
 const devCfg = require('./dev.config.js');
@@ -28,9 +28,9 @@ function build(baseCfg, cb) {
     }));
   });
   // 打包完成执行回调
-  // compiler.hooks.done.tap({ name: 'done' }, () => {
-  //   cb && cb(compiler);
-  // });
+  compiler.hooks.done.tap({ name: 'done' }, () => {
+    cb && cb(compiler);
+  });
 }
 
 /** 开启webpack-dev-deserver */
@@ -53,10 +53,10 @@ function getWebpackConfig(baseCfg) {
     webpackConfig = prodCfg();
   } else {
     // 开发环境
-    const smp = new SpeedMeasurePlugin();
+    // const smp = new SpeedMeasurePlugin();
     webpackConfig = devCfg();
-    // 不支持terser
-    webpackConfig = smp.wrap(webpackConfig);
+    // 不支持terser和html-webpack-plugin
+    // webpackConfig = smp.wrap(webpackConfig);
   }
   return webpackConfig;
 }
