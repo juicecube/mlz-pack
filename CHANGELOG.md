@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/juicecube/mlz-pack/compare/v2.0.0...v2.0.1) (2021-09-23)
+
+
+### Bug Fixes
+
+* rename css-loader context to localIdentContext ([257d97a](https://github.com/juicecube/mlz-pack/commit/257d97a142d9164fb55eb05e90126fc15edd7ca0))
+
 ## [2.0.0](https://github.com/juicecube/mlz-pack/compare/v1.1.3...v2.0.0) (2021-09-23)
 
 
