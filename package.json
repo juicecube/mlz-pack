@@ -1,5 +1,5 @@
 {
-  "name": "@mlz/pack",
+  "name": "@mlz/pack-beta",
   "version": "2.0.0-alpha.2",
   "description": "mlz-pack",
   "main": "./src/index.js",
