@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/juicecube/mlz-pack/compare/v1.1.3...v2.0.0) (2021-09-23)
+
+
+### Features
+
+* 持久化缓存 ([0910f77](https://github.com/juicecube/mlz-pack/commit/0910f773ff6e803c445bfb8cbd8b44658892d657))
+
+
+### Bug Fixes
+
+* ’修复打包css的问题 ([76ab4bd](https://github.com/juicecube/mlz-pack/commit/76ab4bd93cce00ba36d5f9b4e25ee2686a156204))
+* add basic version ([5c3e1d6](https://github.com/juicecube/mlz-pack/commit/5c3e1d6475c97945c3b7b2e9135c56ae52dc4aa1))
+* add SpeedMeasurePlugin ([031e8ca](https://github.com/juicecube/mlz-pack/commit/031e8cad420876ee699bc97f3f58c81962c9d7ee))
+* cache comment ([a129099](https://github.com/juicecube/mlz-pack/commit/a1290994a85d8cc3f55b8d50e65248b8f21fd996))
+* delete useless config ([7b593d9](https://github.com/juicecube/mlz-pack/commit/7b593d91796d717fedcac8fdb0810da0a391361e))
+* html-webpack-plugin ([b5d2f2b](https://github.com/juicecube/mlz-pack/commit/b5d2f2bcf10771642bdf8a5028372eb4c65d8880))
+* merge master ([9a97e02](https://github.com/juicecube/mlz-pack/commit/9a97e02c50eb35128221d82e0f4ca9f3a91c326d))
+* module path ([c752ae9](https://github.com/juicecube/mlz-pack/commit/c752ae928313415af805c68452987501598259c1))
+* not test webpack in every push ([870b4a3](https://github.com/juicecube/mlz-pack/commit/870b4a372e98be6da30138d1cc3c358fa52e9c3e))
+* postcss配置问题 ([26f7e50](https://github.com/juicecube/mlz-pack/commit/26f7e50440d1412c5802b52be8de0b98bcac9e66))
+* remove dev postcss-loader ([2066b40](https://github.com/juicecube/mlz-pack/commit/2066b40346b23ed8e1c2945746c08f573b91aa9f))
+* remove useless code ([f9b1423](https://github.com/juicecube/mlz-pack/commit/f9b14232ce657c03fde759138487263561ee2b46))
+* rename as beta version ([20bb1dd](https://github.com/juicecube/mlz-pack/commit/20bb1ddba21da9589562c805ac657aed42c167fc))
+* update config ([2aa2f56](https://github.com/juicecube/mlz-pack/commit/2aa2f56c49cc8b2f114ffcead09cca50f7ba8143))
+* update package and remove smp in dev ([2742adf](https://github.com/juicecube/mlz-pack/commit/2742adf49785565c810c216fceedffa3d193a270))
+* update readme ([5fdd210](https://github.com/juicecube/mlz-pack/commit/5fdd210b1baf696f6065987a903f3dfcd96e1c3e))
+* update readme style ([4df631b](https://github.com/juicecube/mlz-pack/commit/4df631bf6fd5b2f3f6b72519f95f221c0610e1eb))
+* update webpack5 and update plugin config ([4a73e60](https://github.com/juicecube/mlz-pack/commit/4a73e60bd5b4a9a95330e35328a8e95c0dc1aed6))
+* 删除不必要的ts文件 ([160f0fc](https://github.com/juicecube/mlz-pack/commit/160f0fcae41450b58bd4594ea04d5d8431b836e2))
+* 升级所有包至最新除eslint外 ([78f55ca](https://github.com/juicecube/mlz-pack/commit/78f55ca96404f6df7641e0f9c39a74366767c2e3))
+* 去掉无用插件 ([5afec3a](https://github.com/juicecube/mlz-pack/commit/5afec3a08264102ac6c274272aacaf563a11652a))
+* 恢复误删的插件 ([b0acb48](https://github.com/juicecube/mlz-pack/commit/b0acb486edfe0c4f28f6cda5b6477506ddbe1916))
+* 版本号 ([6e0e969](https://github.com/juicecube/mlz-pack/commit/6e0e9690c0069d06af35945cd94a5c5b2368ac65))
+* 版本号 ([37e2958](https://github.com/juicecube/mlz-pack/commit/37e2958df9e135d9a3024ddb722dec244777557e))
+
 ### [1.1.3](https://github.com/juicecube/mlz-pack/compare/v1.1.2...v1.1.3) (2021-04-25)
 
 
