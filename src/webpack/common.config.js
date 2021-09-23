@@ -18,8 +18,7 @@ module.exports = () => {
       options: {
         modules: {
           localIdentName: config.cssScopeName,
-          // new
-          context: process.cwd(),
+          localIdentContext: process.cwd(),
         },
         importLoaders: 3,
         sourceMap: false,
