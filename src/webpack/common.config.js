@@ -30,9 +30,6 @@ module.exports = () => {
       options: {
         // new
         postcssOptions: () => {
-          if (config.isDev) {
-            return;
-          }
           const options = {};
           // 配置有plugin、全量覆盖
           if (config.postCssPlugins) {
