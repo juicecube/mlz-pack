@@ -66,12 +66,15 @@ module.exports = () => {
   const commonConfig = {
     entry: config.entryPath,
     target: config.target,
-    // new
+    // 开启构建缓存加快构建速度
     cache: {
       type: 'filesystem',
+      // 针对构建的额外代码依赖的数组对象。webpack 将使用这些项和所有依赖项的哈希值来使文件系统缓存失效。
       buildDependencies: {
+        // This makes all dependencies of this file - build dependencies
         config: [__filename],
       },
+      store: 'pack',
     },
     output: {
       ...config.output,
