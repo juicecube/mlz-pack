@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/juicecube/mlz-pack/compare/v2.0.1...v2.0.2) (2021-09-24)
+
+
+### Bug Fixes
+
+* ignore plugin error ([f59e5ad](https://github.com/juicecube/mlz-pack/commit/f59e5ad3238369e40c9ba704d10f271693655239))
+
 ### [2.0.1](https://github.com/juicecube/mlz-pack/compare/v2.0.0...v2.0.1) (2021-09-23)
 
 
