@@ -96,7 +96,10 @@ module.exports = () => {
         },
         ...config.htmlPlugin,
       }),
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new webpack.IgnorePlugin({
+        resourceRegExp: /^\.\/locale$/,
+        contextRegExp: /moment$/,
+      }),
     ],
   });
 
