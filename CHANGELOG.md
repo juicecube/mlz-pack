@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.5](https://github.com/juicecube/mlz-pack/compare/v2.0.4...v2.0.5) (2021-09-27)
+
+
+### Bug Fixes
+
+* update @mlz/babel-plugin-react-css-modules ([327fe2b](https://github.com/juicecube/mlz-pack/commit/327fe2bb9070d8b77f2d1b7e0e8affb0e33367f2))
+
 ### [2.0.4](https://github.com/juicecube/mlz-pack/compare/v2.0.3...v2.0.4) (2021-09-27)
 
 
