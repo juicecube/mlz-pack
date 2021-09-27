@@ -1,6 +1,7 @@
 const path = require('path');
 const merge = require('@mlz/babel-merge');
 const pathsTsconfig = require('tsconfig-paths');
+const genericNames = require('generic-names');
 
 const configs = require('../config');
 
@@ -52,7 +53,7 @@ module.exports = () => {
         'alias': alias,
       }],
       ['react-css-modules', {
-        'generateScopedName': config.cssScopeName,
+        'generateScopedName': genericNames(config.cssScopeName),
         webpackHotModuleReloading: true,
         handleMissingStyleName: 'warn',
         'filetypes': {
