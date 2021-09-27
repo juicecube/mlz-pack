@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.3](https://github.com/juicecube/mlz-pack/compare/v2.0.2...v2.0.3) (2021-09-27)
+
+
+### Bug Fixes
+
+* hash diff between css-loader and css-module ([3d237d3](https://github.com/juicecube/mlz-pack/commit/3d237d3e82c72584874eb00d2e5b2bae64f981a6))
+
 ### [2.0.2](https://github.com/juicecube/mlz-pack/compare/v2.0.1...v2.0.2) (2021-09-24)
 
 
