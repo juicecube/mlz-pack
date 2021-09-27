@@ -52,8 +52,8 @@ module.exports = () => {
         'extensions': ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.css', '.scss'],
         'alias': alias,
       }],
-      ['react-css-modules', {
-        'generateScopedName': genericNames(config.cssScopeName),
+      ['@mlz/babel-plugin-react-css-modules', {
+        'generateScopedName': config.cssScopeName,
         webpackHotModuleReloading: true,
         handleMissingStyleName: 'warn',
         'filetypes': {

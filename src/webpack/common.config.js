@@ -17,8 +17,12 @@ module.exports = () => {
       loader: 'css-loader',
       options: {
         modules: {
-          localIdentName: config.cssScopeName,
-          localIdentContext: process.cwd(),
+          getLocalIdent({ resourcePath }, localIdentName, localName) {
+            const generateScope = genericNames(localIdentName, {
+              context: process.cwd(),
+            });
+            return generateScope(localName, resourcePath);
+          },
         },
         importLoaders: 3,
         sourceMap: false,
