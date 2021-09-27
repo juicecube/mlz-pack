@@ -5,6 +5,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const genericNames = require('generic-names');
 
 const configs = require('./config');
 const getBabelConfig = require('./loaders/babel');
@@ -18,7 +19,7 @@ module.exports = () => {
       options: {
         modules: {
           getLocalIdent({ resourcePath }, localIdentName, localName) {
-            const generateScope = genericNames(localIdentName, {
+            const generateScope = genericNames(config.cssScopeName, {
               context: process.cwd(),
             });
             return generateScope(localName, resourcePath);
