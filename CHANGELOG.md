@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.4](https://github.com/juicecube/mlz-pack/compare/v2.0.3...v2.0.4) (2021-09-27)
+
+
+### Bug Fixes
+
+* update css modules ([6b2a1ef](https://github.com/juicecube/mlz-pack/commit/6b2a1ef238db6636e0c18dbcca849fb459ca60b1))
+
 ### [2.0.3](https://github.com/juicecube/mlz-pack/compare/v2.0.2...v2.0.3) (2021-09-27)
 
 
