@@ -106,7 +106,7 @@
     "mini-css-extract-plugin": "^0.8.0",
     "ncp": "^2.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "postcss-import-sync2": "^1.1.0",
+    "postcss-import-sync2": "1.1.0",
     "postcss-loader": "^3.0.0",
     "postcss-pxtorem": "^4.0.1",
     "postcss-scss": "^2.0.0",
