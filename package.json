@@ -102,7 +102,7 @@
     "mini-css-extract-plugin": "^1.6.2",
     "ncp": "^2.0.0",
     "postcss": "^8.3.6",
-    "postcss-import-sync2": "^1.1.0",
+    "postcss-import-sync2": "1.1.0",
     "postcss-loader": "^6.1.1",
     "postcss-pxtorem": "^6.0.0",
     "postcss-scss": "^4.0.0",
