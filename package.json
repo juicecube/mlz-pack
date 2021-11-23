@@ -83,7 +83,7 @@
     "@mlz/imagemin-webpack": "^5.1.1",
     "@sentry/webpack-plugin": "^1.17.1",
     "@svgr/webpack": "^5.5.0",
-    "autoprefixer": "^10.3.4",
+    "autoprefixer": "^9.8.7",
     "babel-loader": "^8.2.2",
     "babel-plugin-const-enum": "^1.1.0",
     "babel-plugin-import": "^1.13.3",
