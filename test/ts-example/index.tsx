@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
-import { Test } from 'example/testComponent';
+import { Test } from './testComponent';
 
 import './index.scss';
 
