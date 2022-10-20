@@ -105,6 +105,7 @@ module.exports = () => {
 
   if (config.imageminPlugin) {
     prodConfig.plugins.push(new ImageminPlugin({
+      test: /\.(jpe?g|png|gif|tif|webp)$/i,
       bail: false, // Ignore errors on corrupted images
       name: '[name]__[hash:5].[ext]',
       imageminOptions: {

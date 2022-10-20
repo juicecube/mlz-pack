@@ -82,7 +82,7 @@
     "@mlz/imagemin-optipng": "^7.1.1",
     "@mlz/imagemin-webpack": "^5.1.1",
     "@sentry/webpack-plugin": "^1.17.1",
-    "@svgr/webpack": "^5.5.0",
+    "@svgr/webpack": "^6.5.0",
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-const-enum": "^1.1.0",

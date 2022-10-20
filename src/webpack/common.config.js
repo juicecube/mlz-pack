@@ -132,7 +132,7 @@ module.exports = () => {
           use: [...scssRules],
         },
         {
-          test: /\.(jpe?g|png|gif|svg)$/,
+          test: /\.(jpe?g|png|gif)$/,
           exclude: /node_modules/,
           type: 'asset',
           parser: {
@@ -167,6 +167,32 @@ module.exports = () => {
           ],
           exclude: /(node_modules)/,
         },
+        {
+          test: /\.svg$/i,
+          type: 'asset',
+          issuer: /\.(css|less|scss|sass|styl)$/,
+          parser: {
+            dataUrlCondition: {
+              maxSize: 4 * 1024, // 4kb
+            },
+          },
+        },
+        {
+          test: /\.svg$/i,
+          type: 'asset',
+          resourceQuery: /url/, // *.svg?url
+          parser: {
+            dataUrlCondition: {
+              maxSize: 4 * 1024, // 4kb
+            },
+          },
+        },
+        {
+          test: /\.svg$/i,
+          issuer: /\.[jt]sx?$/,
+          resourceQuery: { not: [/url/] }, // exclude react component if *.svg?url
+          use: ['@svgr/webpack'],
+        },
       ],
     },
     plugins: [
@@ -193,26 +219,6 @@ module.exports = () => {
     ],
     externals: {},
   };
-  if (config.svgr) {
-    commonConfig.module.rules.unshift({
-      test: /\.svg$/,
-      issuer: {
-        test: /\.(jsx|tsx)?$/,
-      },
-      use: [
-        '@svgr/webpack',
-        {
-          loader: 'url-loader',
-          options: {
-            emitFile: true,
-            limit: 3 * 1024,
-            name: 'images/[name]__[hash:5].[ext]',
-            publicPath: config.assetsPublicPath,
-          },
-        },
-      ],
-    });
-  }
   if (config.analyzePlugin) {
     commonConfig.plugins.push(new BundleAnalyzerPlugin());
   }
