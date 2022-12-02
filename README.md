@@ -108,6 +108,7 @@ if(module.hot){
 | **[`loaderOptions`](#loaderOptions)** 	| `RuleSetRule[]` 	| `undefined` 	| loader扩展 	|
 | **[`pluginOptions`](#pluginOptions)** 	| `any[]` 	| `undefined` 	| plugin扩展 	|
 | **[`babel`](#babel)** 	| `any` 	| `undefined` 	| babel扩展 	|
+| **[`useAntd5`](#useAntd5)** 	| `boolean` 	| `false` 	| 是否使用antd5 	|
 
 ### `rootPath`
 
@@ -602,6 +603,21 @@ module.exports = {
         '@babel/preset-react',
       ],
     }
+  },
+}
+```
+
+### `useAntd5`
+Type: `boolean` Default: `false`
+
+使用antd5，将不再需要使用babel-plugin-import。
+
+**mlz-pack.js**
+
+```js
+module.exports = {
+  webpack: {
+    useAntd5: true,
   },
 }
 ```

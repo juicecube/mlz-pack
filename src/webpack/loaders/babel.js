@@ -40,7 +40,7 @@ module.exports = () => {
       '@babel/preset-typescript', // ts
     ],
     'plugins': [
-      ['import', {
+      config.useAntd5 ? undefined :['import', {
         'libraryName': 'antd',
         'style': 'css',
       }, 'antd'],
@@ -93,7 +93,7 @@ module.exports = () => {
       '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-proposal-nullish-coalescing-operator',
       'const-enum',
-    ],
+    ].filter(Boolean),
   };
   if (config.babel) {
     babelCfg = merge(babelCfg, config.babel);
