@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/juicecube/mlz-pack/compare/v2.0.11...v2.1.0) (2022-12-02)
+
+
+### Features
+
+* 兼容antd5 ([d1d974a](https://github.com/juicecube/mlz-pack/commit/d1d974a5608b5e7abc59620b9de94e15a22d3c3a))
+
 ### [2.0.11](https://github.com/juicecube/mlz-pack/compare/v2.0.10...v2.0.11) (2022-10-21)
 
 ### [2.0.10](https://github.com/juicecube/mlz-pack/compare/v2.0.9...v2.0.10) (2021-12-02)
