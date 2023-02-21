@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/juicecube/mlz-pack/compare/v2.1.0...v2.1.1) (2023-02-21)
+
+
+### Bug Fixes
+
+* 修复使用pnpm时,分包配置不生效 ([65063b6](https://github.com/juicecube/mlz-pack/commit/65063b691b07b4380766cef430206dd6401a5315))
+
 ## [2.1.0](https://github.com/juicecube/mlz-pack/compare/v2.0.11...v2.1.0) (2022-12-02)
 
 
