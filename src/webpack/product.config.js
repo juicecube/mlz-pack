@@ -40,7 +40,7 @@ module.exports = () => {
               let name = 'venderLibs';
               if (libraries) {
                 const context = module.context.split('/');
-                const nIndex = context.indexOf('node_modules');
+                const nIndex = context.lastIndexOf('node_modules');
                 let packageName = context[nIndex + 1];
                 if (packageName.indexOf('@') > -1) {
                   packageName = `${context[nIndex + 1]}/${context[nIndex + 2]}`;
