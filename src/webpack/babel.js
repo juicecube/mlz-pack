@@ -93,7 +93,8 @@ module.exports = () => {
       '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-proposal-nullish-coalescing-operator',
       'const-enum',
-    ],
+      config.isDev && require.resolve('react-refresh/babel'),
+    ].filter(Boolean),
   };
   if (config.babel) {
     babelCfg = merge(babelCfg, config.babel);
