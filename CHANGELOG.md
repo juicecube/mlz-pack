@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/juicecube/mlz-pack/compare/v1.2.2...v1.3.0) (2023-10-16)
+
+
+### Features
+
+* 升级webpack至4.46 ([2e7d426](https://github.com/juicecube/mlz-pack/commit/2e7d426473859ce5af06910fbb927ab35e6b3560))
+* 添加react-refresh ([9e59f90](https://github.com/juicecube/mlz-pack/commit/9e59f906246b874f7191a6f009d554c6727e63cd))
+
 ### [1.2.2](https://github.com/juicecube/mlz-pack/compare/v1.2.1...v1.2.2) (2021-11-12)
 
 
