@@ -50,16 +50,16 @@ function getWebpackConfig(baseCfg) {
   config.init(baseCfg);
   let webpackConfig;
   // 打包速度分析工具
-  const smp = new SpeedMeasurePlugin();
   if (!baseCfg.isDev) {
     // 正式环境
+    const smp = new SpeedMeasurePlugin();
     webpackConfig = prodCfg();
+    webpackConfig = smp.wrap(webpackConfig);
   } else {
     // 开发环境
     webpackConfig = devCfg();
   }
   // webpackConfig = merge(webpackConfig, happyCfg());
-  webpackConfig = smp.wrap(webpackConfig);
   return webpackConfig;
 }
 

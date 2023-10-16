@@ -8,6 +8,7 @@ const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const AutoDllPlugin = require('autodll-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const configs = require('./config');
 const getBabelConfig = require('./babel');
@@ -173,7 +174,8 @@ module.exports = () => {
         'DEBUG': config.isDev,
         ...config.definePlugin,
       }),
-    ],
+      config.isDev && new ReactRefreshWebpackPlugin(),
+    ].filter(Boolean),
     externals: {},
   };
   if (config.svgr) {
