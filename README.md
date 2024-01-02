@@ -112,6 +112,7 @@ if(module.hot){
 | **[`loaderOptions`](#loaderOptions)** 	| `RuleSetRule[]` 	| `undefined` 	| loader扩展 	|
 | **[`pluginOptions`](#pluginOptions)** 	| `any[]` 	| `undefined` 	| plugin扩展 	|
 | **[`babel`](#babel)** 	| `any` 	| `undefined` 	| babel扩展 	|
+| **[`codeInspector`](#codeInspector)** 	| `Object` 	| `false` 	| 点击页面dom跳转到对应源码,只在dev添加 	|
 
 ### `rootPath`
 
@@ -677,6 +678,26 @@ module.exports = {
       'presets': [
         '@babel/preset-react',
       ],
+    }
+  },
+}
+```
+
+### `codeInspector`
+
+Type: `Object` Default: `false`
+
+版本1.2.4添加
+点击页面dom跳转到对应源码,只在dev添加
+
+**mlz-pack.js**
+
+```js
+module.exports = {
+  webpack: {
+    codeInspector: {
+      hotKeys: ['altKey', 'shiftKey'], // 触发功能的组合键，为 false 或者空数组则关闭组合键触发功能。 
+      showSwitch: false, // 是否在页面展示一个控制源码定位功能的开关，开关打开时和按住组合键的效果是相同的
     }
   },
 }

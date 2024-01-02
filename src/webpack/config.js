@@ -40,6 +40,7 @@ class Config {
         filename: 'index.html',
         template: path.resolve(process.cwd(), 'src/index.ejs'),
       },
+      codeInspector: false,
     };
   }
 

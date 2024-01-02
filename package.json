@@ -1,6 +1,6 @@
 {
   "name": "@mlz/pack",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "mlz-pack",
   "main": "./src/index.js",
   "bin": {
@@ -127,6 +127,7 @@
     "webpack-merge": "^4.2.2",
     "worker-loader": "^2.0.0",
     "react-refresh": "0.14.0",
-    "@pmmmwh/react-refresh-webpack-plugin": "0.5.11"
+    "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
+    "code-inspector-plugin": "0.3.2"
   }
 }
