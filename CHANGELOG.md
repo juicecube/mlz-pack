@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/juicecube/mlz-pack/compare/v1.3.0...v1.4.0) (2024-01-03)
+
+
+### Features
+
+* 添加codeInspector模块 ([5e2b8a0](https://github.com/juicecube/mlz-pack/commit/5e2b8a0a6a547b043b15aaa1f3b14d7ebd827be5))
+
 ## [1.3.0](https://github.com/juicecube/mlz-pack/compare/v1.2.2...v1.3.0) (2024-01-03)
 
 
