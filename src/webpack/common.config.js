@@ -9,7 +9,7 @@ const pxtorem = require('postcss-pxtorem');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const AutoDllPlugin = require('autodll-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-
+const { CodeInspectorPlugin } = require('code-inspector-plugin');
 const configs = require('./config');
 const getBabelConfig = require('./babel');
 
@@ -210,6 +210,14 @@ module.exports = () => {
   if(config.externals){
     commonConfig.externals = config.externals;
   }
-
+  if (config.isDev && config.codeInspector) {
+    commonConfig.plugins.push(
+      CodeInspectorPlugin({
+        bundler: 'webpack',
+        showSwitch: true,
+        ...config.codeInspector,
+      }),
+    );
+  }
   return commonConfig;
 };
