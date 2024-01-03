@@ -689,6 +689,8 @@ Type: `Object` Default: `false`
 
 版本1.2.4添加
 点击页面dom跳转到对应源码,只在dev添加
+vscode,开启跳转需要配置,参考该链接
+https://inspector.fe-dev.cn/guide/start.html#_2-%E9%85%8D%E7%BD%AE-vscode-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7
 
 **mlz-pack.js**
 
